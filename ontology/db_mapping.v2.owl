@@ -1,0 +1,568 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/db_mapping.owl/"
+     xml:base="http://purl.obolibrary.org/obo/db_mapping.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/has_member -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/has_member">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/has_quality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/has_quality">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/quality_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/member_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/quality_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/quality_of"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/referenced_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/referenced_by">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/references"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/references -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/references"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/has_data_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/has_data_value"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/attribute -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/attribute">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/constraint -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/constraint">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/attribute"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/data_source -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/database -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/database">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/entity -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/entity">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/female_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/female_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/female_sex"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/female_sex -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/female_sex">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/sex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/attribute"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/field_value -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field_value">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/foreign_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/foreign_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/constraint"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/male_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/male_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/male_sex"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/male_sex -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/male_sex">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/sex"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/patient.patient_id_field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.patient_id_field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient_table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/patient.patient_name_field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.patient_name_field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient_table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/patient.sex_field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.sex_field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/patient_table -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/patient_table">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/table"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/primary_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/primary_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/constraint"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/record -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/record">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/sex -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/sex">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/table -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/table">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/database"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/tooth -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/tooth.patient_id_field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth.patient_id_field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth_table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/tooth.tooth_num_field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth.tooth_num_field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/field"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth_table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/untitled-ontology-339/tooth_table -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/tooth_table">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/table"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field_value"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.patient_id_field"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field_value"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.sex_field"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_data_value"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/male_sex"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field_value"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.sex_field"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_data_value"/>
+                <owl:hasValue>F</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/female_sex"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/field_value"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient.sex_field"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_data_value"/>
+                <owl:hasValue>M</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/male_sex"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">patient-sex</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/record"/>
+                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/patient"/>
+                                <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/sex"/>
+                                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_member"/>
+                                                <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                                                <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_member"/>
+                                                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                                                        <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/has_quality"/>
+                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                        <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
