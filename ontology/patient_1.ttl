@@ -1,0 +1,58 @@
+# axioms for prefixes
+
+@prefix : <http://purl.obolibrary.org/obo/db_mapping.owl/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# imports db mapping ontology
+[rdf:type owl:Ontology ;
+   owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> ] .
+
+
+# axioms to create table
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx> rdf:type owl:Class .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx> rdfs:subClassOf :table .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> rdf:type <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx> .
+
+# axioms to create field instances
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/patient_id> rdf:type owl:Class .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/patient_id> rdfs:subClassOf :field .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/patient_id_1> rdf:type <http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/patient_id> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/data_property/patient_id_data_value> rdf:type owl:DatatypeProperty .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/gender> rdf:type owl:Class .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/gender> rdfs:subClassOf :field .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/gender_2> rdf:type <http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/gender> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/data_property/gender_data_value> rdf:type owl:DatatypeProperty .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/birth_date> rdf:type owl:Class .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/birth_date> rdfs:subClassOf :field .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/birth_date_3> rdf:type <http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/field/birth_date> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx/data_property/birth_date_data_value> rdf:type owl:DatatypeProperty .
+
+# axioms to create records 
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_1> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_1> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_2> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_2> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_3> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_3> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_4> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_4> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_5> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_5> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_6> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_6> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_7> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_7> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_8> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_8> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_9> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_9> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_10> rdf:type :record .
+<http://purl.obolibrary.org/obo/db_mapping.owl/table/record/record_10> :member_of <http://purl.obolibrary.org/obo/db_mapping.owl/table/patients_1.xlsx_instance> .

@@ -25,6 +25,12 @@
     
 
 
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
     <!-- http://purl.org/dc/elements/1.1/date -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
@@ -184,6 +190,16 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/db_mapping.owl/canine -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/canine">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/db_mapping.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:34Z</dc:date>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/db_mapping.owl/constraint -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/constraint">
@@ -282,6 +298,16 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/db_mapping.owl/incisor -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/incisor">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/db_mapping.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:45Z</dc:date>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/db_mapping.owl/male_patient -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/male_patient">
@@ -308,6 +334,16 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/db_mapping.owl/molar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/molar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/db_mapping.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:17Z</dc:date>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/db_mapping.owl/ontology_class -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/ontology_class"/>
@@ -318,6 +354,16 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/patient">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/db_mapping.owl/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/db_mapping.owl/premolar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/db_mapping.owl/premolar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/db_mapping.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:26Z</dc:date>
     </owl:Class>
     
 
