@@ -93,16 +93,29 @@ def translate_data_to_ttl(filename):
         axioms.append(ttl)
         print ttl
 
-        for value_idx, value in enumerate(record, 1):
-            print record
-            print value_idx, value
-            print value_idx - 1
-            print fields
-            print fields[value_idx - 1]
-            # value_uri = uri(filename + '/field_value/' + fields[value_idx])
-            # print value_uri
+        for value_idx, value in enumerate(record):
+            if value_idx > 0:
+                # print record
+                # print value_idx, value
+                # print value_idx - 1
+                # print fields
+                # print fields[value_idx - 1]
+                value_uri = uri(filename + '/field_value/' + fields[value_idx - 1] + '_value_' + str(record_idx))
+                ttl = value_uri + ' rdf:type :field_value .'
+                axioms.append(ttl)
+                print ttl
 
-        # create field values of record
+                ttl = value_uri + ' :member_of ' + record_uri + ' .'
+                axioms.append(ttl)
+                print ttl
+
+                # field_uri = uri(filename + '/field/' + field + '_' + str(record_idx))
+                # ttl = value_uri + ' :member_of ' + field_uri
+                # axioms.append(ttl)
+                # print ttl
+
+
+                # create field values of record
         # for index in range(1, (len(fields)+1)): # note: need to add 1 to length of fields
         #     print # create instance of entity that is represented by the val
         #     entity_uri = uri('entity/' + filename + '/field' + str(index) + '/' + str(record_id))
