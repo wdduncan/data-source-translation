@@ -5,7 +5,7 @@ from data_operations import *
 
 
 # @print_output()()
-def ttl_prefixes(tablename):
+def ttl_prefixes(tablename, ontology_uri):
     ttl = dedent("""\
                 # axioms for prefixes'
                 @base <http://purl.obolibrary.org/obo/db_mapping.owl/> .
@@ -29,10 +29,10 @@ def ttl_prefixes(tablename):
                 @prefix record: <record/{0}/> .
                 @prefix data_property: <data_property/{0}/> .
 
-                # imports db mapping ontology
-                [rdf:type owl:Ontology ;
-                   owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> ] .
-                """.format(tablename))
+                # set ontology uri and import db mapping ontology
+                <{1}> rdf:type owl:Ontology ;
+                      owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> .
+                """.format(tablename, ontology_uri))
 
     return ttl
 
@@ -163,7 +163,8 @@ def translate_data_to_ttl(filepath):
     axioms = []
 
     # add prefixes
-    axioms.append(ttl_prefixes(tablename))
+    filename = get_tablename_from_file(filepath, remove_ext=False)
+    axioms.append(ttl_prefixes(tablename, "http://purl.obolibrary.org/obo/db_mapping.owl/" + filename))
 
     # add table
     table_uri = get_table_uri()
