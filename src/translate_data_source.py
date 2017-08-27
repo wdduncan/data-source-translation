@@ -28,6 +28,7 @@ def ttl_prefixes(tablename, ontology_uri):
                 @prefix fv: <field_value/{0}/> .
                 @prefix record: <record/{0}/> .
                 @prefix data_property: <data_property/{0}/> .
+                @prefix dv: <data_property/{0}/> .
 
                 # set ontology uri and import db mapping ontology
                 <{1}> rdf:type owl:Ontology ;
@@ -41,11 +42,11 @@ def ttl_table(table_uri):
     ttls = ["# axioms to create table"]
     
     # create table class
-    ttl = "tablename: rdf:type owl:Class; rdfs:subClassOf :table ."
+    ttl = declare_class("tablename:", ":table")
     ttls.append(ttl)
 
     #  create instance of table
-    ttl = "{0} rdf:type tablename: .".format(table_uri)
+    ttl = declare_instance(table_uri, "tablename:")
     ttls.append(ttl)
 
     # join all ttl statements
@@ -73,12 +74,12 @@ def ttl_field(table_uri, field_name):
 
     # create field class
     class_uri = "field:{0}".format(field_name)
-    ttl = "{0} rdf:type owl:Class; rdfs:subClassOf :field .".format(class_uri)
+    ttl = declare_class(class_uri, ":field")
     ttls.append(ttl)
 
     # create instance of field class
     field_uri = "field:{0}_i".format(field_name)  # uri for instance of field
-    ttl = "{0} rdf:type {1}; :member_of {2} .".format(field_uri, class_uri, table_uri)
+    ttl = declare_instance(field_uri, class_uri, table_uri)
     ttls.append(ttl)
 
     # join all ttl statements
@@ -89,20 +90,25 @@ def ttl_field(table_uri, field_name):
 def ttl_field_data_property(field_name):
     # create data property field
     data_prop_uri = get_data_prop_uri(field_name)
-    ttl = "{0} rdf:type owl:DatatypeProperty .".format(data_prop_uri)
+    ttl = declare_data_property(data_prop_uri)
 
     return ttl
 
-# @print_output()
+@print_output()
 def ttl_records(df, table_uri, tablename):
     ttls = []
     ttls.append('\n# axioms to create records and values')
+
+    # create record class for this table
+    class_uri = "record:{0}_record".format(tablename)
+    ttl = declare_class(class_uri, ":record")
+    ttls.append(ttl + "\n")  # add new line to help visual inspection
 
     fields = list(df.columns)  # get list of fields
     for record_idx, record in enumerate(df.itertuples(), 1):
         # create instance of record
         record_uri = get_record_uri(tablename, record_idx)
-        ttl = "{0} rdf:type :record; :member_of {1} .".format(record_uri, table_uri)
+        ttl = declare_instance(record_uri, class_uri, table_uri)
         ttls.append(ttl)
 
         ttl = ttl_field_values(record, record_idx, record_uri, fields)
@@ -181,4 +187,4 @@ def translate_data_to_ttl(filepath):
 
 ### run code
 axioms = translate_data_to_ttl("patients_1.xlsx")
-print_axioms(axioms)
+# print_axioms(axioms)
