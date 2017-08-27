@@ -1,15 +1,18 @@
+# coding=utf-8
 import pandas as pds
 from uri_functions import *
 from textwrap import dedent
 from data_operations import *
 
 
-# @print_function_output()()
-def ttl_prefixes(tablename, ontology_uri):
-    ttl = dedent("""\
+# @print_function_output()
+def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
+    if len(base_uri) == 0: base_uri = "http://purl.obolibrary.org/data_source/{0}/".format(tablename)
+    if len(ontology_uri) == 0: ontology_uri = "http://purl.obolibrary.org/{0}".format(tablename)
+
+    ttl = \
+        dedent("""\
                 # axioms for prefixes'
-                @base <http://purl.obolibrary.org/obo/db_mapping.owl/> .
-                @prefix : <http://purl.obolibrary.org/obo/db_mapping.owl/> .
                 @prefix dc: <http://purl.org/dc/elements/1.1/> .
                 @prefix owl: <http://www.w3.org/2002/07/owl#> .
                 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -21,19 +24,36 @@ def ttl_prefixes(tablename, ontology_uri):
                 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
                 
                 # custom prefixes
-                @prefix table: <table/{0}/> .
-                @prefix tablename: <table/{0}> .
-                @prefix field: <field/{0}/> .
-                @prefix field_value: <field_value/{0}/> .
-                @prefix fv: <field_value/{0}/> .
-                @prefix record: <record/{0}/> .
-                @prefix data_property: <data_property/{0}/> .
-                @prefix dv: <data_property/{0}/> .
+                @base <{0}> .
+                @prefix : <http://purl.obolibrary.org/obo/db_mapping.owl/> .
+                @prefix table: <table/{1}/> .
+                @prefix tablename: <table/{1}> .
+                @prefix field: <field/{1}/> .
+                @prefix field_value: <field_value/{1}/> .
+                @prefix fv: <field_value/{1}/> .
+                @prefix record: <record/{1}/> .
+                @prefix data_property: <data_property/{1}/> .
+                @prefix dv: <data_property/{1}/> .
 
-                # set ontology uri and import db mapping ontology
-                <{1}> rdf:type owl:Ontology ;
-                      owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> .
-                """.format(tablename, ontology_uri))
+                # ontology uri
+                <{2}> rdf:type owl:Ontology .
+                """.format(base_uri, tablename, ontology_uri))
+
+    if len(imports) > 0:
+        # check if imports is string or list
+        if type(imports) == type(""): # imports is a list
+            ttl += \
+                dedent("""
+                        # ontology imports
+                        <{0}> owl:imports <{1}> .""".format(ontology_uri, imports))
+        elif type(imports) == type([]): # imports is a list
+            # use list comprehension ["<" + i + ">" for i in imports] to build list of uris
+            # then join with commas
+            ttl += \
+                dedent("""
+                        # ontology imports
+                        <{0}> owl:imports {1} .""".format(ontology_uri,
+                                                          ", ".join(["<" + i + ">" for i in imports])))
 
     return ttl
 
@@ -94,7 +114,7 @@ def ttl_field_data_property(field_name):
 
     return ttl
 
-@print_function_output()
+# @print_function_output()
 def ttl_records(df, table_uri, tablename):
     ttls = []
     ttls.append('\n# axioms to create records and values')
@@ -162,15 +182,20 @@ def translate_data_to_ttl(filepath):
     # ceate dataframe from demo data
     df = pds.ExcelFile(filepath).parse()
 
-    # just get the file name part of path
+    # just get table and file name part of path
     tablename = get_tablename_from_file(filepath)
+    filename = get_tablename_from_file(filepath, remove_ext=False)
 
     # list to hold axioms
     axioms = []
 
+    # specify ontology variables
+    base_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}/".format(tablename)
+    ontology_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}".format(filename)
+    imports = "http://purl.obolibrary.org/obo/db_mapping.owl"
+
     # add prefixes
-    filename = get_tablename_from_file(filepath, remove_ext=False)
-    axioms.append(ttl_prefixes(tablename, "http://purl.obolibrary.org/obo/db_mapping.owl/" + filename))
+    axioms.append(ttl_prefixes(tablename, base_uri, ontology_uri, imports=imports))
 
     # add table
     table_uri = get_table_uri()

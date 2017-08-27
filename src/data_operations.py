@@ -22,8 +22,8 @@ def print_function_output(print_flag=True):
     :return: decorator function
     """
     def decorator(function):
-        def wrapper(*args):
-            output = function(*args) # call function and strore output
+        def wrapper(*args, **kwargs):
+            output = function(*args, **kwargs) # call function and strore output
 
             # check to print and return output
             if print_flag: print output
