@@ -4,7 +4,7 @@ from textwrap import dedent
 from data_operations import *
 
 
-# @print_output()()
+# @print_function_output()()
 def ttl_prefixes(tablename, ontology_uri):
     ttl = dedent("""\
                 # axioms for prefixes'
@@ -37,7 +37,7 @@ def ttl_prefixes(tablename, ontology_uri):
 
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_table(table_uri):
     ttls = ["# axioms to create table"]
     
@@ -53,7 +53,7 @@ def ttl_table(table_uri):
     ttl = "\n".join(ttls)
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_fields(table_uri, fields):
     ttls = ["\n# axioms to create fields"]
 
@@ -68,7 +68,7 @@ def ttl_fields(table_uri, fields):
     ttl = "\n".join(ttls)
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_field(table_uri, field_name):
     ttls = []
 
@@ -86,7 +86,7 @@ def ttl_field(table_uri, field_name):
     ttl = "\n".join(ttls)
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_field_data_property(field_name):
     # create data property field
     data_prop_uri = get_data_prop_uri(field_name)
@@ -94,7 +94,7 @@ def ttl_field_data_property(field_name):
 
     return ttl
 
-@print_output()
+@print_function_output()
 def ttl_records(df, table_uri, tablename):
     ttls = []
     ttls.append('\n# axioms to create records and values')
@@ -118,7 +118,7 @@ def ttl_records(df, table_uri, tablename):
     ttl = "\n".join(ttls)
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_field_values(record, record_idx, record_uri, fields):
     ttls = []
 
@@ -135,7 +135,7 @@ def ttl_field_values(record, record_idx, record_uri, fields):
     ttl = "\n".join(ttls)
     return ttl
 
-# @print_output()
+# @print_function_output()
 def ttl_field_value(record_idx, value, record_uri, field_uri, field_name, data_prop_uri):
     ttls = []
 

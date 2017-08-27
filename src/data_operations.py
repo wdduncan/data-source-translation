@@ -1,20 +1,20 @@
 import os
 
 
-def print_output(print_flag=True):
+def print_function_output(print_flag=True):
     """
     This function is used as a decorator to control whether the funciton's output is printed to screen.
-    Because the print_output takes and argument to decorator syntax includes parens "()".
+    Because the print_function_output takes and argument to decorator syntax includes parens "()".
     If print_flag is True, to show output, the syntax is:
-        @print_output()
+        @print_function_output()
         def foo(): ...
     This is equivalent to:
-        foo = print_output()(foo)
+        foo = print_function_output()(foo)
     If print_flag is True, to suppress output, the syntax
-        @print_output(False)
+        @print_function_output(False)
         def foo(): ...
     This is equivalent to:
-        foo = print_output(False)(foo)
+        foo = print_function_output(False)(foo)
     For examples of decorators see:
         http://blog.endpoint.com/2013/12/python-decorator-basics.html
         https://www.thecodeship.com/patterns/guide-to-python-function-decorators/
