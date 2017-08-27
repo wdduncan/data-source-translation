@@ -6,15 +6,15 @@ def get_uri(val, base=''):
 
 def get_table_uri(tablename='', base=''):
     if tablename:
-        return get_uri(tablename + '_i', base)
+        return get_uri(tablename + '_table_i', base)
     else:
-        return 'tablename:_i'
+        return 'tablename:_table_i'
 
 def get_field_uri(field_name, tablename='', base=''):
     if tablename:
-        return get_uri(tablename + '/field/' + field_name + '_i', base)
+        return get_uri(tablename + '/field/' + field_name + '_field_i', base)
     else:
-        return 'field:' + field_name + '_i'
+        return 'field:' + field_name + '_field_i'
 
 def get_data_prop_uri(field_name, tablename='', base=''):
     if tablename:
@@ -30,6 +30,6 @@ def get_record_uri(tablename, record_idx, record_name='', base=''):
 
 def get_field_value_uri(field_name, record_idx, tablename='', base=''):
     if tablename:
-        return get_uri(tablename + '/field_value/' + field_name + '_value_' + str(record_idx) + '_i', base)
+        return get_uri(tablename + '/field_value/' + field_name + '_field_value_' + str(record_idx) + '_i', base)
     else:
-        return 'field_value:' + field_name + '_value_' + str(record_idx) + '_i'
+        return 'field_value:' + field_name + '_field_value_' + str(record_idx) + '_i'
