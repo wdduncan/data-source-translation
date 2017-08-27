@@ -2,10 +2,11 @@ import pandas as pds
 from uri_functions import *
 from textwrap import dedent
 from data_operations import *
+from pprint import pprint
 
 
-@print_output()
-def ttl_prefixes(filname):
+# @print_output()()
+def ttl_prefixes(tablename):
     ttl = dedent("""\
                 # axioms for prefixes'
                 @base <http://purl.obolibrary.org/obo/db_mapping.owl/> .
@@ -22,7 +23,7 @@ def ttl_prefixes(filname):
                 
                 # custom prefixes
                 @prefix table: <table/{0}/> .
-                @prefix filename: <table/{0}> .
+                @prefix tablename: <table/{0}> .
                 @prefix field: <field/{0}/> .
                 @prefix field_value: <field_value/{0}/> .
                 @prefix fv: <field_value/{0}/> .
@@ -32,138 +33,123 @@ def ttl_prefixes(filname):
                 # imports db mapping ontology
                 [rdf:type owl:Ontology ;
                    owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> ] .
-                """.format(filname))
+                """.format(tablename))
 
     return ttl
 
-@print_output()
-def ttl_table(table_uri, filename):
-    ttls = []
-    ttls.append('# axioms to create table')
-
+# @print_output()
+def ttl_table(table_uri):
+    ttls = ["# axioms to create table"]
+    
     # create table class
-    ttl = 'filename: rdf:type owl:Class; rdfs:subClassOf :table .'
+    ttl = "tablename: rdf:type owl:Class; rdfs:subClassOf :table ."
     ttls.append(ttl)
 
     #  create instance of table
-    ttl = table_uri + ' rdf:type filename: .'
+    ttl = "{0} rdf:type tablename: .".format(table_uri)
     ttls.append(ttl)
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
-@print_output()
+# @print_output()
 def ttl_fields(table_uri, fields):
-    ttls = []
-    ttls.append('\n# axioms to create fields')
+    ttls = ["\n# axioms to create fields"]
 
-    for field in fields:
-        ttl = ttl_field(table_uri, field) # create ttl for that field
+    for field_name in fields:
+        ttl = ttl_field(table_uri, field_name) # create ttl for that field
         ttls.append(ttl)
 
-        ttl = ttl_field_data_property(field) # create data property field for that field
-        ttls.append(ttl)
+        ttl = ttl_field_data_property(field_name) # create data property field for that field
+        ttls.append(ttl + "\n") # add new line to help visual inspection
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
-@print_output()
-def ttl_field(table_uri, field):
+# @print_output()
+def ttl_field(table_uri, field_name):
     ttls = []
 
     # create field class
-    class_uri = 'field:' + field
-    ttl = class_uri + ' rdf:type owl:Class; rdfs:subClassOf :field .'
+    class_uri = "field:{0}".format(field_name)
+    ttl = "{0} rdf:type owl:Class; rdfs:subClassOf :field .".format(class_uri)
     ttls.append(ttl)
 
     # create instance of field class
-    field_uri = 'field:' + field + '_i'  # uri for instance of field
-    ttl = field_uri + ' rdf:type ' + class_uri + ' .'
+    field_uri = "field:{0}_i".format(field_name)  # uri for instance of field
+    ttl = "{0} rdf:type {1}; :member_of {2} .".format(field_uri, class_uri, table_uri)
     ttls.append(ttl)
-
-    # field is member of table
-    ttl = field_uri + ' :member_of ' + table_uri + ' .'
-    ttls.append(ttl)
-
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
-@print_output()
-def ttl_field_data_property(field):
+# @print_output()
+def ttl_field_data_property(field_name):
     # create data property field
-    prop_uri = 'data_property:' + field + '_data_value'
-    ttl = prop_uri + ' rdf:type owl:DatatypeProperty .'
+    data_prop_uri = get_data_prop_uri(field_name)
+    ttl = "{0} rdf:type owl:DatatypeProperty .".format(data_prop_uri)
 
     return ttl
 
-@print_output()
-def ttl_records(df, table_uri, filename):
+# @print_output()
+def ttl_records(df, table_uri, tablename):
     ttls = []
-    ttls.append('\n# axioms to create records')
+    ttls.append('\n# axioms to create records and values')
 
     fields = list(df.columns)  # get list of fields
     for record_idx, record in enumerate(df.itertuples(), 1):
         # create instance of record
-        record_uri = 'record:' + filename + '_record_' + str(record_idx)
-        ttl = record_uri  + ' rdf:type :record .'
+        record_uri = get_record_uri(tablename, record_idx)
+        ttl = "{0} rdf:type :record; :member_of {1} .".format(record_uri, table_uri)
         ttls.append(ttl)
 
-        ttl = record_uri  + ' :member_of ' + table_uri + ' .'
-        ttls.append(ttl)
-
+        ttl = ttl_field_values(record, record_idx, record_uri, fields)
+        ttls.append(ttl + "\n") # add new line to help visual inspection
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
-@print_output()
-def ttl_field_values(record, record_uri, fields):
+# @print_output()
+def ttl_field_values(record, record_idx, record_uri, fields):
     ttls = []
 
     for value_idx, value in enumerate(record):
         if value_idx > 0:
             field_name = fields[value_idx - 1]
-            field_uri = 'field:' + field_name + '_i'  # uri for instance of field
-            prop_uri = 'data_property:' + field_name + '_data_value'
+            field_uri = get_field_uri(field_name)  # uri for instance of field
+            data_prop_uri = get_data_prop_uri(field_name) # uri for field as data property
 
-            ttl = ttl_field_value(record, value, record_uri, field_uri, field_name, prop_uri)
+            ttl = ttl_field_value(record_idx, value, record_uri, field_uri, field_name, data_prop_uri)
             ttls.append(ttl)
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
-@print_output()
-def ttl_field_value(record_idx, value, record_uri, field_uri, field_name, prop_uri):
+# @print_output()
+def ttl_field_value(record_idx, value, record_uri, field_uri, field_name, data_prop_uri):
     ttls = []
 
-    # print record
-    # print value_idx, value
-    # print value_idx - 1
-    # print fields
-    # print fields[value_idx - 1]
-    value_uri = 'field_value:' + field_name + '_value_' + str(record_idx)
-
-    ttl = value_uri + ' rdf:type :field_value .'
+    field_value_uri = get_field_value_uri(field_name, record_idx)
+    ttl = "{0} rdf:type :field_value .".format(field_value_uri)
     ttls.append(ttl)
 
-    ttl = value_uri + ' :member_of ' + record_uri + ' .'
+    ttl = "{0} :member_of {1}, {2} .".format(field_value_uri, record_uri, field_uri)
     ttls.append(ttl)
 
-    ttl = value_uri + ' :member_of ' + field_uri + ' .'
+    ttl = """{0} :has_data_value "{1}" .""".format(field_value_uri, value)
     ttls.append(ttl)
 
-    # field_uri = get_uri(filename + '/field/' + field + '_' + str(record_idx))
-    # ttl = value_uri + ' :member_of ' + field_uri
-    # axioms.append(ttl)
-    # print ttl
+    ttl = record_uri + ' ' + data_prop_uri + ' ' + str(value) + ' .'
+    ttl = """{0} {1} "{2}" .""".format(record_uri, data_prop_uri, value)
+    ttls.append(ttl)
 
     # join all ttl statements
-    ttl = '\n'.join(ttls)
+    ttl = "\n".join(ttls)
     return ttl
 
 
@@ -172,63 +158,27 @@ def translate_data_to_ttl(filepath):
     df = pds.ExcelFile(filepath).parse()
 
     # just get the file name part of path
-    filename = get_filename(filepath)
+    tablename = get_tablename_from_file(filepath)
 
     # list to hold axioms
     axioms = []
 
     # add prefixes
-    axioms.append(ttl_prefixes(filename))
+    axioms.append(ttl_prefixes(tablename))
 
     # add table
     table_uri = get_table_uri()
-    axioms.append(ttl_table(table_uri, filename))
+    axioms.append(ttl_table(table_uri))
 
     # add fields
     fields = list(df.columns) # get list of fields
     axioms.append(ttl_fields(table_uri, fields))
 
-    # add records
-    axioms.append(ttl_records(df, table_uri,filename))
+    # add records and values
+    axioms.append(ttl_records(df, table_uri, tablename))
 
+    return axioms
 
-        # for value_idx, value in enumerate(record):
-        #     if value_idx > 0:
-        #         # print record
-        #         # print value_idx, value
-        #         # print value_idx - 1
-        #         # print fields
-        #         # print fields[value_idx - 1]
-        #         value_uri = get_uri(filename + '/field_value/' + fields[value_idx - 1] + '_value_' + str(record_idx))
-        #         ttl = value_uri + ' rdf:type :field_value .'
-        #         axioms.append(ttl)
-        #         print ttl
-        #
-        #         ttl = value_uri + ' :member_of ' + record_uri + ' .'
-        #         axioms.append(ttl)
-        #         print ttl
-        #
-        #         # field_uri = get_uri(filename + '/field/' + field + '_' + str(record_idx))
-        #         # ttl = value_uri + ' :member_of ' + field_uri
-        #         # axioms.append(ttl)
-        #         # print ttl
-
-
-        # create field values of record
-        # for index in range(1, (len(fields)+1)): # note: need to add 1 to length of fields
-        #     print # create instance of entity that is represented by the val
-        #     entity_uri = get_uri('entity/' + filename + '/field' + str(index) + '/' + str(record_id))
-        #     print entity_uri + ' rdf:type ' + get_uri('entity') + ' .'
-        #
-        #     # data that represents the entity
-        #     print entity_uri + ' ' + get_uri('represented_by') + ' ' + "'" + str(record[index]) + "'" + ' .'
-        #
-        #     # relate entity to record
-        #     print record_uri + ' ' + get_uri('denotes') + ' ' + entity_uri + ' .'
-        #
-        #     # relate field to record
-        #     print get_uri(filename + '/field' + str(index)) + ' ' + get_uri('denotes') + ' ' + entity_uri + ' .'
-
-
-
-translate_data_to_ttl('patients_1.xlsx')
+### run code
+axioms = translate_data_to_ttl("patients_1.xlsx")
+print_axioms(axioms)
