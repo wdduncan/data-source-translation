@@ -1,6 +1,4 @@
-# axioms for prefixes'
-@base <http://purl.obolibrary.org/obo/db_mapping.owl/> .
-@prefix : <http://purl.obolibrary.org/obo/db_mapping.owl/> .
+# axioms for prefixes
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -12,6 +10,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # custom prefixes
+@base <http://purl.obolibrary.org/obo/db_mapping.owl/patients_1/> .
+@prefix : <http://purl.obolibrary.org/obo/db_mapping.owl/> .
 @prefix table: <table/patients_1/> .
 @prefix tablename: <table/patients_1> .
 @prefix field: <field/patients_1/> .
@@ -19,166 +19,178 @@
 @prefix fv: <field_value/patients_1/> .
 @prefix record: <record/patients_1/> .
 @prefix data_property: <data_property/patients_1/> .
+@prefix dv: <data_property/patients_1/> .
 
-# set ontology uri and import db mapping ontology
-<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx> rdf:type owl:Ontology ;
-      owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> .
+# ontology uri
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx> rdf:type owl:Ontology .
 
+# ontology imports
+<http://purl.obolibrary.org/obo/db_mapping.owl/patients_1.xlsx> owl:imports <http://purl.obolibrary.org/obo/db_mapping.owl> .
 # axioms to create table
 tablename: rdf:type owl:Class; rdfs:subClassOf :table .
 tablename:_table_i rdf:type tablename: .
 
 # axioms to create fields
 field:patient_id rdf:type owl:Class; rdfs:subClassOf :field .
-field:patient_id_i rdf:type field:patient_id; :member_of tablename:_table_i .
+field:patient_id_field_i rdf:type owl:NamedIndividual, field:patient_id; :member_of tablename:_table_i .
 data_property:patient_id_data_value rdf:type owl:DatatypeProperty .
 
 field:gender rdf:type owl:Class; rdfs:subClassOf :field .
-field:gender_i rdf:type field:gender; :member_of tablename:_table_i .
+field:gender_field_i rdf:type owl:NamedIndividual, field:gender; :member_of tablename:_table_i .
 data_property:gender_data_value rdf:type owl:DatatypeProperty .
 
 field:birth_date rdf:type owl:Class; rdfs:subClassOf :field .
-field:birth_date_i rdf:type field:birth_date; :member_of tablename:_table_i .
+field:birth_date_field_i rdf:type owl:NamedIndividual, field:birth_date; :member_of tablename:_table_i .
 data_property:birth_date_data_value rdf:type owl:DatatypeProperty .
 
 
 # axioms to create records and values
-record:patients_1_record_1_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_1_i rdf:type :field_value .
+record:patients_1_record rdf:type owl:Class; rdfs:subClassOf :record .
+
+
+# axioms to create field value classes
+field_value:patients_1_field_value rdf:type owl:Class; rdfs:subClassOf :field_value .
+field_value:patients_1_patient_id_field_value rdf:type owl:Class; rdfs:subClassOf field_value:patients_1_field_value .
+field_value:patients_1_gender_field_value rdf:type owl:Class; rdfs:subClassOf field_value:patients_1_field_value .
+field_value:patients_1_birth_date_field_value rdf:type owl:Class; rdfs:subClassOf field_value:patients_1_field_value .
+
+record:patients_1_record_1_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_1_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_1_i :member_of record:patients_1_record_1_i, field:patient_id_field_i .
 field_value:patient_id_field_value_1_i :has_data_value "10001" .
 record:patients_1_record_1_i data_property:patient_id_data_value "10001" .
-field_value:gender_field_value_1_i rdf:type :field_value .
+field_value:gender_field_value_1_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_1_i :member_of record:patients_1_record_1_i, field:gender_field_i .
 field_value:gender_field_value_1_i :has_data_value "M" .
 record:patients_1_record_1_i data_property:gender_data_value "M" .
-field_value:birth_date_field_value_1_i rdf:type :field_value .
+field_value:birth_date_field_value_1_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_1_i :member_of record:patients_1_record_1_i, field:birth_date_field_i .
 field_value:birth_date_field_value_1_i :has_data_value "1950-01-01" .
 record:patients_1_record_1_i data_property:birth_date_data_value "1950-01-01" .
 
-record:patients_1_record_2_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_2_i rdf:type :field_value .
+record:patients_1_record_2_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_2_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_2_i :member_of record:patients_1_record_2_i, field:patient_id_field_i .
 field_value:patient_id_field_value_2_i :has_data_value "10002" .
 record:patients_1_record_2_i data_property:patient_id_data_value "10002" .
-field_value:gender_field_value_2_i rdf:type :field_value .
+field_value:gender_field_value_2_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_2_i :member_of record:patients_1_record_2_i, field:gender_field_i .
 field_value:gender_field_value_2_i :has_data_value "F" .
 record:patients_1_record_2_i data_property:gender_data_value "F" .
-field_value:birth_date_field_value_2_i rdf:type :field_value .
+field_value:birth_date_field_value_2_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_2_i :member_of record:patients_1_record_2_i, field:birth_date_field_i .
 field_value:birth_date_field_value_2_i :has_data_value "1960-01-02" .
 record:patients_1_record_2_i data_property:birth_date_data_value "1960-01-02" .
 
-record:patients_1_record_3_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_3_i rdf:type :field_value .
+record:patients_1_record_3_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_3_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_3_i :member_of record:patients_1_record_3_i, field:patient_id_field_i .
 field_value:patient_id_field_value_3_i :has_data_value "10003" .
 record:patients_1_record_3_i data_property:patient_id_data_value "10003" .
-field_value:gender_field_value_3_i rdf:type :field_value .
+field_value:gender_field_value_3_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_3_i :member_of record:patients_1_record_3_i, field:gender_field_i .
 field_value:gender_field_value_3_i :has_data_value "M" .
 record:patients_1_record_3_i data_property:gender_data_value "M" .
-field_value:birth_date_field_value_3_i rdf:type :field_value .
+field_value:birth_date_field_value_3_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_3_i :member_of record:patients_1_record_3_i, field:birth_date_field_i .
 field_value:birth_date_field_value_3_i :has_data_value "1970-01-03" .
 record:patients_1_record_3_i data_property:birth_date_data_value "1970-01-03" .
 
-record:patients_1_record_4_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_4_i rdf:type :field_value .
+record:patients_1_record_4_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_4_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_4_i :member_of record:patients_1_record_4_i, field:patient_id_field_i .
 field_value:patient_id_field_value_4_i :has_data_value "10004" .
 record:patients_1_record_4_i data_property:patient_id_data_value "10004" .
-field_value:gender_field_value_4_i rdf:type :field_value .
+field_value:gender_field_value_4_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_4_i :member_of record:patients_1_record_4_i, field:gender_field_i .
 field_value:gender_field_value_4_i :has_data_value "F" .
 record:patients_1_record_4_i data_property:gender_data_value "F" .
-field_value:birth_date_field_value_4_i rdf:type :field_value .
+field_value:birth_date_field_value_4_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_4_i :member_of record:patients_1_record_4_i, field:birth_date_field_i .
 field_value:birth_date_field_value_4_i :has_data_value "1980-01-04" .
 record:patients_1_record_4_i data_property:birth_date_data_value "1980-01-04" .
 
-record:patients_1_record_5_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_5_i rdf:type :field_value .
+record:patients_1_record_5_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_5_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_5_i :member_of record:patients_1_record_5_i, field:patient_id_field_i .
 field_value:patient_id_field_value_5_i :has_data_value "10005" .
 record:patients_1_record_5_i data_property:patient_id_data_value "10005" .
-field_value:gender_field_value_5_i rdf:type :field_value .
+field_value:gender_field_value_5_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_5_i :member_of record:patients_1_record_5_i, field:gender_field_i .
 field_value:gender_field_value_5_i :has_data_value "M" .
 record:patients_1_record_5_i data_property:gender_data_value "M" .
-field_value:birth_date_field_value_5_i rdf:type :field_value .
+field_value:birth_date_field_value_5_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_5_i :member_of record:patients_1_record_5_i, field:birth_date_field_i .
 field_value:birth_date_field_value_5_i :has_data_value "1990-01-05" .
 record:patients_1_record_5_i data_property:birth_date_data_value "1990-01-05" .
 
-record:patients_1_record_6_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_6_i rdf:type :field_value .
+record:patients_1_record_6_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_6_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_6_i :member_of record:patients_1_record_6_i, field:patient_id_field_i .
 field_value:patient_id_field_value_6_i :has_data_value "10006" .
 record:patients_1_record_6_i data_property:patient_id_data_value "10006" .
-field_value:gender_field_value_6_i rdf:type :field_value .
+field_value:gender_field_value_6_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_6_i :member_of record:patients_1_record_6_i, field:gender_field_i .
 field_value:gender_field_value_6_i :has_data_value "F" .
 record:patients_1_record_6_i data_property:gender_data_value "F" .
-field_value:birth_date_field_value_6_i rdf:type :field_value .
+field_value:birth_date_field_value_6_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_6_i :member_of record:patients_1_record_6_i, field:birth_date_field_i .
 field_value:birth_date_field_value_6_i :has_data_value "1955-01-06" .
 record:patients_1_record_6_i data_property:birth_date_data_value "1955-01-06" .
 
-record:patients_1_record_7_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_7_i rdf:type :field_value .
+record:patients_1_record_7_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_7_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_7_i :member_of record:patients_1_record_7_i, field:patient_id_field_i .
 field_value:patient_id_field_value_7_i :has_data_value "10007" .
 record:patients_1_record_7_i data_property:patient_id_data_value "10007" .
-field_value:gender_field_value_7_i rdf:type :field_value .
+field_value:gender_field_value_7_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_7_i :member_of record:patients_1_record_7_i, field:gender_field_i .
 field_value:gender_field_value_7_i :has_data_value "M" .
 record:patients_1_record_7_i data_property:gender_data_value "M" .
-field_value:birth_date_field_value_7_i rdf:type :field_value .
+field_value:birth_date_field_value_7_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_7_i :member_of record:patients_1_record_7_i, field:birth_date_field_i .
 field_value:birth_date_field_value_7_i :has_data_value "1965-01-07" .
 record:patients_1_record_7_i data_property:birth_date_data_value "1965-01-07" .
 
-record:patients_1_record_8_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_8_i rdf:type :field_value .
+record:patients_1_record_8_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_8_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_8_i :member_of record:patients_1_record_8_i, field:patient_id_field_i .
 field_value:patient_id_field_value_8_i :has_data_value "10008" .
 record:patients_1_record_8_i data_property:patient_id_data_value "10008" .
-field_value:gender_field_value_8_i rdf:type :field_value .
+field_value:gender_field_value_8_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_8_i :member_of record:patients_1_record_8_i, field:gender_field_i .
 field_value:gender_field_value_8_i :has_data_value "F" .
 record:patients_1_record_8_i data_property:gender_data_value "F" .
-field_value:birth_date_field_value_8_i rdf:type :field_value .
+field_value:birth_date_field_value_8_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_8_i :member_of record:patients_1_record_8_i, field:birth_date_field_i .
 field_value:birth_date_field_value_8_i :has_data_value "1975-01-08" .
 record:patients_1_record_8_i data_property:birth_date_data_value "1975-01-08" .
 
-record:patients_1_record_9_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_9_i rdf:type :field_value .
+record:patients_1_record_9_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_9_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_9_i :member_of record:patients_1_record_9_i, field:patient_id_field_i .
 field_value:patient_id_field_value_9_i :has_data_value "10009" .
 record:patients_1_record_9_i data_property:patient_id_data_value "10009" .
-field_value:gender_field_value_9_i rdf:type :field_value .
+field_value:gender_field_value_9_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_9_i :member_of record:patients_1_record_9_i, field:gender_field_i .
 field_value:gender_field_value_9_i :has_data_value "M" .
 record:patients_1_record_9_i data_property:gender_data_value "M" .
-field_value:birth_date_field_value_9_i rdf:type :field_value .
+field_value:birth_date_field_value_9_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_9_i :member_of record:patients_1_record_9_i, field:birth_date_field_i .
 field_value:birth_date_field_value_9_i :has_data_value "1985-01-09" .
 record:patients_1_record_9_i data_property:birth_date_data_value "1985-01-09" .
 
-record:patients_1_record_10_i rdf:type :record; :member_of tablename:_table_i .
-field_value:patient_id_field_value_10_i rdf:type :field_value .
+record:patients_1_record_10_i rdf:type owl:NamedIndividual, record:patients_1_record; :member_of tablename:_table_i .
+field_value:patient_id_field_value_10_i rdf:type field_value:patients_1_patient_id_field_value .
 field_value:patient_id_field_value_10_i :member_of record:patients_1_record_10_i, field:patient_id_field_i .
 field_value:patient_id_field_value_10_i :has_data_value "10010" .
 record:patients_1_record_10_i data_property:patient_id_data_value "10010" .
-field_value:gender_field_value_10_i rdf:type :field_value .
+field_value:gender_field_value_10_i rdf:type field_value:patients_1_gender_field_value .
 field_value:gender_field_value_10_i :member_of record:patients_1_record_10_i, field:gender_field_i .
 field_value:gender_field_value_10_i :has_data_value "F" .
 record:patients_1_record_10_i data_property:gender_data_value "F" .
-field_value:birth_date_field_value_10_i rdf:type :field_value .
+field_value:birth_date_field_value_10_i rdf:type field_value:patients_1_birth_date_field_value .
 field_value:birth_date_field_value_10_i :member_of record:patients_1_record_10_i, field:birth_date_field_i .
 field_value:birth_date_field_value_10_i :has_data_value "1995-01-10" .
 record:patients_1_record_10_i data_property:birth_date_data_value "1995-01-10" .
+

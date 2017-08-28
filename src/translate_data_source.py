@@ -12,7 +12,7 @@ def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
 
     ttl = \
         dedent("""\
-                # axioms for prefixes'
+                # axioms for prefixes
                 @prefix dc: <http://purl.org/dc/elements/1.1/> .
                 @prefix owl: <http://www.w3.org/2002/07/owl#> .
                 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -98,7 +98,7 @@ def ttl_field(table_uri, field_name):
     ttls.append(ttl)
 
     # create instance of field class
-    field_uri = "field:{0}_i".format(field_name)  # uri for instance of field
+    field_uri = get_field_uri(field_name)  # uri for instance of field
     ttl = declare_instance(field_uri, class_uri, table_uri)
     ttls.append(ttl)
 
@@ -120,18 +120,22 @@ def ttl_records(df, table_uri, tablename):
     ttls.append('\n# axioms to create records and values')
 
     # create record class for this table
-    class_uri = "record:{0}_record".format(tablename)
-    ttl = declare_class(class_uri, ":record")
+    record_class_uri = "record:{0}_record".format(tablename)
+    ttl = declare_class(record_class_uri, ":record")
     ttls.append(ttl + "\n")  # add new line to help visual inspection
 
-    fields = list(df.columns)  # get list of fields
+    # create field value class and subclasses
+    field_names = list(df.columns)  # get list of fields
+    ttl = ttl_field_value_classes(tablename, field_names)
+    ttls.append(ttl + "\n")  # add new line to help visual inspection
+
     for record_idx, record in enumerate(df.itertuples(), 1):
         # create instance of record
         record_uri = get_record_uri(tablename, record_idx)
-        ttl = declare_instance(record_uri, class_uri, table_uri)
+        ttl = declare_instance(record_uri, record_class_uri, table_uri)
         ttls.append(ttl)
 
-        ttl = ttl_field_values(record, record_idx, record_uri, fields)
+        ttl = ttl_field_values(tablename, record, record_idx, record_uri, field_names)
         ttls.append(ttl + "\n") # add new line to help visual inspection
 
     # join all ttl statements
@@ -139,16 +143,36 @@ def ttl_records(df, table_uri, tablename):
     return ttl
 
 # @print_function_output()
-def ttl_field_values(record, record_idx, record_uri, fields):
+def ttl_field_value_classes(tablename, field_names):
+    ttls = []
+    ttls.append('\n# axioms to create field value classes')
+
+    # create field value class for this table
+    class_uri = get_field_value_class_uri(tablename)
+    ttl = declare_class(class_uri, ":field_value")
+    ttls.append(ttl)
+
+    # for every field create a field value value subclass
+    for field_name in field_names:
+        fv_class_uri = get_field_value_class_uri(tablename, field_name)
+        ttl = declare_class(fv_class_uri, class_uri)
+        ttls.append(ttl)  # add new line to help visual inspection
+
+    # join all ttl statements
+    ttl = "\n".join(ttls)
+    return ttl
+
+#  @print_function_output()
+def ttl_field_values(tablename, record, record_idx, record_uri, field_names):
     ttls = []
 
     for value_idx, value in enumerate(record):
         if value_idx > 0:
-            field_name = fields[value_idx - 1]
+            field_name = field_names[value_idx - 1]
             field_uri = get_field_uri(field_name)  # uri for instance of field
             data_prop_uri = get_data_prop_uri(field_name) # uri for field as data property
 
-            ttl = ttl_field_value(record_idx, value, record_uri, field_uri, field_name, data_prop_uri)
+            ttl = ttl_field_value(tablename, record_idx, value, record_uri, field_uri, field_name, data_prop_uri)
             ttls.append(ttl)
 
     # join all ttl statements
@@ -156,20 +180,26 @@ def ttl_field_values(record, record_idx, record_uri, fields):
     return ttl
 
 # @print_function_output()
-def ttl_field_value(record_idx, value, record_uri, field_uri, field_name, data_prop_uri):
+def ttl_field_value(tablename, record_idx, value, record_uri, field_uri, field_name, data_prop_uri):
     ttls = []
 
-    field_value_uri = get_field_value_uri(field_name, record_idx)
-    ttl = "{0} rdf:type :field_value .".format(field_value_uri)
+    # create uri for field value (fv) instance and class
+    fv_uri = get_field_value_uri(field_name, record_idx)
+    fv_class_uri = get_field_value_class_uri(tablename, field_name)
+
+    # create instance
+    ttl = "{0} rdf:type {1} .".format(fv_uri, fv_class_uri)
     ttls.append(ttl)
 
-    ttl = "{0} :member_of {1}, {2} .".format(field_value_uri, record_uri, field_uri)
+    # relate fv to record and field
+    ttl = "{0} :member_of {1}, {2} .".format(fv_uri, record_uri, field_uri)
     ttls.append(ttl)
 
-    ttl = """{0} :has_data_value "{1}" .""".format(field_value_uri, value)
+    # relate fv to value
+    ttl = """{0} :has_data_value "{1}" .""".format(fv_uri, value)
     ttls.append(ttl)
 
-    ttl = record_uri + ' ' + data_prop_uri + ' ' + str(value) + ' .'
+    # relate record to value
     ttl = """{0} {1} "{2}" .""".format(record_uri, data_prop_uri, value)
     ttls.append(ttl)
 
@@ -212,4 +242,4 @@ def translate_data_to_ttl(filepath):
 
 ### run code
 axioms = translate_data_to_ttl("patients_1.xlsx")
-# print_axioms(axioms)
+print_axioms(axioms)

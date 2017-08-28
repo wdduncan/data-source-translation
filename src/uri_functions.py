@@ -34,6 +34,12 @@ def get_field_value_uri(field_name, record_idx, tablename='', base=""):
     else:
         return "field_value:" + field_name + "_field_value_" + str(record_idx) + "_i"
 
+def get_field_value_class_uri(tablename, field_name=""):
+    if len(field_name) > 0:
+        return "field_value:{0}_{1}_field_value".format(tablename, field_name)
+    else:
+        return "field_value:{0}_field_value".format(tablename)
+
 
 def declare_instance(insance_uri ,class_uri, member_uri=""):
     if len(member_uri) > 0:
@@ -50,4 +56,3 @@ def declare_class(class_uri, super_uri=""):
 
 def declare_data_property(data_property_uri):
     return "{0} rdf:type owl:DatatypeProperty .".format(data_property_uri)
-
