@@ -59,7 +59,7 @@ def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
 
 # @print_function_output()
 def ttl_table(table_uri):
-    ttls = ["# axioms to create table"]
+    ttls = ["\n# axioms to create table"]
     
     # create table class
     ttl = declare_class("tablename:", ":table")
@@ -208,7 +208,7 @@ def ttl_field_value(tablename, record_idx, value, record_uri, field_uri, field_n
     return ttl
 
 
-def translate_data_to_ttl(filepath):
+def translate_data_to_ttl(filepath, base_uri="", ontology_uri="", imports=""):
     # ceate dataframe from demo data
     df = pds.ExcelFile(filepath).parse()
 
@@ -216,13 +216,16 @@ def translate_data_to_ttl(filepath):
     tablename = get_tablename_from_file(filepath)
     filename = get_tablename_from_file(filepath, remove_ext=False)
 
+    # specify ontology variables
+    if len(base_uri) == 0:
+        base_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}/".format(tablename)
+    if len(ontology_uri) == 0:
+        ontology_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}".format(filename)
+    if len(imports) == 0:
+        imports = "http://purl.obolibrary.org/obo/db_mapping.owl"
+
     # list to hold axioms
     axioms = []
-
-    # specify ontology variables
-    base_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}/".format(tablename)
-    ontology_uri = "http://purl.obolibrary.org/obo/db_mapping.owl/{0}".format(filename)
-    imports = "http://purl.obolibrary.org/obo/db_mapping.owl"
 
     # add prefixes
     axioms.append(ttl_prefixes(tablename, base_uri, ontology_uri, imports=imports))
