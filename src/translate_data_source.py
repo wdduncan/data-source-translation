@@ -105,7 +105,7 @@ def ttl_field(table_uri, tablename, field_name):
 
     # create instance of field class
     field_uri = get_field_uri(field_name)  # uri for instance of field
-    label = "{0}.{1} field intance".format(tablename, field_name)
+    label = "{0}.{1} field instance".format(tablename, field_name)
     ttl = declare_instance(field_uri, class_uri, table_uri, label)
     ttls.append(ttl)
 
