@@ -29,5 +29,7 @@ def translate_excel_to_ttl(file_path, base_uri="", ontology_uri="", imports=""):
 
 ### run code
 axioms = translate_excel_to_ttl("patients_1.xlsx")
+# axioms = translate_excel_to_ttl("patients_2.xlsx")
 print_axioms(axioms)
 save_axioms(axioms, "output/patients_1.ttl")
+# save_axioms(axioms, "output/patients_2.ttl")
