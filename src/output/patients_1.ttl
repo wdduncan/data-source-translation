@@ -16,308 +16,311 @@
 @prefix data_source_ontology: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
 
 # custom class and property prefixes
-@prefix table: <table/> .
-@prefix field: <field/> .
-@prefix field_datum: <field_datum/> .
-@prefix fd: <field_datum/> .
-@prefix record: <record/> .
-@prefix data_property: <data_property/> .
-@prefix dp: <data_property/> .
+@prefix table: <patients_1/table/> .
+@prefix table_name: <patients_1/table/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx> .
+@prefix field: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field/> .
+@prefix field_datum: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field_datum/> .
+@prefix fd: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field_datum/> .
+@prefix record: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/record/> .
+@prefix data_property: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/data_property/> .
+@prefix dp: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/data_property/> .
 
 # custom instance prefixes
-@prefix table_i: <table/instance/> .
-@prefix field_i: <field/instance/> .
-@prefix field_datum_i: <field_datum/instance/> .
-@prefix fd_i: <field_datum/instance/> .
-@prefix record: <record/> .
-@prefix record_i: <record/instance/> .
+@prefix table_i: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/table/instance/> .
+@prefix field_i: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field/instance/> .
+@prefix field_datum_i: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field_datum/instance/> .
+@prefix fd_i: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/field_datum/instance/> .
+@prefix record_i: <patients_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx/record/instance/> .
 
 # ontology uri and default import
 <http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx> rdf:type owl:Ontology;
       owl:imports <http://purl.obolibrary.org/obo/data_source_ontology.owl> .
 
 # axioms to create table
-tablename: rdf:type owl:Class .
-tablename: rdfs:subClassOf dso:table .
-tablename: rdfs:label "patients_1 table" .
-tablename:_table_i rdf:type owl:NamedIndividual, tablename: .
-tablename:_table_i rdfs:label "patients_1 table instance" .
+table_i:patients_1_i rdf:type owl:Class .
+table_i:patients_1_i rdfs:subClassOf dso:table .
+table_i:patients_1_i rdfs:label "patients_1 table" .
+table_i:patients_1_i rdf:type owl:NamedIndividual, table_i:patients_1_i .
+table_i:patients_1_i rdfs:label "patients_1 table instance" .
 # axioms to create fields
-field:patient_id rdf:type owl:Class .
-field:patient_id rdfs:subClassOf dso:field .
-field:patient_id rdfs:label "patients_1.patient_id field" .
-field:patient_id_field_i rdf:type owl:NamedIndividual, field:patient_id .
-field:patient_id_field_i dso:member_of tablename:_table_i .
-field:patient_id_field_i rdfs:label "patients_1.patient_id field instance" .
+field:patients_1_field rdf:type owl:Class .
+field:patients_1_field rdfs:subClassOf dso:field .
+field:patients_1_field rdfs:label "patients_1 field" .
+field:patient_id_field rdf:type owl:Class .
+field:patient_id_field rdfs:subClassOf field:patients_1_field .
+field:patient_id_field rdfs:label "patients_1.patient_id field" .
+field_i:patient_id_field_i rdf:type owl:NamedIndividual, field:patient_id_field .
+field_i:patient_id_field_i dso:member_of table_i:patients_1_i .
+field_i:patient_id_field_i rdfs:label "patients_1.patient_id field instance" .
 data_property:patient_id_datum_value rdf:type owl:DatatypeProperty .
 data_property:patient_id_datum_value rdfs:label "patients_1.patient_id datum value" .
 
-field:gender rdf:type owl:Class .
-field:gender rdfs:subClassOf dso:field .
-field:gender rdfs:label "patients_1.gender field" .
-field:gender_field_i rdf:type owl:NamedIndividual, field:gender .
-field:gender_field_i dso:member_of tablename:_table_i .
-field:gender_field_i rdfs:label "patients_1.gender field instance" .
+field:gender_field rdf:type owl:Class .
+field:gender_field rdfs:subClassOf field:patients_1_field .
+field:gender_field rdfs:label "patients_1.gender field" .
+field_i:gender_field_i rdf:type owl:NamedIndividual, field:gender_field .
+field_i:gender_field_i dso:member_of table_i:patients_1_i .
+field_i:gender_field_i rdfs:label "patients_1.gender field instance" .
 data_property:gender_datum_value rdf:type owl:DatatypeProperty .
 data_property:gender_datum_value rdfs:label "patients_1.gender datum value" .
 
-field:birth_date rdf:type owl:Class .
-field:birth_date rdfs:subClassOf dso:field .
-field:birth_date rdfs:label "patients_1.birth_date field" .
-field:birth_date_field_i rdf:type owl:NamedIndividual, field:birth_date .
-field:birth_date_field_i dso:member_of tablename:_table_i .
-field:birth_date_field_i rdfs:label "patients_1.birth_date field instance" .
+field:birth_date_field rdf:type owl:Class .
+field:birth_date_field rdfs:subClassOf field:patients_1_field .
+field:birth_date_field rdfs:label "patients_1.birth_date field" .
+field_i:birth_date_field_i rdf:type owl:NamedIndividual, field:birth_date_field .
+field_i:birth_date_field_i dso:member_of table_i:patients_1_i .
+field_i:birth_date_field_i rdfs:label "patients_1.birth_date field instance" .
 data_property:birth_date_datum_value rdf:type owl:DatatypeProperty .
 data_property:birth_date_datum_value rdfs:label "patients_1.birth_date datum value" .
 
 # axioms to create field datum classes
-field_value:patients_1_field_value rdf:type owl:Class .
-field_value:patients_1_field_value rdfs:subClassOf dso:field_datum .
-field_value:patients_1_field_value rdfs:label "patients_1 field datum" .
+field_value:patients_1_field_datum rdf:type owl:Class .
+field_value:patients_1_field_datum rdfs:subClassOf dso:field_datum .
+field_value:patients_1_field_datum rdfs:label "patients_1 field datum" .
 
-field_value:patients_1.patient_id_field_value rdf:type owl:Class .
-field_value:patients_1.patient_id_field_value rdfs:subClassOf field_value:patients_1_field_value .
-field_value:patients_1.patient_id_field_value rdfs:label "patients_1.patient_id field datum" .
+field_value:patient_id_field_datum rdf:type owl:Class .
+field_value:patient_id_field_datum rdfs:subClassOf field_value:patients_1_field_datum .
+field_value:patient_id_field_datum rdfs:label "patients_1.patient_id field datum" .
 
-field_value:patients_1.gender_field_value rdf:type owl:Class .
-field_value:patients_1.gender_field_value rdfs:subClassOf field_value:patients_1_field_value .
-field_value:patients_1.gender_field_value rdfs:label "patients_1.gender field datum" .
+field_value:gender_field_datum rdf:type owl:Class .
+field_value:gender_field_datum rdfs:subClassOf field_value:patients_1_field_datum .
+field_value:gender_field_datum rdfs:label "patients_1.gender field datum" .
 
-field_value:patients_1.birth_date_field_value rdf:type owl:Class .
-field_value:patients_1.birth_date_field_value rdfs:subClassOf field_value:patients_1_field_value .
-field_value:patients_1.birth_date_field_value rdfs:label "patients_1.birth_date field datum" .
+field_value:birth_date_field_datum rdf:type owl:Class .
+field_value:birth_date_field_datum rdfs:subClassOf field_value:patients_1_field_datum .
+field_value:birth_date_field_datum rdfs:label "patients_1.birth_date field datum" .
 
 # axioms to create record class
-record:patients_1_record rdf:type owl:Class .
-record:patients_1_record rdfs:subClassOf dso:record .
-record:patients_1_record rdfs:label "patients_1 record" .
+record_i:patients_1_record rdf:type owl:Class .
+record_i:patients_1_record rdfs:subClassOf dso:record .
+record_i:patients_1_record rdfs:label "patients_1 record" .
 
 
 # axioms to create record
-record:patients_1_record_1_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_1_i dso:member_of tablename:_table_i .
-record:patients_1_record_1_i rdfs:label "patients_1 record 1" .
+record_i:patients_1_record_1_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_1_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_1_i rdfs:label "patients_1 record 1" .
 
 # axioms to create field data
-record:patients_1_record_1_i data_property:patient_id_datum_value "10001" .
-field_value:patient_id_field_datum_1_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_1_i rdfs:label "patients_1.patient_id field datum 1" .
-field_value:patient_id_field_datum_1_i dso:member_of record:patients_1_record_1_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_1_i dso:has_datum_value "10001" .
-record:patients_1_record_1_i data_property:gender_datum_value "M" .
-field_value:gender_field_datum_1_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_1_i rdfs:label "patients_1.gender field datum 1" .
-field_value:gender_field_datum_1_i dso:member_of record:patients_1_record_1_i, field:gender_field_i .
-field_value:gender_field_datum_1_i dso:has_datum_value "M" .
-record:patients_1_record_1_i data_property:birth_date_datum_value "1950-01-01" .
-field_value:birth_date_field_datum_1_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_1_i rdfs:label "patients_1.birth_date field datum 1" .
-field_value:birth_date_field_datum_1_i dso:member_of record:patients_1_record_1_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_1_i dso:has_datum_value "1950-01-01" .
+record_i:patients_1_record_1_i data_property:patient_id_datum_value "10001" .
+field_datum_i:patient_id_field_datum_1_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_1_i dso:member_of record_i:patients_1_record_1_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_1_i rdfs:label "patients_1.patient_id field datum 1" .
+field_datum_i:patient_id_field_datum_1_i dso:has_datum_value "10001" .
+record_i:patients_1_record_1_i data_property:gender_datum_value "M" .
+field_datum_i:gender_field_datum_1_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_1_i dso:member_of record_i:patients_1_record_1_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_1_i rdfs:label "patients_1.gender field datum 1" .
+field_datum_i:gender_field_datum_1_i dso:has_datum_value "M" .
+record_i:patients_1_record_1_i data_property:birth_date_datum_value "1950-01-01" .
+field_datum_i:birth_date_field_datum_1_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_1_i dso:member_of record_i:patients_1_record_1_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_1_i rdfs:label "patients_1.birth_date field datum 1" .
+field_datum_i:birth_date_field_datum_1_i dso:has_datum_value "1950-01-01" .
 
 
 # axioms to create record
-record:patients_1_record_2_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_2_i dso:member_of tablename:_table_i .
-record:patients_1_record_2_i rdfs:label "patients_1 record 2" .
+record_i:patients_1_record_2_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_2_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_2_i rdfs:label "patients_1 record 2" .
 
 # axioms to create field data
-record:patients_1_record_2_i data_property:patient_id_datum_value "10002" .
-field_value:patient_id_field_datum_2_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_2_i rdfs:label "patients_1.patient_id field datum 2" .
-field_value:patient_id_field_datum_2_i dso:member_of record:patients_1_record_2_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_2_i dso:has_datum_value "10002" .
-record:patients_1_record_2_i data_property:gender_datum_value "F" .
-field_value:gender_field_datum_2_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_2_i rdfs:label "patients_1.gender field datum 2" .
-field_value:gender_field_datum_2_i dso:member_of record:patients_1_record_2_i, field:gender_field_i .
-field_value:gender_field_datum_2_i dso:has_datum_value "F" .
-record:patients_1_record_2_i data_property:birth_date_datum_value "1960-01-02" .
-field_value:birth_date_field_datum_2_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_2_i rdfs:label "patients_1.birth_date field datum 2" .
-field_value:birth_date_field_datum_2_i dso:member_of record:patients_1_record_2_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_2_i dso:has_datum_value "1960-01-02" .
+record_i:patients_1_record_2_i data_property:patient_id_datum_value "10002" .
+field_datum_i:patient_id_field_datum_2_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_2_i dso:member_of record_i:patients_1_record_2_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_2_i rdfs:label "patients_1.patient_id field datum 2" .
+field_datum_i:patient_id_field_datum_2_i dso:has_datum_value "10002" .
+record_i:patients_1_record_2_i data_property:gender_datum_value "F" .
+field_datum_i:gender_field_datum_2_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_2_i dso:member_of record_i:patients_1_record_2_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_2_i rdfs:label "patients_1.gender field datum 2" .
+field_datum_i:gender_field_datum_2_i dso:has_datum_value "F" .
+record_i:patients_1_record_2_i data_property:birth_date_datum_value "1960-01-02" .
+field_datum_i:birth_date_field_datum_2_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_2_i dso:member_of record_i:patients_1_record_2_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_2_i rdfs:label "patients_1.birth_date field datum 2" .
+field_datum_i:birth_date_field_datum_2_i dso:has_datum_value "1960-01-02" .
 
 
 # axioms to create record
-record:patients_1_record_3_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_3_i dso:member_of tablename:_table_i .
-record:patients_1_record_3_i rdfs:label "patients_1 record 3" .
+record_i:patients_1_record_3_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_3_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_3_i rdfs:label "patients_1 record 3" .
 
 # axioms to create field data
-record:patients_1_record_3_i data_property:patient_id_datum_value "10003" .
-field_value:patient_id_field_datum_3_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_3_i rdfs:label "patients_1.patient_id field datum 3" .
-field_value:patient_id_field_datum_3_i dso:member_of record:patients_1_record_3_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_3_i dso:has_datum_value "10003" .
-record:patients_1_record_3_i data_property:gender_datum_value "M" .
-field_value:gender_field_datum_3_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_3_i rdfs:label "patients_1.gender field datum 3" .
-field_value:gender_field_datum_3_i dso:member_of record:patients_1_record_3_i, field:gender_field_i .
-field_value:gender_field_datum_3_i dso:has_datum_value "M" .
-record:patients_1_record_3_i data_property:birth_date_datum_value "1970-01-03" .
-field_value:birth_date_field_datum_3_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_3_i rdfs:label "patients_1.birth_date field datum 3" .
-field_value:birth_date_field_datum_3_i dso:member_of record:patients_1_record_3_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_3_i dso:has_datum_value "1970-01-03" .
+record_i:patients_1_record_3_i data_property:patient_id_datum_value "10003" .
+field_datum_i:patient_id_field_datum_3_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_3_i dso:member_of record_i:patients_1_record_3_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_3_i rdfs:label "patients_1.patient_id field datum 3" .
+field_datum_i:patient_id_field_datum_3_i dso:has_datum_value "10003" .
+record_i:patients_1_record_3_i data_property:gender_datum_value "M" .
+field_datum_i:gender_field_datum_3_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_3_i dso:member_of record_i:patients_1_record_3_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_3_i rdfs:label "patients_1.gender field datum 3" .
+field_datum_i:gender_field_datum_3_i dso:has_datum_value "M" .
+record_i:patients_1_record_3_i data_property:birth_date_datum_value "1970-01-03" .
+field_datum_i:birth_date_field_datum_3_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_3_i dso:member_of record_i:patients_1_record_3_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_3_i rdfs:label "patients_1.birth_date field datum 3" .
+field_datum_i:birth_date_field_datum_3_i dso:has_datum_value "1970-01-03" .
 
 
 # axioms to create record
-record:patients_1_record_4_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_4_i dso:member_of tablename:_table_i .
-record:patients_1_record_4_i rdfs:label "patients_1 record 4" .
+record_i:patients_1_record_4_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_4_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_4_i rdfs:label "patients_1 record 4" .
 
 # axioms to create field data
-record:patients_1_record_4_i data_property:patient_id_datum_value "10004" .
-field_value:patient_id_field_datum_4_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_4_i rdfs:label "patients_1.patient_id field datum 4" .
-field_value:patient_id_field_datum_4_i dso:member_of record:patients_1_record_4_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_4_i dso:has_datum_value "10004" .
-record:patients_1_record_4_i data_property:gender_datum_value "F" .
-field_value:gender_field_datum_4_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_4_i rdfs:label "patients_1.gender field datum 4" .
-field_value:gender_field_datum_4_i dso:member_of record:patients_1_record_4_i, field:gender_field_i .
-field_value:gender_field_datum_4_i dso:has_datum_value "F" .
-record:patients_1_record_4_i data_property:birth_date_datum_value "1980-01-04" .
-field_value:birth_date_field_datum_4_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_4_i rdfs:label "patients_1.birth_date field datum 4" .
-field_value:birth_date_field_datum_4_i dso:member_of record:patients_1_record_4_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_4_i dso:has_datum_value "1980-01-04" .
+record_i:patients_1_record_4_i data_property:patient_id_datum_value "10004" .
+field_datum_i:patient_id_field_datum_4_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_4_i dso:member_of record_i:patients_1_record_4_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_4_i rdfs:label "patients_1.patient_id field datum 4" .
+field_datum_i:patient_id_field_datum_4_i dso:has_datum_value "10004" .
+record_i:patients_1_record_4_i data_property:gender_datum_value "F" .
+field_datum_i:gender_field_datum_4_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_4_i dso:member_of record_i:patients_1_record_4_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_4_i rdfs:label "patients_1.gender field datum 4" .
+field_datum_i:gender_field_datum_4_i dso:has_datum_value "F" .
+record_i:patients_1_record_4_i data_property:birth_date_datum_value "1980-01-04" .
+field_datum_i:birth_date_field_datum_4_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_4_i dso:member_of record_i:patients_1_record_4_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_4_i rdfs:label "patients_1.birth_date field datum 4" .
+field_datum_i:birth_date_field_datum_4_i dso:has_datum_value "1980-01-04" .
 
 
 # axioms to create record
-record:patients_1_record_5_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_5_i dso:member_of tablename:_table_i .
-record:patients_1_record_5_i rdfs:label "patients_1 record 5" .
+record_i:patients_1_record_5_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_5_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_5_i rdfs:label "patients_1 record 5" .
 
 # axioms to create field data
-record:patients_1_record_5_i data_property:patient_id_datum_value "10005" .
-field_value:patient_id_field_datum_5_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_5_i rdfs:label "patients_1.patient_id field datum 5" .
-field_value:patient_id_field_datum_5_i dso:member_of record:patients_1_record_5_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_5_i dso:has_datum_value "10005" .
-record:patients_1_record_5_i data_property:gender_datum_value "M" .
-field_value:gender_field_datum_5_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_5_i rdfs:label "patients_1.gender field datum 5" .
-field_value:gender_field_datum_5_i dso:member_of record:patients_1_record_5_i, field:gender_field_i .
-field_value:gender_field_datum_5_i dso:has_datum_value "M" .
-record:patients_1_record_5_i data_property:birth_date_datum_value "1990-01-05" .
-field_value:birth_date_field_datum_5_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_5_i rdfs:label "patients_1.birth_date field datum 5" .
-field_value:birth_date_field_datum_5_i dso:member_of record:patients_1_record_5_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_5_i dso:has_datum_value "1990-01-05" .
+record_i:patients_1_record_5_i data_property:patient_id_datum_value "10005" .
+field_datum_i:patient_id_field_datum_5_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_5_i dso:member_of record_i:patients_1_record_5_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_5_i rdfs:label "patients_1.patient_id field datum 5" .
+field_datum_i:patient_id_field_datum_5_i dso:has_datum_value "10005" .
+record_i:patients_1_record_5_i data_property:gender_datum_value "M" .
+field_datum_i:gender_field_datum_5_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_5_i dso:member_of record_i:patients_1_record_5_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_5_i rdfs:label "patients_1.gender field datum 5" .
+field_datum_i:gender_field_datum_5_i dso:has_datum_value "M" .
+record_i:patients_1_record_5_i data_property:birth_date_datum_value "1990-01-05" .
+field_datum_i:birth_date_field_datum_5_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_5_i dso:member_of record_i:patients_1_record_5_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_5_i rdfs:label "patients_1.birth_date field datum 5" .
+field_datum_i:birth_date_field_datum_5_i dso:has_datum_value "1990-01-05" .
 
 
 # axioms to create record
-record:patients_1_record_6_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_6_i dso:member_of tablename:_table_i .
-record:patients_1_record_6_i rdfs:label "patients_1 record 6" .
+record_i:patients_1_record_6_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_6_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_6_i rdfs:label "patients_1 record 6" .
 
 # axioms to create field data
-record:patients_1_record_6_i data_property:patient_id_datum_value "10006" .
-field_value:patient_id_field_datum_6_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_6_i rdfs:label "patients_1.patient_id field datum 6" .
-field_value:patient_id_field_datum_6_i dso:member_of record:patients_1_record_6_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_6_i dso:has_datum_value "10006" .
-record:patients_1_record_6_i data_property:gender_datum_value "F" .
-field_value:gender_field_datum_6_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_6_i rdfs:label "patients_1.gender field datum 6" .
-field_value:gender_field_datum_6_i dso:member_of record:patients_1_record_6_i, field:gender_field_i .
-field_value:gender_field_datum_6_i dso:has_datum_value "F" .
-record:patients_1_record_6_i data_property:birth_date_datum_value "1955-01-06" .
-field_value:birth_date_field_datum_6_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_6_i rdfs:label "patients_1.birth_date field datum 6" .
-field_value:birth_date_field_datum_6_i dso:member_of record:patients_1_record_6_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_6_i dso:has_datum_value "1955-01-06" .
+record_i:patients_1_record_6_i data_property:patient_id_datum_value "10006" .
+field_datum_i:patient_id_field_datum_6_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_6_i dso:member_of record_i:patients_1_record_6_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_6_i rdfs:label "patients_1.patient_id field datum 6" .
+field_datum_i:patient_id_field_datum_6_i dso:has_datum_value "10006" .
+record_i:patients_1_record_6_i data_property:gender_datum_value "F" .
+field_datum_i:gender_field_datum_6_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_6_i dso:member_of record_i:patients_1_record_6_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_6_i rdfs:label "patients_1.gender field datum 6" .
+field_datum_i:gender_field_datum_6_i dso:has_datum_value "F" .
+record_i:patients_1_record_6_i data_property:birth_date_datum_value "1955-01-06" .
+field_datum_i:birth_date_field_datum_6_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_6_i dso:member_of record_i:patients_1_record_6_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_6_i rdfs:label "patients_1.birth_date field datum 6" .
+field_datum_i:birth_date_field_datum_6_i dso:has_datum_value "1955-01-06" .
 
 
 # axioms to create record
-record:patients_1_record_7_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_7_i dso:member_of tablename:_table_i .
-record:patients_1_record_7_i rdfs:label "patients_1 record 7" .
+record_i:patients_1_record_7_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_7_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_7_i rdfs:label "patients_1 record 7" .
 
 # axioms to create field data
-record:patients_1_record_7_i data_property:patient_id_datum_value "10007" .
-field_value:patient_id_field_datum_7_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_7_i rdfs:label "patients_1.patient_id field datum 7" .
-field_value:patient_id_field_datum_7_i dso:member_of record:patients_1_record_7_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_7_i dso:has_datum_value "10007" .
-record:patients_1_record_7_i data_property:gender_datum_value "M" .
-field_value:gender_field_datum_7_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_7_i rdfs:label "patients_1.gender field datum 7" .
-field_value:gender_field_datum_7_i dso:member_of record:patients_1_record_7_i, field:gender_field_i .
-field_value:gender_field_datum_7_i dso:has_datum_value "M" .
-record:patients_1_record_7_i data_property:birth_date_datum_value "1965-01-07" .
-field_value:birth_date_field_datum_7_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_7_i rdfs:label "patients_1.birth_date field datum 7" .
-field_value:birth_date_field_datum_7_i dso:member_of record:patients_1_record_7_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_7_i dso:has_datum_value "1965-01-07" .
+record_i:patients_1_record_7_i data_property:patient_id_datum_value "10007" .
+field_datum_i:patient_id_field_datum_7_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_7_i dso:member_of record_i:patients_1_record_7_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_7_i rdfs:label "patients_1.patient_id field datum 7" .
+field_datum_i:patient_id_field_datum_7_i dso:has_datum_value "10007" .
+record_i:patients_1_record_7_i data_property:gender_datum_value "M" .
+field_datum_i:gender_field_datum_7_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_7_i dso:member_of record_i:patients_1_record_7_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_7_i rdfs:label "patients_1.gender field datum 7" .
+field_datum_i:gender_field_datum_7_i dso:has_datum_value "M" .
+record_i:patients_1_record_7_i data_property:birth_date_datum_value "1965-01-07" .
+field_datum_i:birth_date_field_datum_7_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_7_i dso:member_of record_i:patients_1_record_7_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_7_i rdfs:label "patients_1.birth_date field datum 7" .
+field_datum_i:birth_date_field_datum_7_i dso:has_datum_value "1965-01-07" .
 
 
 # axioms to create record
-record:patients_1_record_8_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_8_i dso:member_of tablename:_table_i .
-record:patients_1_record_8_i rdfs:label "patients_1 record 8" .
+record_i:patients_1_record_8_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_8_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_8_i rdfs:label "patients_1 record 8" .
 
 # axioms to create field data
-record:patients_1_record_8_i data_property:patient_id_datum_value "10008" .
-field_value:patient_id_field_datum_8_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_8_i rdfs:label "patients_1.patient_id field datum 8" .
-field_value:patient_id_field_datum_8_i dso:member_of record:patients_1_record_8_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_8_i dso:has_datum_value "10008" .
-record:patients_1_record_8_i data_property:gender_datum_value "F" .
-field_value:gender_field_datum_8_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_8_i rdfs:label "patients_1.gender field datum 8" .
-field_value:gender_field_datum_8_i dso:member_of record:patients_1_record_8_i, field:gender_field_i .
-field_value:gender_field_datum_8_i dso:has_datum_value "F" .
-record:patients_1_record_8_i data_property:birth_date_datum_value "1975-01-08" .
-field_value:birth_date_field_datum_8_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_8_i rdfs:label "patients_1.birth_date field datum 8" .
-field_value:birth_date_field_datum_8_i dso:member_of record:patients_1_record_8_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_8_i dso:has_datum_value "1975-01-08" .
+record_i:patients_1_record_8_i data_property:patient_id_datum_value "10008" .
+field_datum_i:patient_id_field_datum_8_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_8_i dso:member_of record_i:patients_1_record_8_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_8_i rdfs:label "patients_1.patient_id field datum 8" .
+field_datum_i:patient_id_field_datum_8_i dso:has_datum_value "10008" .
+record_i:patients_1_record_8_i data_property:gender_datum_value "F" .
+field_datum_i:gender_field_datum_8_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_8_i dso:member_of record_i:patients_1_record_8_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_8_i rdfs:label "patients_1.gender field datum 8" .
+field_datum_i:gender_field_datum_8_i dso:has_datum_value "F" .
+record_i:patients_1_record_8_i data_property:birth_date_datum_value "1975-01-08" .
+field_datum_i:birth_date_field_datum_8_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_8_i dso:member_of record_i:patients_1_record_8_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_8_i rdfs:label "patients_1.birth_date field datum 8" .
+field_datum_i:birth_date_field_datum_8_i dso:has_datum_value "1975-01-08" .
 
 
 # axioms to create record
-record:patients_1_record_9_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_9_i dso:member_of tablename:_table_i .
-record:patients_1_record_9_i rdfs:label "patients_1 record 9" .
+record_i:patients_1_record_9_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_9_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_9_i rdfs:label "patients_1 record 9" .
 
 # axioms to create field data
-record:patients_1_record_9_i data_property:patient_id_datum_value "10009" .
-field_value:patient_id_field_datum_9_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_9_i rdfs:label "patients_1.patient_id field datum 9" .
-field_value:patient_id_field_datum_9_i dso:member_of record:patients_1_record_9_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_9_i dso:has_datum_value "10009" .
-record:patients_1_record_9_i data_property:gender_datum_value "M" .
-field_value:gender_field_datum_9_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_9_i rdfs:label "patients_1.gender field datum 9" .
-field_value:gender_field_datum_9_i dso:member_of record:patients_1_record_9_i, field:gender_field_i .
-field_value:gender_field_datum_9_i dso:has_datum_value "M" .
-record:patients_1_record_9_i data_property:birth_date_datum_value "1985-01-09" .
-field_value:birth_date_field_datum_9_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_9_i rdfs:label "patients_1.birth_date field datum 9" .
-field_value:birth_date_field_datum_9_i dso:member_of record:patients_1_record_9_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_9_i dso:has_datum_value "1985-01-09" .
+record_i:patients_1_record_9_i data_property:patient_id_datum_value "10009" .
+field_datum_i:patient_id_field_datum_9_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_9_i dso:member_of record_i:patients_1_record_9_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_9_i rdfs:label "patients_1.patient_id field datum 9" .
+field_datum_i:patient_id_field_datum_9_i dso:has_datum_value "10009" .
+record_i:patients_1_record_9_i data_property:gender_datum_value "M" .
+field_datum_i:gender_field_datum_9_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_9_i dso:member_of record_i:patients_1_record_9_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_9_i rdfs:label "patients_1.gender field datum 9" .
+field_datum_i:gender_field_datum_9_i dso:has_datum_value "M" .
+record_i:patients_1_record_9_i data_property:birth_date_datum_value "1985-01-09" .
+field_datum_i:birth_date_field_datum_9_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_9_i dso:member_of record_i:patients_1_record_9_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_9_i rdfs:label "patients_1.birth_date field datum 9" .
+field_datum_i:birth_date_field_datum_9_i dso:has_datum_value "1985-01-09" .
 
 
 # axioms to create record
-record:patients_1_record_10_i rdf:type owl:NamedIndividual, record:patients_1_record .
-record:patients_1_record_10_i dso:member_of tablename:_table_i .
-record:patients_1_record_10_i rdfs:label "patients_1 record 10" .
+record_i:patients_1_record_10_i rdf:type owl:NamedIndividual, record_i:patients_1_record .
+record_i:patients_1_record_10_i dso:member_of table_i:patients_1_i .
+record_i:patients_1_record_10_i rdfs:label "patients_1 record 10" .
 
 # axioms to create field data
-record:patients_1_record_10_i data_property:patient_id_datum_value "10010" .
-field_value:patient_id_field_datum_10_i rdf:type owl:NamedIndividual, field_value:patients_1.patient_id_field_value .
-field_value:patient_id_field_datum_10_i rdfs:label "patients_1.patient_id field datum 10" .
-field_value:patient_id_field_datum_10_i dso:member_of record:patients_1_record_10_i, field:patient_id_field_i .
-field_value:patient_id_field_datum_10_i dso:has_datum_value "10010" .
-record:patients_1_record_10_i data_property:gender_datum_value "F" .
-field_value:gender_field_datum_10_i rdf:type owl:NamedIndividual, field_value:patients_1.gender_field_value .
-field_value:gender_field_datum_10_i rdfs:label "patients_1.gender field datum 10" .
-field_value:gender_field_datum_10_i dso:member_of record:patients_1_record_10_i, field:gender_field_i .
-field_value:gender_field_datum_10_i dso:has_datum_value "F" .
-record:patients_1_record_10_i data_property:birth_date_datum_value "1995-01-10" .
-field_value:birth_date_field_datum_10_i rdf:type owl:NamedIndividual, field_value:patients_1.birth_date_field_value .
-field_value:birth_date_field_datum_10_i rdfs:label "patients_1.birth_date field datum 10" .
-field_value:birth_date_field_datum_10_i dso:member_of record:patients_1_record_10_i, field:birth_date_field_i .
-field_value:birth_date_field_datum_10_i dso:has_datum_value "1995-01-10" .
+record_i:patients_1_record_10_i data_property:patient_id_datum_value "10010" .
+field_datum_i:patient_id_field_datum_10_i rdf:type owl:NamedIndividual, field_value:patient_id_field_datum .
+field_datum_i:patient_id_field_datum_10_i dso:member_of record_i:patients_1_record_10_i, field_i:patient_id_field_i .
+field_datum_i:patient_id_field_datum_10_i rdfs:label "patients_1.patient_id field datum 10" .
+field_datum_i:patient_id_field_datum_10_i dso:has_datum_value "10010" .
+record_i:patients_1_record_10_i data_property:gender_datum_value "F" .
+field_datum_i:gender_field_datum_10_i rdf:type owl:NamedIndividual, field_value:gender_field_datum .
+field_datum_i:gender_field_datum_10_i dso:member_of record_i:patients_1_record_10_i, field_i:gender_field_i .
+field_datum_i:gender_field_datum_10_i rdfs:label "patients_1.gender field datum 10" .
+field_datum_i:gender_field_datum_10_i dso:has_datum_value "F" .
+record_i:patients_1_record_10_i data_property:birth_date_datum_value "1995-01-10" .
+field_datum_i:birth_date_field_datum_10_i rdf:type owl:NamedIndividual, field_value:birth_date_field_datum .
+field_datum_i:birth_date_field_datum_10_i dso:member_of record_i:patients_1_record_10_i, field_i:birth_date_field_i .
+field_datum_i:birth_date_field_datum_10_i rdfs:label "patients_1.birth_date field datum 10" .
+field_datum_i:birth_date_field_datum_10_i dso:has_datum_value "1995-01-10" .

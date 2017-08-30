@@ -33,7 +33,7 @@ def print_function_output(print_flag=True):
     return decorator
 
 
-def get_tablename_from_file(filepath, remove_ext=True):
+def get_table_name_from_file(filepath, remove_ext=True):
     if remove_ext:
         return os.path.splitext(os.path.basename(filepath))[0]
     else:
@@ -49,3 +49,12 @@ def save_axioms(axioms, output_file):
         for a in axioms:
             f.write(a)
     print output_file + " saved"
+
+def parse_parameter(paramater):
+    if type(paramater) == type(""):
+        return paramater
+    elif type(paramater) == type([]):
+        return ", ".join(paramater)
+    else:
+        return ""
+
