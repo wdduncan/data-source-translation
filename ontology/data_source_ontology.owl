@@ -187,6 +187,16 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/amalgam_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/amalgam_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:10Z</dc:date>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute">
@@ -411,6 +421,16 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/resin_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/resin_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:19Z</dc:date>
     </owl:Class>
     
 
