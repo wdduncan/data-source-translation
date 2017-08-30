@@ -6,9 +6,9 @@ from data_operations import *
 
 
 # @print_function_output()
-def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
-    if len(base_uri) == 0: base_uri = "http://purl.obolibrary.org/data_source/{0}/".format(tablename)
-    if len(ontology_uri) == 0: ontology_uri = "http://purl.obolibrary.org/{0}".format(tablename)
+def ttl_prefixes(data_source_name, base_uri="", ontology_uri="", imports=""):
+    if len(base_uri) == 0: base_uri = "http://purl.obolibrary.org/data_source/{0}/".format(data_source_name)
+    if len(ontology_uri) == 0: ontology_uri = "http://purl.obolibrary.org/{0}".format(data_source_name)
 
     ttl = \
         dedent("""\
@@ -28,19 +28,28 @@ def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
                 @prefix : <{0}> .
                 @prefix dso: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
                 @prefix data_source_ontology: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
-                @prefix table: <table/{1}/> .
-                @prefix tablename: <table/{1}> .
-                @prefix field: <field/{1}/> .
-                @prefix field_datum: <field_datum/{1}/> .
-                @prefix fd: <field_datum/{1}/> .
-                @prefix record: <record/{1}/> .
-                @prefix data_property: <data_property/{1}/> .
-                @prefix dp: <data_property/{1}/> .
-
+                
+                # custom class and property prefixes
+                @prefix table: <table/> .
+                @prefix field: <field/> .
+                @prefix field_datum: <field_datum/> .
+                @prefix fd: <field_datum/> .
+                @prefix record: <record/> .
+                @prefix data_property: <data_property/> .
+                @prefix dp: <data_property/> .
+                
+                # custom instance prefixes
+                @prefix table_i: <table/instance/> .
+                @prefix field_i: <field/instance/> .
+                @prefix field_datum_i: <field_datum/instance/> .
+                @prefix fd_i: <field_datum/instance/> .
+                @prefix record: <record/> .
+                @prefix record_i: <record/instance/> .
+                
                 # ontology uri and default import
-                <{2}> rdf:type owl:Ontology;
+                <{1}> rdf:type owl:Ontology;
                       owl:imports <http://purl.obolibrary.org/obo/data_source_ontology.owl> .
-                """.format(base_uri, tablename, ontology_uri))
+                """.format(base_uri, ontology_uri))
 
     if len(imports) > 0:
         # check if imports is string or list

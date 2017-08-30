@@ -13,7 +13,7 @@ def translate_data_to_ttl(filepath, base_uri="", ontology_uri="", imports=""):
 
     # specify ontology variables
     if len(base_uri) == 0:
-        base_uri = "http://purl.obolibrary.org/obo/data_source_ontology.owl/{0}/".format(tablename)
+        base_uri = "http://purl.obolibrary.org/obo/data_source_ontology.owl/{0}/".format(filename)
     if len(ontology_uri) == 0:
         ontology_uri = "http://purl.obolibrary.org/obo/data_source_ontology.owl/{0}".format(filename)
 
@@ -30,3 +30,4 @@ def translate_data_to_ttl(filepath, base_uri="", ontology_uri="", imports=""):
 ### run code
 axioms = translate_data_to_ttl("patients_1.xlsx")
 print_axioms(axioms)
+save_axioms(axioms, "output/patients_1.ttl")

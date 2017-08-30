@@ -43,3 +43,9 @@ def get_tablename_from_file(filepath, remove_ext=True):
 def print_axioms(axioms):
     # for axiom in axioms: print axiom
     print "\n".join(axioms)
+
+def save_axioms(axioms, output_file):
+    with open(output_file, "w") as f:
+        for a in axioms:
+            f.write(a)
+    print output_file + " saved"
