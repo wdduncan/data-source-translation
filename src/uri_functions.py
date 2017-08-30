@@ -44,7 +44,7 @@ def get_record_uri(class_name, record_idx):
 
 
 def get_field_datum_class_uri(class_name):
-    return "field_value:{0}_field_datum".format(class_name)
+    return "field_datum:{0}_field_datum".format(class_name)
 
 
 def get_field_datum_uri(field_name, record_idx):

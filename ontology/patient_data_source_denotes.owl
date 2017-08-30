@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl#"
-     xml:base="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl"
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl/"
+     xml:base="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:data_source_ontology="http://purl.obolibrary.org/obo/data_source_ontology.owl/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -48,47 +49,6 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1/field_value/patients_1/patients_1.gender_field_value"/>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_data_value"/>
-                <owl:hasValue>F</owl:hasValue>
-            </owl:Restriction>
-        </owl:intersectionOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/denotes"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/female_sex"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1/field_value/patients_1/patients_1.gender_field_value"/>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_data_value"/>
-                <owl:hasValue>M</owl:hasValue>
-            </owl:Restriction>
-        </owl:intersectionOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/denotes"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/male_sex"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
 </rdf:RDF>
 
 

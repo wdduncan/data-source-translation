@@ -184,19 +184,19 @@ def ttl_field_datum_classes(table_name, field_names):
     ttls = []
     ttls.append('\n# axioms to create field datum classes')
 
-    # create field value class for this table
-    class_uri = get_field_datum_class_uri(table_name)
+    # create field datum superclass for this table
+    super_class_uri = get_field_datum_class_uri(table_name)
     label = "{0} field datum".format(table_name)
 
-    ttl = declare_class(class_uri, "dso:field_datum", label)
+    ttl = declare_class(super_class_uri, "dso:field_datum", label)
     ttls.append(ttl + "\n")  # add new line to help visual inspection
 
-    # for every field create a field value value subclass
+    # for every field create a field datum subclass
     for field_name in field_names:
-        fv_class_uri = get_field_datum_class_uri(field_name)
+        class_uri = get_field_datum_class_uri(field_name)
         label = "{0}.{1} field datum".format(table_name, field_name)
 
-        ttl = declare_class(fv_class_uri, class_uri, label)
+        ttl = declare_class(class_uri, super_class_uri, label)
         ttls.append(ttl + "\n")  # add new line to help visual inspection
 
     # join all ttl statements
