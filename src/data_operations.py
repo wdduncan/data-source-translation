@@ -32,11 +32,13 @@ def print_function_output(print_flag=True):
 
     return decorator
 
+
 def get_tablename_from_file(filepath, remove_ext=True):
     if remove_ext:
         return os.path.splitext(os.path.basename(filepath))[0]
     else:
         return os.path.basename(filepath)
+
 
 def print_axioms(axioms):
     # for axiom in axioms: print axiom

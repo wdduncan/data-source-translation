@@ -22,7 +22,7 @@ def translate_data_to_ttl(filepath, base_uri="", ontology_uri="", imports=""):
     axioms.append(ttl_prefixes(tablename, base_uri, ontology_uri, imports=imports)) # add prefixes
     axioms.append(ttl_table(table_uri, tablename)) # add table
     axioms.append(ttl_fields(table_uri, tablename, field_names)) # add fields
-    axioms.append(ttl_field_value_classes(tablename, field_names)) # add field value classes
+    axioms.append(ttl_field_datum_classes(tablename, field_names)) # add field value classes
     axioms.append(ttl_records(df, table_uri, tablename)) # add records and values
 
     return axioms

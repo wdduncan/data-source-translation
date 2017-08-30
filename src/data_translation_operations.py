@@ -31,11 +31,11 @@ def ttl_prefixes(tablename, base_uri="", ontology_uri="", imports=""):
                 @prefix table: <table/{1}/> .
                 @prefix tablename: <table/{1}> .
                 @prefix field: <field/{1}/> .
-                @prefix field_value: <field_value/{1}/> .
-                @prefix fv: <field_value/{1}/> .
+                @prefix field_datum: <field_datum/{1}/> .
+                @prefix fd: <field_datum/{1}/> .
                 @prefix record: <record/{1}/> .
                 @prefix data_property: <data_property/{1}/> .
-                @prefix dv: <data_property/{1}/> .
+                @prefix dp: <data_property/{1}/> .
 
                 # ontology uri and default import
                 <{2}> rdf:type owl:Ontology;
@@ -121,7 +121,7 @@ def ttl_field(table_uri, tablename, field_name):
 def ttl_field_data_property(tablename, field_name):
     # create data property field
     data_prop_uri = get_data_prop_uri(field_name)
-    label = "{0}.{1} data value".format(tablename, field_name)
+    label = "{0}.{1} datum value".format(tablename, field_name)
     ttl = declare_data_property(data_prop_uri, label)
 
     return ttl
@@ -138,7 +138,7 @@ def ttl_records(df, table_uri, tablename):
     ttl = declare_class(record_class_uri, "dso:record", label)
     ttls.append(ttl + "\n")  # add new line to help visual inspection
 
-    # create field value class and subclasses
+    # create field datum class and subclasses
     field_names = list(df.columns)  # get list of fields
     for record_idx, record in enumerate(df.itertuples(), 1):
         ttls.append("\n# axioms to create record")
@@ -149,7 +149,7 @@ def ttl_records(df, table_uri, tablename):
         ttl = declare_instance(record_uri, record_class_uri, table_uri, label)
         ttls.append(ttl)
 
-        ttl = ttl_field_values(tablename, record, record_idx, record_uri, field_names)
+        ttl = ttl_field_data(tablename, record, record_idx, record_uri, field_names)
         ttls.append(ttl + "\n")  # add new line to help visual inspection
 
     # join all ttl statements
@@ -158,20 +158,20 @@ def ttl_records(df, table_uri, tablename):
 
 
 # @print_function_output()
-def ttl_field_value_classes(tablename, field_names):
+def ttl_field_datum_classes(tablename, field_names):
     ttls = []
-    ttls.append('\n# axioms to create field value classes')
+    ttls.append('\n# axioms to create field datum classes')
 
     # create field value class for this table
     class_uri = get_field_value_class_uri(tablename)
-    label = "{0} field value".format(tablename)
-    ttl = declare_class(class_uri, "dso:field_value", label)
+    label = "{0} field datum".format(tablename)
+    ttl = declare_class(class_uri, "dso:field_datum", label)
     ttls.append(ttl + "\n")  # add new line to help visual inspection
 
     # for every field create a field value value subclass
     for field_name in field_names:
         fv_class_uri = get_field_value_class_uri(tablename, field_name)
-        label = "{0}.{1} field value".format(tablename, field_name)
+        label = "{0}.{1} field datum".format(tablename, field_name)
         ttl = declare_class(fv_class_uri, class_uri, label)
         ttls.append(ttl + "\n")  # add new line to help visual inspection
 
@@ -181,8 +181,8 @@ def ttl_field_value_classes(tablename, field_names):
 
 
 # @print_function_output()
-def ttl_field_values(tablename, record, record_idx, record_uri, field_names):
-    ttls = ["\n# axioms to create field values"]
+def ttl_field_data(tablename, record, record_idx, record_uri, field_names):
+    ttls = ["\n# axioms to create field data"]
 
     for value_idx, value in enumerate(record):
         # value_idx 0 holds the index of the value tuple, so ignore it
@@ -192,22 +192,22 @@ def ttl_field_values(tablename, record, record_idx, record_uri, field_names):
             data_prop_uri = get_data_prop_uri(field_name)  # uri for field as data property
 
             # relate record to data value
-            ttl = ttl_record_data_value(record_uri, data_prop_uri, value)
+            ttl = ttl_record_datum_value(record_uri, data_prop_uri, value)
             ttls.append(ttl)
 
-            # create field value (fv) instance
-            fv_uri = get_field_value_uri(field_name, record_idx)
-            label = "{0}.{1} field value {2}".format(tablename, field_name, str(record_idx))
+            # create field datum (fd) instance
+            fd_uri = get_field_value_uri(field_name, record_idx)
+            label = "{0}.{1} field datum {2}".format(tablename, field_name, str(record_idx))
             fv_class_uri = get_field_value_class_uri(tablename, field_name)
-            ttl = declare_instance(fv_uri, fv_class_uri, label=label)
+            ttl = declare_instance(fd_uri, fv_class_uri, label=label)
             ttls.append(ttl)
 
             # fv is member of field and record
-            ttl = ttl_field_value_membership(fv_uri, record_uri, field_uri)
+            ttl = ttl_field_datum_membership(fd_uri, record_uri, field_uri)
             ttls.append(ttl)
 
             # relate fv to datum
-            ttl = ttl_field_value_datum(fv_uri, value)
+            ttl = ttl_field_value_datum(fd_uri, value)
             ttls.append(ttl)
 
             # ttl = ttl_field_value(tablename, record_idx, value, record_uri, field_uri, field_name, data_prop_uri)
@@ -219,20 +219,20 @@ def ttl_field_values(tablename, record, record_idx, record_uri, field_names):
 
 
 # @print_function_output()
-def ttl_field_value_membership(field_value_uri, record_uri, field_uri):
+def ttl_field_datum_membership(field_value_uri, record_uri, field_uri):
     ttl = "{0} dso:member_of {1}, {2} .".format(field_value_uri, record_uri, field_uri)
     return ttl
 
 
 # @print_function_output()
-def ttl_field_value_datum(field_value_uri, value):
+def ttl_field_value_datum(field_datum_uri, value):
     # relate field value to a datum value
-    ttl = """{0} dso:has_data_value "{1}" .""".format(field_value_uri, value)
+    ttl = """{0} dso:has_datum_value "{1}" .""".format(field_datum_uri, value)
     return ttl
 
 
 # @print_function_output()
-def ttl_record_data_value(record_uri, data_prop_uri, value):
+def ttl_record_datum_value(record_uri, data_prop_uri, value):
     # relate record to data value
     ttl = """{0} {1} "{2}" .""".format(record_uri, data_prop_uri, value)
     return ttl

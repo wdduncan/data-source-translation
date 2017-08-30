@@ -160,10 +160,10 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_data_value -->
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_datum_value -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_data_value">
-        <rdfs:label>has data value</rdfs:label>
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_datum_value">
+        <rdfs:label>has datum value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -292,9 +292,9 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/field_value -->
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/field_datum -->
 
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/field_value">
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/field_datum">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -308,7 +308,7 @@
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/record"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label>field value</rdfs:label>
+        <rdfs:label>field datum</rdfs:label>
     </owl:Class>
     
 
