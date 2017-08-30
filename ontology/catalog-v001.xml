@@ -5,7 +5,7 @@
     <uri id="User Entered Import Resolution" name="http://purl.obolibrary.org/obo/data_source_ontology.owl" uri="data_source_ontology.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/db_mapping.owl" uri="db_mapping.v2.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1504068531659" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/" uri="data_source_ontology.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1504068531659" name="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl/" uri="patient_data_source_denotes.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1504070610642" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/" uri="data_source_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1504070610642" name="http://purl.obolibrary.org/obo/patient_data_source_denotes.owl/" uri="patient_data_source_denotes.owl"/>
     </group>
 </catalog>
