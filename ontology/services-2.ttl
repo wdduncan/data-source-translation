@@ -10,10 +10,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # custom prefixes
-@base <http://purl.obolibrary.org/obo/data_source_ontology.owl/services_2.xlsx/> .
-@prefix : <http://purl.obolibrary.org/obo/data_source_ontology.owl/services_2.xlsx/> .
-@prefix dso: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
-@prefix data_source_ontology: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
+@base <http://purl.obolibrary.org/obo/data-source-ontology.owl/services_2.xlsx/> .
+@prefix : <http://purl.obolibrary.org/obo/data-source-ontology.owl/services_2.xlsx/> .
+@prefix dso: <http://purl.obolibrary.org/obo/data-source-ontology.owl/> .
+@prefix data_source_ontology: <http://purl.obolibrary.org/obo/data-source-ontology.owl/> .
 
 # custom class and property prefixes
 @prefix table: <table/> .
@@ -33,8 +33,8 @@
 @prefix record_i: <record/instance/> .
 
 # ontology uri and default import
-<http://purl.obolibrary.org/obo/data_source_ontology.owl/services_2.xlsx> rdf:type owl:Ontology;
-      owl:imports <http://purl.obolibrary.org/obo/data_source_ontology.owl> .
+<http://purl.obolibrary.org/obo/data-source-ontology.owl/services_2.xlsx> rdf:type owl:Ontology;
+      owl:imports <http://purl.obolibrary.org/obo/data-source-ontology.owl> .
 
 # axioms to create table
 table_i:services_2_i rdf:type owl:Class .

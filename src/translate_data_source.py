@@ -13,9 +13,9 @@ def translate_excel_to_ttl(file_path, base_uri="", ontology_uri="", imports=""):
 
     # specify ontology variables
     if len(base_uri) == 0:
-        base_uri = "http://purl.obolibrary.org/obo/data_source_ontology.owl/{0}/".format(file_name)
+        base_uri = "http://purl.obolibrary.org/obo/data-source-ontology.owl/{0}/".format(file_name)
     if len(ontology_uri) == 0:
-        ontology_uri = "http://purl.obolibrary.org/obo/data_source_ontology.owl/{0}".format(file_name)
+        ontology_uri = "http://purl.obolibrary.org/obo/data-source-ontology.owl/{0}".format(file_name)
 
     # add axioms to represent table, fields, field values, records
     axioms = [] # list to hold axioms
@@ -29,17 +29,17 @@ def translate_excel_to_ttl(file_path, base_uri="", ontology_uri="", imports=""):
 
 ### run code
 axioms = translate_excel_to_ttl("patients_1.xlsx")
-save_axioms(axioms, "output/patients_1.ttl")
+save_axioms(axioms, "output/patients-1.ttl")
 print_axioms(axioms)
 
 axioms = translate_excel_to_ttl("patients_2.xlsx")
-save_axioms(axioms, "output/patients_2.ttl")
+save_axioms(axioms, "output/patients-2.ttl")
 print_axioms(axioms)
 
 axioms = translate_excel_to_ttl("services_1.xlsx")
-save_axioms(axioms, "output/services_1.ttl")
+save_axioms(axioms, "output/services-1.ttl")
 print_axioms(axioms)
 
 axioms = translate_excel_to_ttl("services_2.xlsx")
-save_axioms(axioms, "output/services_2.ttl")
+save_axioms(axioms, "output/services-2.ttl")
 print_axioms(axioms)
