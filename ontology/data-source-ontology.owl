@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/data-source-ontology.owl/"
+     xml:base="http://purl.obolibrary.org/obo/data-source-ontology.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/denoted_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/denoted_by">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/is_about"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/denotes"/>
+        <rdfs:label>denoted by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/denotes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/denotes">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/is_about"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_member -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_member">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+        <rdfs:label>has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_part -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_part">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/part_of"/>
+        <rdfs:label>has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_participant -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_participant">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/participates_in"/>
+        <rdfs:label>has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_quality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_quality">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/quality_of"/>
+        <rdfs:label>has quality</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/is_about -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/is_about">
+        <rdfs:label>is about</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of">
+        <rdfs:label>member of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/part_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/part_of">
+        <rdfs:label>part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/participates_in -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/participates_in">
+        <rdfs:label>participates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/quality_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/quality_of">
+        <rdfs:label>quality of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/has_datum_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_datum_value">
+        <rdfs:label>has datum value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/represented_by -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/represented_by">
+        <rdfs:label>represented by</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/amalgam_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/amalgam_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:10Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
+        <rdfs:label>attribute</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/canine -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/canine">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:34Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/constraint -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/constraint">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute"/>
+        <rdfs:label>constraint</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source">
+        <rdfs:label>data source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/database -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/database">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
+        <rdfs:label>database</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/entity -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/entity">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/ontology_class"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/female_gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/female_gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/female_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/female_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/female_gender"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/attribute"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>field</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/field_datum -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/field_datum">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/field"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>field datum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/foreign_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/foreign_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/constraint"/>
+        <rdfs:label>foreign key</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/incisor -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/incisor">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:45Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/male_gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/male_gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/male_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/male_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/male_gender"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/molar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/molar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:17Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/ontology_class -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/ontology_class"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/patient">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/premolar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/premolar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:26Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/primary_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/primary_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/constraint"/>
+        <rdfs:label>primary key</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/record -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/record">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/resin_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/resin_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:19Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/table -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/table">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/database"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>table</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data_source_ontology.owl/tooth">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/x">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/untitled-ontology-339/p">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">patient-sex</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/gender"/>
+                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_member"/>
+                                <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                                <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/patient"/>
+                                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                <swrl:classPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/record"/>
+                                                <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_member"/>
+                                                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/x"/>
+                                                        <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://purl.obolibrary.org/obo/data_source_ontology.owl/has_quality"/>
+                        <swrl:argument1 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/p"/>
+                        <swrl:argument2 rdf:resource="http://purl.obolibrary.org/obo/untitled-ontology-339/s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
