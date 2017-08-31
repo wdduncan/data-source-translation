@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_2.xlsx" uri="patients_1.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_2.xlsx" uri="patients_2.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx" uri="patients_1.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/patients_1.xlsx" uri="patient_1.ttl"/>
-    <uri id="User Entered Import Resolution" name="http://purl.obolibrary.org/obo/data_source_ontology.owl" uri="data_source_ontology.owl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/db_mapping.owl" uri="db_mapping.v2.owl"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1504111507333" name="http://purl.obolibrary.org/obo/data_source_ontology.owl/" uri="data_source_ontology.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1504111507333" name="http://purl.obolibrary.org/obo/patient_1_data_source_denotes.owl/" uri="patient_1_data_source_denotes.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1504111507333" name="http://purl.obolibrary.org/obo/patient_2_data_source_denotes.owl/" uri="patient_2_data_source_denotes.owl"/>
+    <group id="imports" prefer="public" xml:base="">
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/" uri="data-source-ontology.owl"/>
+        <uri name="http://purl.obolibrary.org/obo/patient-1-data-source-denotes.owl/" uri="patient-1-data-source-denotes.owl"/>
+        <uri name="http://purl.obolibrary.org/obo/patient-2-data-source-denotes.owl/" uri="patient-2-data-source-denotes.owl"/>
     </group>
 </catalog>

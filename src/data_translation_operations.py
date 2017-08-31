@@ -30,21 +30,21 @@ def ttl_prefixes(data_source_name, table_name, base_uri="", ontology_uri="", imp
                 @prefix data_source_ontology: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
                 
                 # custom class and property prefixes
-                @prefix table: <{1}/table/> .
-                @prefix table_name: <{1}/table/{2}> .
-                @prefix field: <{1}/{2}/field/> .
-                @prefix field_datum: <{1}/{2}/field_datum/> .
-                @prefix fd: <{1}/{2}/field_datum/> .
-                @prefix record: <{1}/{2}/record/> .
-                @prefix data_property: <{1}/{2}/data_property/> .
-                @prefix dp: <{1}/{2}/data_property/> .
+                @prefix table: <table/> .
+                @prefix table_name: <table/{1}> .
+                @prefix field: <field/> .
+                @prefix field_datum: <field_datum/> .
+                @prefix fd: <field_datum/> .
+                @prefix record: <record/> .
+                @prefix data_property: <data_property/> .
+                @prefix dp: <data_property/> .
                 
                 # custom instance prefixes
-                @prefix table_i: <{1}/{2}/table/instance/> .
-                @prefix field_i: <{1}/{2}/field/instance/> .
-                @prefix field_datum_i: <{1}/{2}/field_datum/instance/> .
-                @prefix fd_i: <{1}/{2}/field_datum/instance/> .
-                @prefix record_i: <{1}/{2}/record/instance/> .
+                @prefix table_i: <table/instance/> .
+                @prefix field_i: <field/instance/> .
+                @prefix field_datum_i: <field_datum/instance/> .
+                @prefix fd_i: <field_datum/instance/> .
+                @prefix record_i: <record/instance/> .
                 
                 # ontology uri and default import
                 <{2}> rdf:type owl:Ontology;

@@ -28,12 +28,18 @@ def translate_excel_to_ttl(file_path, base_uri="", ontology_uri="", imports=""):
     return axioms
 
 ### run code
-# axioms = translate_excel_to_ttl("patients_1.xlsx")
-# axioms = translate_excel_to_ttl("patients_2.xlsx")
-# axioms = translate_excel_to_ttl("services_1.xlsx")
-axioms = translate_excel_to_ttl("services_2.xlsx")
+axioms = translate_excel_to_ttl("patients_1.xlsx")
+save_axioms(axioms, "output/patients_1.ttl")
 print_axioms(axioms)
-# save_axioms(axioms, "output/patients_1.ttl")
-# save_axioms(axioms, "output/patients_2.ttl")
-# save_axioms(axioms, "output/services_1.ttl")
+
+axioms = translate_excel_to_ttl("patients_2.xlsx")
+save_axioms(axioms, "output/patients_2.ttl")
+print_axioms(axioms)
+
+axioms = translate_excel_to_ttl("services_1.xlsx")
+save_axioms(axioms, "output/services_1.ttl")
+print_axioms(axioms)
+
+axioms = translate_excel_to_ttl("services_2.xlsx")
 save_axioms(axioms, "output/services_2.ttl")
+print_axioms(axioms)

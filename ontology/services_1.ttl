@@ -16,21 +16,21 @@
 @prefix data_source_ontology: <http://purl.obolibrary.org/obo/data_source_ontology.owl/> .
 
 # custom class and property prefixes
-@prefix table: <services_1/table/> .
-@prefix table_name: <services_1/table/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx> .
-@prefix field: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field/> .
-@prefix field_datum: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field_datum/> .
-@prefix fd: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field_datum/> .
-@prefix record: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/record/> .
-@prefix data_property: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/data_property/> .
-@prefix dp: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/data_property/> .
+@prefix table: <table/> .
+@prefix table_name: <table/services_1> .
+@prefix field: <field/> .
+@prefix field_datum: <field_datum/> .
+@prefix fd: <field_datum/> .
+@prefix record: <record/> .
+@prefix data_property: <data_property/> .
+@prefix dp: <data_property/> .
 
 # custom instance prefixes
-@prefix table_i: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/table/instance/> .
-@prefix field_i: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field/instance/> .
-@prefix field_datum_i: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field_datum/instance/> .
-@prefix fd_i: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/field_datum/instance/> .
-@prefix record_i: <services_1/http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx/record/instance/> .
+@prefix table_i: <table/instance/> .
+@prefix field_i: <field/instance/> .
+@prefix field_datum_i: <field_datum/instance/> .
+@prefix fd_i: <field_datum/instance/> .
+@prefix record_i: <record/instance/> .
 
 # ontology uri and default import
 <http://purl.obolibrary.org/obo/data_source_ontology.owl/services_1.xlsx> rdf:type owl:Ontology;
