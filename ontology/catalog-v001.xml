@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data-source-ontology.owl/services_2.xlsx" uri="services-2.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data-source-ontology.owl/services_1.xlsx" uri="services-1.ttl"/>
     <group id="imports" prefer="public" xml:base="">
         <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl" uri="data-source-ontology.owl"/>
-        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patients-data-sources.owl" uri="patient-1-data-source-denotes.owl"/>
         <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xlsx" uri="patients-1.ttl"/>
         <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_2.xlsx" uri="patients-2.ttl"/>
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/services_2.xlsx" uri="services-2.ttl"/>
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/services_1.xlsx" uri="services-1.ttl"/>
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patients-data-sources.owl" uri="patient-1-data-source-denotes.owl"/>
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patient-and-service-sources.owl" uri="multiple-patient-and-service-sources.owl"/>
+        <uri name="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patient-and-service-sources-common-elements.owl" uri="multiple-patient-and-service-sources-common-elements.owl"/>
     </group>
 </catalog>
