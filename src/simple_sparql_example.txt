@@ -8,10 +8,88 @@ prefix : <http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xls
 prefix table: <table/>
 prefix field_i: <field/instance/>
 
-SELECT ?record ?field ?value
+SELECT DISTINCT ?record ?field ?value
 WHERE { 
   ?record a table:patients_1 .
   ?field a owl:DatatypeProperty .
   ?record ?field ?value .
+  # FILTER(str(?value) = "F") # only returns "record gender 'F'" records
 }
 order by ?record
+
+
+########## filter all records for female patients    #############
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+base <http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xlsx/>
+prefix : <http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xlsx/>
+prefix table: <table/>
+prefix field_i: <field/instance/>
+
+SELECT DISTINCT ?record ?field ?value
+WHERE { 
+  ?record rdf:type table:patients_1 .
+  ?field a owl:DatatypeProperty .
+  ?record ?field ?value 
+  {
+    SELECT ?record  
+    WHERE {
+       ?record rdf:type table:patients_1 .
+       ?field a owl:DatatypeProperty .
+       ?record ?field ?value .
+       filter(str(?value) = "F")  # this does now match all records that have a value of "F"
+     }
+  } 
+}	
+order by ?record
+
+############## this also works
+SELECT DISTINCT ?record ?field ?value
+WHERE { 
+  ?record rdf:type table:patients_1 .
+  ?field a owl:DatatypeProperty .
+  ?record ?field ?value 
+  {
+    SELECT ?record ?f ?v
+    WHERE {
+       ?record rdf:type table:patients_1 .
+       ?f a owl:DatatypeProperty .
+       ?record ?f ?v .
+       filter(str(?v) = "F")
+     }
+  } 
+}	
+order by ?record
+
+############# another variant
+SELECT DISTINCT ?record ?field ?value
+WHERE { 
+  ?record rdf:type table:patients_1 .
+  ?field a owl:DatatypeProperty .
+  ?record ?field ?value 
+  {
+    SELECT ?record
+    WHERE {
+       ?record rdf:type table:patients_1 .
+       ?record dp:gender_datum_value ?v .
+       filter(?v = "F"^^xsd:string)
+     }
+  } 
+}	
+order by ?record
+
+########### this is more natural from the sql perspective
+SELECT ?patient_id ?gender ?bdate
+WHERE { 
+  ?record rdf:type table:patients_1 .
+  ?record dp:patient_id_datum_value ?patient_id .
+  ?record dp:gender_datum_value ?gender .
+  ?record dp:birth_date_datum_value ?bdate .
+
+  FILTER(str(?gender) = "F")
+}	
+order by ?patient_id
+

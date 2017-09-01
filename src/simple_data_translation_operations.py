@@ -36,10 +36,6 @@ def ttl_prefixes_simple(data_source_name, table_name, base_uri="", ontology_uri=
                 @prefix dp: <data_property/> .
 
                 # custom instance prefixes
-                @prefix table_i: <table/instance/> .
-                @prefix field_i: <field/instance/> .
-                @prefix field_datum_i: <field_datum/instance/> .
-                @prefix fd_i: <field_datum/instance/> .
                 @prefix record_i: <record/instance/> .
 
                 # ontology uri
