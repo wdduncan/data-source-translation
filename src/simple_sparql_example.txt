@@ -1,0 +1,17 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+base <http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xlsx/>
+prefix : <http://purl.obolibrary.org/obo/data-source-ontology.owl/patients_1.xlsx/>
+prefix table: <table/>
+prefix field_i: <field/instance/>
+
+SELECT ?record ?field ?value
+WHERE { 
+  ?record a table:patients_1 .
+  ?field a owl:DatatypeProperty .
+  ?record ?field ?value .
+}
+order by ?record

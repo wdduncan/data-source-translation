@@ -136,19 +136,33 @@ def ttl_field(table_uri, super_class_uri, table_name, field_name):
     ttl = "\n".join(ttls)
     return ttl
 
+# @print_function_output()
+def ttl_field_data_properties(table_name, field_names, terse_label=False):
+    ttls = []
+    for field_name in field_names:
+        ttl = ttl_field_data_property(table_name, field_name, terse_label)
+        ttls.append(ttl)
+
+    # join all ttl statements
+    ttl = "\n".join(ttls)
+    return ttl
 
 # @print_function_output()
-def ttl_field_data_property(table_name, field_name):
+def ttl_field_data_property(table_name, field_name, terse_label=False):
     # create data property field
     data_prop_uri = get_data_prop_uri(field_name)
-    label = "{0}.{1} datum value".format(table_name, field_name)
+
+    if terse_label:
+        label = field_name
+    else:
+        label = "{0}.{1} datum value".format(table_name, field_name)
 
     ttl = declare_data_property(data_prop_uri, label)
     return ttl
 
 
 # @print_function_output()
-def ttl_records(df, table_uri, table_name):
+def ttl_records(df, table_uri, table_name, terse_label=False):
     ttls = []
     ttls.append("\n# axioms to create record class")
 
@@ -166,7 +180,10 @@ def ttl_records(df, table_uri, table_name):
 
         # create instance of record
         record_uri = get_record_uri(table_name, record_idx)
-        label = "{0} record {1}".format(table_name, str(record_idx))
+        if terse_label:
+            label = "record {0}".format(str(record_idx))
+        else:
+            label = "{0} record {1}".format(table_name, str(record_idx))
 
         ttl = declare_instance(record_uri, record_class_uri, table_uri, label)
         ttls.append(ttl)
