@@ -1,7 +1,6 @@
 import pandas as pds
-from collections import namedtuple
 from pprint import pprint
-from string import Formatter
+from lib.parsing_operations import *
 
 # schema = {patients:
 #               {"name": "patients",

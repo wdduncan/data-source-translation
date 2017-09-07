@@ -1,7 +1,7 @@
 import re
-
-
+from collections import namedtuple
 from textwrap import dedent
+
 
 def find_ontology_uri(label, **kwargs):
     URI = {"patient": "<http://patient>",
