@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/data-source-ontology.owl/"
+     xml:base="http://purl.obolibrary.org/obo/data-source-ontology.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/denoted_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/denoted_by">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/is_about"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/denotes"/>
+        <rdfs:label>denoted by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/denotes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/denotes">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/is_about"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/has_member -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_member">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+        <rdfs:label>has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/has_part -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_part">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/part_of"/>
+        <rdfs:label>has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/has_participant -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_participant">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/participates_in"/>
+        <rdfs:label>has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/has_quality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_quality">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/quality_of"/>
+        <rdfs:label>has quality</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/is_about -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/is_about">
+        <rdfs:label>is about</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/part_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/part_of">
+        <rdfs:label>part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/participates_in -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/participates_in">
+        <rdfs:label>participates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/quality_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/quality_of">
+        <rdfs:label>quality of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/has_datum_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_datum_value"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/represented_by -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/represented_by">
+        <rdfs:label>represented by</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/attribute -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/attribute">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
+        <rdfs:label>attribute</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/constraint -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/constraint">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/attribute"/>
+        <rdfs:label>constraint</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source">
+        <rdfs:label>data source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/database -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/database">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
+        <rdfs:label>database</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/field -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/field">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/attribute"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>field</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/field_datum -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/field_datum">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/field"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/record"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>field datum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/foreign_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/foreign_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/constraint"/>
+        <rdfs:label>foreign key</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/primary_key -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/primary_key">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/constraint"/>
+        <rdfs:label>primary key</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/record -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/record">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/table"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/table -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/table">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/database"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label>table</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

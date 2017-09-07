@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/simple-data-ontology.ow/"
+     xml:base="http://purl.obolibrary.org/obo/simple-data-ontology.ow/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/simple-data-ontology.ow"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/denoted_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/denoted_by">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/is_about"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/denotes"/>
+        <rdfs:label>denoted by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/denotes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/denotes">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/is_about"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/has_member -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/has_member">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/member_of"/>
+        <rdfs:label>has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/has_part -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/has_part">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/part_of"/>
+        <rdfs:label>has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/has_participant -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/has_participant">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/participates_in"/>
+        <rdfs:label>has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/has_quality -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/has_quality">
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/quality_of"/>
+        <rdfs:label>has quality</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/is_about -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/is_about">
+        <rdfs:label>is about</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/member_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/member_of"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/part_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/part_of">
+        <rdfs:label>part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/participates_in -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/participates_in">
+        <rdfs:label>participates in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/quality_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/quality_of">
+        <rdfs:label>quality of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/has_datum_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/has_datum_value"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/represented_by -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/represented_by">
+        <rdfs:label>represented by</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/amalgam_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/amalgam_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:10Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/canine -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/canine">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:34Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/entity -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/entity"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/female_gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/female_gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/female_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/female_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/female_gender"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/incisor -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/incisor">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:45Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/male_gender -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/male_gender">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/gender"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/male_patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/male_patient">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/patient"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/has_quality"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/male_gender"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/molar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/molar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:17Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/patient -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/patient">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/premolar -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/premolar">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/tooth"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-26T03:31:26Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/procedure -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/procedure">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/resin_restoration -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/resin_restoration">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/procedure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-08-30T01:00:19Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology/tooth -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology/tooth">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology/entity"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
