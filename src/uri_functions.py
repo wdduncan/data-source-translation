@@ -75,3 +75,9 @@ def declare_data_property(data_property_uri, label=""):
         ttl += get_uri_label(data_property_uri, label)
     return ttl
 
+
+def declare_object_property(object_property_uri, label=""):
+    ttl = "{0} rdf:type owl:ObjectProperty .".format(object_property_uri)
+    if len(label) > 0:
+        ttl += get_uri_label(object_property_uri, label)
+    return ttl
