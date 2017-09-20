@@ -183,7 +183,7 @@ def ttl_field_datum_simple(record, record_uri, record_idx, field_names):
             ttls.append(ttl)
 
             # relate field datum to value
-            ttl = """{0} :has_value "{1}" .""".format(fd_uri, value)
+            ttl = """{0} dp:has_value "{1}" .""".format(fd_uri, value)
             ttls.append(ttl)
 
     # join all ttl statements

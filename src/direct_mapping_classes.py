@@ -13,14 +13,17 @@ class Ontology:
     axioms = []
     df = None
     table_name = ""
+    table_uri = ""
     table_class_uri = ""
     field_names = []
     file_name = ""
     reify_fields = False
 
 
-    def __intit__(self, data_source_name, table_name, base_uri="", ontology_uri="", imports=""):
+    def __intit__(self, data_source_name, table_name, base_uri="", ontology_uri="", imports="", reify_fields=False):
         self.data_source_name = data_source_name
+        self.table_name = table_name
+
         if len(base_uri) == 0: self.base_uri = "http://purl.obolibrary.org/data-source/{0}/".format(data_source_name)
         if len(ontology_uri) == 0: self.ontology_uri = "http://purl.obolibrary.org/{0}".format(data_source_name)
 
@@ -77,6 +80,7 @@ class Ontology:
         # add prefix axioms
         self.axioms.append(ttl)
 
+
     def load_data_frame(self, dataframe):
         self.df = dataframe
 
@@ -89,8 +93,12 @@ class Ontology:
         self.field_names = list(self.df.columns)
 
 
-    def append_axiom(self, axiom):
-        self.axioms.append(axiom)
+    def set_table_class_uri(self):
+        self.table_class_uri = get_table_class_uri(self.table_name)
+
+
+    def append_axioms(self, axioms):
+        self.axioms.append(axioms)
 
 
     def save_axioms(self, output_file):
