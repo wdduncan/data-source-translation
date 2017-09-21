@@ -7,7 +7,7 @@ from direct_mapping_classes import *
 from direct_mapping_translation_operations import *
 
 
-def direct_mapping_excel(file_path, base_uri="", ontology_uri="", imports="", reify_fields=False):
+def direct_translation_excel(file_path, base_uri="", ontology_uri="", imports="", reify_fields=False):
     # ceate dataframe from demo data
     df = pds.ExcelFile(file_path).parse()
     table_name = get_table_name_from_file(file_path)
@@ -27,9 +27,36 @@ def direct_mapping_excel(file_path, base_uri="", ontology_uri="", imports="", re
     ont.field_names = list(df.columns)
     ont.reify_fields = reify_fields
 
+    # print_axioms(ont.axioms)
+    # return
+
     # add axioms
     ont.append_axioms(ttl_table_direct(ont, terse_label=True)) # add table
-    ont.append_axioms(ttl_field_data_properties_direct(ont, terse_label=True)) # add data properties
+    ont.append_axioms(ttl_data_properties_direct(ont, terse_label=True)) # add data properties
     ont.append_axioms(ttl_records_direct(ont, terse_label=True)) # add records
 
     return ont.axioms
+
+
+def main_direct_translate_excel(reify_fields=False):
+    axioms = direct_translation_excel("patients_1.xlsx", reify_fields=reify_fields)
+
+    if reify_fields:
+        save_axioms(axioms, "output/patients-1-direct-reify-fields.ttl")
+    else:
+        save_axioms(axioms, "output/patients-1-direct.ttl")
+
+    print_axioms(axioms)
+
+    # axioms = []
+    # axioms = direct_translation_excel("patients_2.xlsx", reify_fields=reify_fields)
+    #
+    # if reify_fields:
+    #     save_axioms(axioms, "output/patients-2-direct-reify-fields.ttl")
+    # else:
+    #     save_axioms(axioms, "output/patients-2-direct.ttl")
+    #
+    # print_axioms(axioms)
+
+main_direct_translate_excel()
+# axioms = direct_translation_excel("patients_2.xlsx", reify_fields=False)

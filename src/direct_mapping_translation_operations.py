@@ -5,6 +5,7 @@ from textwrap import dedent
 from data_operations import *
 from direct_mapping_classes import *
 
+
 # @print_function_output()
 def ttl_table_direct(ont, super_class_uri="owl:Thing", terse_label=False):
     ttls = ["\n# axioms to create table"]
@@ -25,6 +26,35 @@ def ttl_table_direct(ont, super_class_uri="owl:Thing", terse_label=False):
     ttl = "\n".join(ttls)
     return ttl
 
+# @print_function_output()
+def ttl_data_properties_direct(ont, terse_label=False):
+    ttls = ["\n# axioms to create data properties"]
+
+    if ont.reify_fields:
+        # when using fields we need a data property to relate field datum to value
+        ttl = declare_data_property("dp:has_value", "has value")
+        ttls.append(ttl)
+
+    for field_name in ont.field_names:
+        ttl = ttl_data_property_direct(ont, field_name, terse_label)
+        ttls.append(ttl)
+
+    # join all ttl statements
+    ttl = "\n".join(ttls)
+    return (ttl + "\n")
+
+# @print_function_output()
+def ttl_data_property_direct(ont, field_name, terse_label=False):
+    # create data property field
+    data_prop_uri = get_data_prop_uri(field_name)
+
+    if terse_label:
+        label = field_name
+    else:
+        label = "{0}.{1} value".format(ont.table_name, field_name)
+
+    ttl = declare_data_property(data_prop_uri, label)
+    return ttl
 
 # @print_function_output()
 def ttl_record_class_direct(ont, terse_label=False):
@@ -69,7 +99,7 @@ def ttl_records_direct(ont, terse_label=False):
     ttl = "\n".join(ttls)
     return ttl
 
-
+# @print_function_output()
 def ttl_record_direct(ont, record_uri, record_idx, terse_label=False):
     ttls = ["\n# axioms to create record"]
 
@@ -133,7 +163,7 @@ def ttl_field_datum_direct(record, record_uri, record_idx, field_names):
 
 
 # @print_function_output()
-def ttl_field_data_properties_direct(ont, table_name, terse_label=False):
+def ttl_field_data_properties_direct(ont, terse_label=False):
     ttls = ["\n# axioms to create data properties"]
 
     if ont.reify_fields:
@@ -142,7 +172,7 @@ def ttl_field_data_properties_direct(ont, table_name, terse_label=False):
         ttls.append(ttl)
 
     for field_name in ont.field_names:
-        ttl = ttl_field_data_property_direct(table_name, field_name, terse_label)
+        ttl = ttl_field_data_property_direct(ont, field_name, terse_label)
         ttls.append(ttl)
 
     # join all ttl statements

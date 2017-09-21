@@ -5,7 +5,7 @@ from textwrap import dedent
 from data_operations import *
 
 
-class Ontology:
+class Ontology(object):
     data_source_name = ""
     prefix = ""
     ontology_uri = ""
@@ -20,7 +20,7 @@ class Ontology:
     reify_fields = False
 
 
-    def __intit__(self, data_source_name, table_name, base_uri="", ontology_uri="", imports="", reify_fields=False):
+    def __init__(self, data_source_name, table_name, base_uri="", ontology_uri="", imports="", reify_fields=False):
         self.data_source_name = data_source_name
         self.table_name = table_name
 
