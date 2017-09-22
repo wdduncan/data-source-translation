@@ -1,4 +1,4 @@
-from simple_data_translation_operations import *
+from lib.simple_data_translation_operations import *
 
 def simple_translation_excel(file_path, base_uri="", ontology_uri="", imports="", with_fields=False):
     # ceate dataframe from demo data

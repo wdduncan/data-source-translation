@@ -1,4 +1,4 @@
-from data_translation_operations import *
+from lib.data_translation_operations import *
 
 
 def translate_excel_to_ttl(file_path, base_uri="", ontology_uri="", imports=""):

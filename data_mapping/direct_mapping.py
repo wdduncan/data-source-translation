@@ -1,10 +1,10 @@
 # coding=utf-8
 import pandas as pds
-from uri_functions import *
+from lib.uri_functions import *
 from textwrap import dedent
-from data_operations import *
-from direct_mapping_classes import *
-from direct_mapping_translation_operations import *
+from lib.data_operations import *
+from lib.direct_mapping_classes import *
+from lib.direct_mapping_translation_operations import *
 
 
 def direct_translation_excel(file_path, base_uri="", ontology_uri="", imports="", reify_fields=False):
