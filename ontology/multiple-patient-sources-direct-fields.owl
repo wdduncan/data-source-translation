@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patients-data-sources-direct-fields.owl/"
+     xml:base="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patients-data-sources-direct-fields.owl/"
+     xmlns:data-source-ontology="http://purl.obolibrary.org/obo/data-source-ontology.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/multiple-patients-data-sources-direct-fields.owl">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/data-source/patients_1/patients_1.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/data-source/patients_2/patients_2.owl"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/denotes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/denotes"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/represents -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source/patients_1/data_field/gender_field -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source/patients_1/data_field/gender_field">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source/patients_1/data_field/patient_id_field -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source/patients_1/data_field/patient_id_field">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/patient"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source/patients_2/data_field/sex_field -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source/patients_2/data_field/sex_field">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source/patients_2/data_field/subject_id_field -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source/patients_2/data_field/subject_id_field">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/patient"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_field"/>
+                                <owl:someValuesFrom>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/female_gender"/>
+                                    </owl:Restriction>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/patient"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/female_patient"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_field"/>
+                                <owl:someValuesFrom>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/male_gender"/>
+                                    </owl:Restriction>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/patient"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/male_patient"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value"/>
+                <owl:hasValue>F</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/female_gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value"/>
+                <owl:hasValue>Female</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/female_gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value"/>
+                <owl:hasValue>M</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/male_gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender"/>
+            </owl:Restriction>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value"/>
+                <owl:hasValue>Male</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/represents"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/male_gender"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

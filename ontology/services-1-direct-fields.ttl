@@ -1,0 +1,644 @@
+# axioms for prefixes
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# custom prefixes
+@base <http://purl.obolibrary.org/obo/data-source/services_1/> .
+@prefix : <http://purl.obolibrary.org/obo/data-source/services_1/> .
+@prefix ds: <http://purl.obolibrary.org/obo/data-source-ontology.owl/> .
+@prefix op: <object_property/> .
+@prefix dp: <data_property/> .
+@prefix df: <data_field/> .
+@prefix dr: <data_record/> .
+
+@prefix data_field: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_field> .
+@prefix data_record: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record> .
+@prefix has_value: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value> .
+@prefix has_member: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_member> .
+@prefix has_data_field: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_field> .
+@prefix has_data_record: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_record> .
+@prefix member_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of> .
+@prefix data_field_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_field_of> .
+@prefix data_record_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record_of> .
+
+# ontology uri
+<http://purl.obolibrary.org/obo/data-source/services_1/services_1.owl> rdf:type owl:Ontology .
+
+# specified ontology imports
+<http://purl.obolibrary.org/obo/data-source/services_1/services_1.owl> owl:imports <http://purl.obolibrary.org/obo/data-source-ontology.owl> . 
+
+## specify data source
+<http://purl.obolibrary.org/obo/data-source/services_1/spreadsheet/services_1> rdf:type owl:NamedIndividual, ds:spreadsheet .
+
+
+# axioms to create field specific object properties
+
+# axioms to create object properties
+op:has_service_id rdf:type owl:ObjectProperty .
+op:has_service_id rdfs:subPropertyOf ds:has_data_field .
+op:service_id_of rdf:type owl:ObjectProperty .
+op:service_id_of rdfs:subPropertyOf ds:data_field_of .
+op:has_service_code rdf:type owl:ObjectProperty .
+op:has_service_code rdfs:subPropertyOf ds:has_data_field .
+op:service_code_of rdf:type owl:ObjectProperty .
+op:service_code_of rdfs:subPropertyOf ds:data_field_of .
+op:has_service_date rdf:type owl:ObjectProperty .
+op:has_service_date rdfs:subPropertyOf ds:has_data_field .
+op:service_date_of rdf:type owl:ObjectProperty .
+op:service_date_of rdfs:subPropertyOf ds:data_field_of .
+op:has_patient_id rdf:type owl:ObjectProperty .
+op:has_patient_id rdfs:subPropertyOf ds:has_data_field .
+op:patient_id_of rdf:type owl:ObjectProperty .
+op:patient_id_of rdfs:subPropertyOf ds:data_field_of .
+op:has_tooth rdf:type owl:ObjectProperty .
+op:has_tooth rdfs:subPropertyOf ds:has_data_field .
+op:tooth_of rdf:type owl:ObjectProperty .
+op:tooth_of rdfs:subPropertyOf ds:data_field_of .
+op:has_surface rdf:type owl:ObjectProperty .
+op:has_surface rdfs:subPropertyOf ds:has_data_field .
+op:surface_of rdf:type owl:ObjectProperty .
+op:surface_of rdfs:subPropertyOf ds:data_field_of .
+op:has_provider_id rdf:type owl:ObjectProperty .
+op:has_provider_id rdfs:subPropertyOf ds:has_data_field .
+op:provider_id_of rdf:type owl:ObjectProperty .
+op:provider_id_of rdfs:subPropertyOf ds:data_field_of .
+
+# axioms to create data field classes
+
+# axioms to data field classes
+df:service_id_field rdf:type owl:Class .
+df:service_id_field rdfs:subClassOf ds:data_field .
+df:service_code_field rdf:type owl:Class .
+df:service_code_field rdfs:subClassOf ds:data_field .
+df:service_date_field rdf:type owl:Class .
+df:service_date_field rdfs:subClassOf ds:data_field .
+df:patient_id_field rdf:type owl:Class .
+df:patient_id_field rdfs:subClassOf ds:data_field .
+df:tooth_field rdf:type owl:Class .
+df:tooth_field rdfs:subClassOf ds:data_field .
+df:surface_field rdf:type owl:Class .
+df:surface_field rdfs:subClassOf ds:data_field .
+df:provider_id_field rdf:type owl:Class .
+df:provider_id_field rdfs:subClassOf ds:data_field .
+
+# axioms to create data record class
+dr:services_1_record rdf:type owl:Class .
+dr:services_1_record rdfs:subClassOf ds:data_record .
+# axioms to create data records and fields
+# axioms to create dr:data_record_1_i
+dr:data_record_1_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_1_i
+df:service_id_field_1_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "1";
+   op:service_id_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_service_id df:service_id_field_1_i .  
+
+df:service_code_field_1_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2330";
+   op:service_code_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_service_code df:service_code_field_1_i .  
+
+df:service_date_field_1_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-01-01";
+   op:service_date_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_service_date df:service_date_field_1_i .  
+
+df:patient_id_field_1_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10001";
+   op:patient_id_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_patient_id df:patient_id_field_1_i .  
+
+df:tooth_field_1_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "1";
+   op:tooth_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_tooth df:tooth_field_1_i .  
+
+df:surface_field_1_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "o";
+   op:surface_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_surface df:surface_field_1_i .  
+
+df:provider_id_field_1_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "1";
+   op:provider_id_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_provider_id df:provider_id_field_1_i .  
+
+# axioms to create dr:data_record_2_i
+dr:data_record_2_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_2_i
+df:service_id_field_2_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "2";
+   op:service_id_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_service_id df:service_id_field_2_i .  
+
+df:service_code_field_2_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2331";
+   op:service_code_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_service_code df:service_code_field_2_i .  
+
+df:service_date_field_2_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-02-01";
+   op:service_date_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_service_date df:service_date_field_2_i .  
+
+df:patient_id_field_2_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10002";
+   op:patient_id_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_patient_id df:patient_id_field_2_i .  
+
+df:tooth_field_2_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "2";
+   op:tooth_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_tooth df:tooth_field_2_i .  
+
+df:surface_field_2_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "mo";
+   op:surface_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_surface df:surface_field_2_i .  
+
+df:provider_id_field_2_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "2";
+   op:provider_id_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_provider_id df:provider_id_field_2_i .  
+
+# axioms to create dr:data_record_3_i
+dr:data_record_3_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_3_i
+df:service_id_field_3_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "3";
+   op:service_id_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_service_id df:service_id_field_3_i .  
+
+df:service_code_field_3_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2332";
+   op:service_code_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_service_code df:service_code_field_3_i .  
+
+df:service_date_field_3_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-03-01";
+   op:service_date_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_service_date df:service_date_field_3_i .  
+
+df:patient_id_field_3_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10003";
+   op:patient_id_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_patient_id df:patient_id_field_3_i .  
+
+df:tooth_field_3_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "3";
+   op:tooth_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_tooth df:tooth_field_3_i .  
+
+df:surface_field_3_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "mol";
+   op:surface_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_surface df:surface_field_3_i .  
+
+df:provider_id_field_3_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "3";
+   op:provider_id_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_provider_id df:provider_id_field_3_i .  
+
+# axioms to create dr:data_record_4_i
+dr:data_record_4_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_4_i
+df:service_id_field_4_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "4";
+   op:service_id_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_service_id df:service_id_field_4_i .  
+
+df:service_code_field_4_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2335";
+   op:service_code_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_service_code df:service_code_field_4_i .  
+
+df:service_date_field_4_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-04-01";
+   op:service_date_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_service_date df:service_date_field_4_i .  
+
+df:patient_id_field_4_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10004";
+   op:patient_id_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_patient_id df:patient_id_field_4_i .  
+
+df:tooth_field_4_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "1";
+   op:tooth_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_tooth df:tooth_field_4_i .  
+
+df:surface_field_4_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "mofl";
+   op:surface_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_surface df:surface_field_4_i .  
+
+df:provider_id_field_4_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "1";
+   op:provider_id_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_provider_id df:provider_id_field_4_i .  
+
+# axioms to create dr:data_record_5_i
+dr:data_record_5_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_5_i
+df:service_id_field_5_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "5";
+   op:service_id_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_service_id df:service_id_field_5_i .  
+
+df:service_code_field_5_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2140";
+   op:service_code_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_service_code df:service_code_field_5_i .  
+
+df:service_date_field_5_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-05-01";
+   op:service_date_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_service_date df:service_date_field_5_i .  
+
+df:patient_id_field_5_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10005";
+   op:patient_id_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_patient_id df:patient_id_field_5_i .  
+
+df:tooth_field_5_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "2";
+   op:tooth_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_tooth df:tooth_field_5_i .  
+
+df:surface_field_5_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "m";
+   op:surface_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_surface df:surface_field_5_i .  
+
+df:provider_id_field_5_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "2";
+   op:provider_id_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_provider_id df:provider_id_field_5_i .  
+
+# axioms to create dr:data_record_6_i
+dr:data_record_6_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_6_i
+df:service_id_field_6_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "6";
+   op:service_id_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_service_id df:service_id_field_6_i .  
+
+df:service_code_field_6_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2150";
+   op:service_code_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_service_code df:service_code_field_6_i .  
+
+df:service_date_field_6_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-06-01";
+   op:service_date_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_service_date df:service_date_field_6_i .  
+
+df:patient_id_field_6_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10006";
+   op:patient_id_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_patient_id df:patient_id_field_6_i .  
+
+df:tooth_field_6_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "3";
+   op:tooth_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_tooth df:tooth_field_6_i .  
+
+df:surface_field_6_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "mo";
+   op:surface_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_surface df:surface_field_6_i .  
+
+df:provider_id_field_6_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "3";
+   op:provider_id_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_provider_id df:provider_id_field_6_i .  
+
+# axioms to create dr:data_record_7_i
+dr:data_record_7_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_7_i
+df:service_id_field_7_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "7";
+   op:service_id_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_service_id df:service_id_field_7_i .  
+
+df:service_code_field_7_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2160";
+   op:service_code_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_service_code df:service_code_field_7_i .  
+
+df:service_date_field_7_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-07-01";
+   op:service_date_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_service_date df:service_date_field_7_i .  
+
+df:patient_id_field_7_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10007";
+   op:patient_id_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_patient_id df:patient_id_field_7_i .  
+
+df:tooth_field_7_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "1";
+   op:tooth_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_tooth df:tooth_field_7_i .  
+
+df:surface_field_7_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "mod";
+   op:surface_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_surface df:surface_field_7_i .  
+
+df:provider_id_field_7_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "1";
+   op:provider_id_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_provider_id df:provider_id_field_7_i .  
+
+# axioms to create dr:data_record_8_i
+dr:data_record_8_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_8_i
+df:service_id_field_8_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "8";
+   op:service_id_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_service_id df:service_id_field_8_i .  
+
+df:service_code_field_8_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2161";
+   op:service_code_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_service_code df:service_code_field_8_i .  
+
+df:service_date_field_8_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-08-01";
+   op:service_date_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_service_date df:service_date_field_8_i .  
+
+df:patient_id_field_8_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10008";
+   op:patient_id_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_patient_id df:patient_id_field_8_i .  
+
+df:tooth_field_8_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "2";
+   op:tooth_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_tooth df:tooth_field_8_i .  
+
+df:surface_field_8_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "modl";
+   op:surface_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_surface df:surface_field_8_i .  
+
+df:provider_id_field_8_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "2";
+   op:provider_id_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_provider_id df:provider_id_field_8_i .  
+
+# axioms to create dr:data_record_9_i
+dr:data_record_9_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_9_i
+df:service_id_field_9_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "9";
+   op:service_id_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_service_id df:service_id_field_9_i .  
+
+df:service_code_field_9_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2330";
+   op:service_code_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_service_code df:service_code_field_9_i .  
+
+df:service_date_field_9_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-09-01";
+   op:service_date_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_service_date df:service_date_field_9_i .  
+
+df:patient_id_field_9_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10009";
+   op:patient_id_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_patient_id df:patient_id_field_9_i .  
+
+df:tooth_field_9_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "3";
+   op:tooth_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_tooth df:tooth_field_9_i .  
+
+df:surface_field_9_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "d";
+   op:surface_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_surface df:surface_field_9_i .  
+
+df:provider_id_field_9_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "3";
+   op:provider_id_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_provider_id df:provider_id_field_9_i .  
+
+# axioms to create dr:data_record_10_i
+dr:data_record_10_i 
+     rdf:type owl:NamedIndividual, dr:services_1_record; 
+     ds:data_record_of <spreadsheet/services_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_10_i
+df:service_id_field_10_i 
+   rdf:type owl:NamedIndividual, df:service_id_field; 
+   ds:has_value "10";
+   op:service_id_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_service_id df:service_id_field_10_i .  
+
+df:service_code_field_10_i 
+   rdf:type owl:NamedIndividual, df:service_code_field; 
+   ds:has_value "D2140";
+   op:service_code_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_service_code df:service_code_field_10_i .  
+
+df:service_date_field_10_i 
+   rdf:type owl:NamedIndividual, df:service_date_field; 
+   ds:has_value "2013-10-01";
+   op:service_date_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_service_date df:service_date_field_10_i .  
+
+df:patient_id_field_10_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10010";
+   op:patient_id_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_patient_id df:patient_id_field_10_i .  
+
+df:tooth_field_10_i 
+   rdf:type owl:NamedIndividual, df:tooth_field; 
+   ds:has_value "4";
+   op:tooth_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_tooth df:tooth_field_10_i .  
+
+df:surface_field_10_i 
+   rdf:type owl:NamedIndividual, df:surface_field; 
+   ds:has_value "o";
+   op:surface_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_surface df:surface_field_10_i .  
+
+df:provider_id_field_10_i 
+   rdf:type owl:NamedIndividual, df:provider_id_field; 
+   ds:has_value "1";
+   op:provider_id_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_provider_id df:provider_id_field_10_i .  
+

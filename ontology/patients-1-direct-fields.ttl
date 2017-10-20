@@ -1,0 +1,340 @@
+# axioms for prefixes
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# custom prefixes
+@base <http://purl.obolibrary.org/obo/data-source/patients_1/> .
+@prefix : <http://purl.obolibrary.org/obo/data-source/patients_1/> .
+@prefix ds: <http://purl.obolibrary.org/obo/data-source-ontology.owl/> .
+@prefix op: <object_property/> .
+@prefix dp: <data_property/> .
+@prefix df: <data_field/> .
+@prefix dr: <data_record/> .
+
+@prefix data_field: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_field> .
+@prefix data_record: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record> .
+@prefix has_value: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_value> .
+@prefix has_member: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_member> .
+@prefix has_data_field: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_field> .
+@prefix has_data_record: <http://purl.obolibrary.org/obo/data-source-ontology.owl/has_data_record> .
+@prefix member_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/member_of> .
+@prefix data_field_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_field_of> .
+@prefix data_record_of: <http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record_of> .
+
+# ontology uri
+<http://purl.obolibrary.org/obo/data-source/patients_1/patients_1.owl> rdf:type owl:Ontology .
+
+# specified ontology imports
+<http://purl.obolibrary.org/obo/data-source/patients_1/patients_1.owl> owl:imports <http://purl.obolibrary.org/obo/data-source-ontology.owl> . 
+
+## specify data source
+<http://purl.obolibrary.org/obo/data-source/patients_1/spreadsheet/patients_1> rdf:type owl:NamedIndividual, ds:spreadsheet .
+
+
+# axioms to create field specific object properties
+
+# axioms to create object properties
+op:has_patient_id rdf:type owl:ObjectProperty .
+op:has_patient_id rdfs:subPropertyOf ds:has_data_field .
+op:patient_id_of rdf:type owl:ObjectProperty .
+op:patient_id_of rdfs:subPropertyOf ds:data_field_of .
+op:has_gender rdf:type owl:ObjectProperty .
+op:has_gender rdfs:subPropertyOf ds:has_data_field .
+op:gender_of rdf:type owl:ObjectProperty .
+op:gender_of rdfs:subPropertyOf ds:data_field_of .
+op:has_birth_date rdf:type owl:ObjectProperty .
+op:has_birth_date rdfs:subPropertyOf ds:has_data_field .
+op:birth_date_of rdf:type owl:ObjectProperty .
+op:birth_date_of rdfs:subPropertyOf ds:data_field_of .
+
+# axioms to create data field classes
+
+# axioms to data field classes
+df:patient_id_field rdf:type owl:Class .
+df:patient_id_field rdfs:subClassOf ds:data_field .
+df:gender_field rdf:type owl:Class .
+df:gender_field rdfs:subClassOf ds:data_field .
+df:birth_date_field rdf:type owl:Class .
+df:birth_date_field rdfs:subClassOf ds:data_field .
+
+# axioms to create data record class
+dr:patients_1_record rdf:type owl:Class .
+dr:patients_1_record rdfs:subClassOf ds:data_record .
+# axioms to create data records and fields
+# axioms to create dr:data_record_1_i
+dr:data_record_1_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_1_i
+df:patient_id_field_1_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10001";
+   op:patient_id_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_patient_id df:patient_id_field_1_i .  
+
+df:gender_field_1_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "M";
+   op:gender_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_gender df:gender_field_1_i .  
+
+df:birth_date_field_1_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1950-01-01";
+   op:birth_date_of dr:data_record_1_i .
+dr:data_record_1_i 
+   op:has_birth_date df:birth_date_field_1_i .  
+
+# axioms to create dr:data_record_2_i
+dr:data_record_2_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_2_i
+df:patient_id_field_2_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10002";
+   op:patient_id_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_patient_id df:patient_id_field_2_i .  
+
+df:gender_field_2_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "F";
+   op:gender_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_gender df:gender_field_2_i .  
+
+df:birth_date_field_2_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1960-01-02";
+   op:birth_date_of dr:data_record_2_i .
+dr:data_record_2_i 
+   op:has_birth_date df:birth_date_field_2_i .  
+
+# axioms to create dr:data_record_3_i
+dr:data_record_3_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_3_i
+df:patient_id_field_3_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10003";
+   op:patient_id_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_patient_id df:patient_id_field_3_i .  
+
+df:gender_field_3_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "M";
+   op:gender_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_gender df:gender_field_3_i .  
+
+df:birth_date_field_3_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1970-01-03";
+   op:birth_date_of dr:data_record_3_i .
+dr:data_record_3_i 
+   op:has_birth_date df:birth_date_field_3_i .  
+
+# axioms to create dr:data_record_4_i
+dr:data_record_4_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_4_i
+df:patient_id_field_4_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10004";
+   op:patient_id_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_patient_id df:patient_id_field_4_i .  
+
+df:gender_field_4_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "F";
+   op:gender_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_gender df:gender_field_4_i .  
+
+df:birth_date_field_4_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1980-01-04";
+   op:birth_date_of dr:data_record_4_i .
+dr:data_record_4_i 
+   op:has_birth_date df:birth_date_field_4_i .  
+
+# axioms to create dr:data_record_5_i
+dr:data_record_5_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_5_i
+df:patient_id_field_5_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10005";
+   op:patient_id_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_patient_id df:patient_id_field_5_i .  
+
+df:gender_field_5_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "M";
+   op:gender_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_gender df:gender_field_5_i .  
+
+df:birth_date_field_5_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1990-01-05";
+   op:birth_date_of dr:data_record_5_i .
+dr:data_record_5_i 
+   op:has_birth_date df:birth_date_field_5_i .  
+
+# axioms to create dr:data_record_6_i
+dr:data_record_6_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_6_i
+df:patient_id_field_6_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10006";
+   op:patient_id_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_patient_id df:patient_id_field_6_i .  
+
+df:gender_field_6_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "F";
+   op:gender_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_gender df:gender_field_6_i .  
+
+df:birth_date_field_6_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1955-01-06";
+   op:birth_date_of dr:data_record_6_i .
+dr:data_record_6_i 
+   op:has_birth_date df:birth_date_field_6_i .  
+
+# axioms to create dr:data_record_7_i
+dr:data_record_7_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_7_i
+df:patient_id_field_7_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10007";
+   op:patient_id_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_patient_id df:patient_id_field_7_i .  
+
+df:gender_field_7_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "M";
+   op:gender_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_gender df:gender_field_7_i .  
+
+df:birth_date_field_7_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1965-01-07";
+   op:birth_date_of dr:data_record_7_i .
+dr:data_record_7_i 
+   op:has_birth_date df:birth_date_field_7_i .  
+
+# axioms to create dr:data_record_8_i
+dr:data_record_8_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_8_i
+df:patient_id_field_8_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10008";
+   op:patient_id_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_patient_id df:patient_id_field_8_i .  
+
+df:gender_field_8_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "F";
+   op:gender_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_gender df:gender_field_8_i .  
+
+df:birth_date_field_8_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1975-01-08";
+   op:birth_date_of dr:data_record_8_i .
+dr:data_record_8_i 
+   op:has_birth_date df:birth_date_field_8_i .  
+
+# axioms to create dr:data_record_9_i
+dr:data_record_9_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_9_i
+df:patient_id_field_9_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10009";
+   op:patient_id_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_patient_id df:patient_id_field_9_i .  
+
+df:gender_field_9_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "M";
+   op:gender_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_gender df:gender_field_9_i .  
+
+df:birth_date_field_9_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1985-01-09";
+   op:birth_date_of dr:data_record_9_i .
+dr:data_record_9_i 
+   op:has_birth_date df:birth_date_field_9_i .  
+
+# axioms to create dr:data_record_10_i
+dr:data_record_10_i 
+     rdf:type owl:NamedIndividual, dr:patients_1_record; 
+     ds:data_record_of <spreadsheet/patients_1.xlsx> .
+
+# axioms to create data fields for dr:data_record_10_i
+df:patient_id_field_10_i 
+   rdf:type owl:NamedIndividual, df:patient_id_field; 
+   ds:has_value "10010";
+   op:patient_id_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_patient_id df:patient_id_field_10_i .  
+
+df:gender_field_10_i 
+   rdf:type owl:NamedIndividual, df:gender_field; 
+   ds:has_value "F";
+   op:gender_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_gender df:gender_field_10_i .  
+
+df:birth_date_field_10_i 
+   rdf:type owl:NamedIndividual, df:birth_date_field; 
+   ds:has_value "1995-01-10";
+   op:birth_date_of dr:data_record_10_i .
+dr:data_record_10_i 
+   op:has_birth_date df:birth_date_field_10_i .  
+
