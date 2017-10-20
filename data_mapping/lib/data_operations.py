@@ -32,6 +32,9 @@ def print_function_output(print_flag=True):
 
     return decorator
 
+def get_source_name_from_file(filepath, remove_ext=True):
+    return get_table_name_from_file(filepath, remove_ext)
+
 
 def get_table_name_from_file(filepath, remove_ext=True):
     if remove_ext:
