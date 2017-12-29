@@ -77,8 +77,6 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_quality">
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/quality_of"/>
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:04:58Z</dc:date>
     </owl:ObjectProperty>
     
 

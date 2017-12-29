@@ -270,16 +270,6 @@ https://wiki.nci.nih.gov/display/caDSR/CTEP+Common+Data+Elements</rdfs:comment>
     
 
 
-    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/data -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data">
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:42:26Z</dc:date>
-        <rdfs:comment>a collect of one or more data items</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/data_element_definition -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_element_definition">
@@ -326,14 +316,14 @@ https://wiki.nci.nih.gov/display/caDSR/CTEP+Common+Data+Elements</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/dataset"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_record_of"/>
                 <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_source"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>data that is organized (or structured) into one or more data fields; typically a data record is a single row, but not always
+        <rdfs:comment>a dataset that is organized (or structured) into one or more data fields; typically a data record is a single row, but not always
 
 https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
     </owl:Class>
@@ -392,6 +382,16 @@ https://en.wiktionary.org/wiki/value_domain</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/data-source-ontology.owl/data_schema"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:30:54Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/data-source-ontology.owl/dataset -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/data-source-ontology.owl/dataset">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:42:26Z</dc:date>
+        <rdfs:comment>a collect of one or more data items</rdfs:comment>
     </owl:Class>
     
 
