@@ -1,0 +1,10 @@
+{
+	"field":
+	{
+		"type": "individual",
+		"uri_tpl": "http://www.example.com/field/{value}",
+		"instance_of": "..."
+	}
+
+
+}
