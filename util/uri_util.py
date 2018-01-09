@@ -23,7 +23,7 @@ def make_uri_map(filename):
 def write_uri_map(uri_map, filename='uri_map.txt'):
     # save label2uri to file
     with open(filename, 'w') as f:
-        f.write(str(uri_map)) # note: label2uri is converted to string
+        f.write(str(uri_map)) # note: uri_map is converted to string
 
 
 def load_uri_map(force=False, filepath=__file__, filename='uri_map.txt'):

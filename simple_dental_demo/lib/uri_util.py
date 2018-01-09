@@ -23,22 +23,17 @@ def make_uri_map(filename):
 def write_uri_map(uri_map, filename='uri_map.txt'):
     # save label2uri to file
     with open(filename, 'w') as f:
-        f.write(str(uri_map)) # note: label2uri is converted to string
+        f.write(str(uri_map)) # note: uri_map is converted to string
 
 
-def load_uri_map(force=False, filepath=__file__, filename='uri_map.txt'):
-    # create and the lable2uri under the following two coditions:
+def load_uri_map(force=False, filename='uri_map.txt'):
+    # create and the uri_map under the following two coditions:
     # the file does NOT exist OR force is True
     # uri_map_full_name = os.path.join(filepath, filename)
     uri_map_full_name = os.path.join(os.path.abspath('.'), filename)
     if force == True or os.path.exists(uri_map_full_name) == False:
-        # print "creating map"
-        # make the uri_map map
         uri_map = make_uri_map()
-
-        # write uri_map to file
-        write_uri_map(uri_map, uri_map_full_name)
-
+        write_uri_map(uri_map, uri_map_full_name) # write uri_map to file
     # otherwise read uri_map from file
     else:
         # print "load from file"
