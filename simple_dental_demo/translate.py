@@ -34,15 +34,18 @@ def translate_patients(data_file='lib/patients_1.xlsx',
             if print_ttl == True: print value_str
             if save_ttl == True: f.write(value_str)
 
+        # output prefixes
+        output(ttl_prefixes())
+
         slice = df[['patient_id', 'patient_uri', 'gender_uri', 'gender_class_uri', 'birth_date']]
         for (idx, patient_id, puri, guri, gclass, dob) in slice.itertuples():
             # create patient triples
-            label = """ "patient {0}" """.format(str(patient_id))
+            label = """patient {0}""".format(str(patient_id))
             output(ttl_declare_individual(puri, ":patient", label))
             output(ttl_birth_date(puri, dob) + "\n") # patient's birth date
 
             # create gender triples
-            label = """ "patient {0} gender" """.format(str(patient_id))
+            label = """patient {0} gender""".format(str(patient_id))
             output(ttl_declare_individual(guri, gclass, label))
             output(ttl_has_quality(puri, guri) + "\n") # relate gender to patient
 
@@ -107,6 +110,10 @@ def translate_services(data_file='lib/services_1.xlsx',
             if print_ttl == True: print value_str
             if save_ttl == True: f.write(value_str)
 
+        # output prefixes
+        output(ttl_prefixes())
+
+
         slice = \
             df[['patient_id','provider_id', 'tooth',
                 'surface', 'service_code', 'service_date',
@@ -165,5 +172,5 @@ def translate_services(data_file='lib/services_1.xlsx',
 
     return df
 
-# translate_patients()
+translate_patients(save_ttl=True)
 translate_services(save_ttl=True)

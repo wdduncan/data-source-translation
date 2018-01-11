@@ -8,7 +8,7 @@ def ttl_prefixes(base="", ontology_uri=""):
 
     # create uri for ontology
     if ontology_uri.strip() == "":
-        ontology_uri = "http://purl.obolibrary.org/obo/simple-dental-ontology.owl/translate"
+        ontology_uri = "http://purl.obolibrary.org/obo/simple-dental-ontology.owl/translate.owl"
 
     ttl = dedent("""\
         # axioms for prefixes
@@ -24,7 +24,7 @@ def ttl_prefixes(base="", ontology_uri=""):
         
         # custom prefixes
         @base <{0}/> .
-        @prefix : <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> 
+        @prefix : <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> . 
         
         # ontology uri
         <{1}> rdf:type owl:Ontology .
