@@ -1,0 +1,316 @@
+# axioms for prefixes
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# custom prefixes
+@base <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> .
+@prefix : <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> . 
+
+# ontology uri
+<http://purl.obolibrary.org/obo/simple-dental-ontology.owl/translate.owl> rdf:type owl:Ontology .
+
+<provider/1> rdf:type owl:NamedInvidual, :provider .
+<provider/1> rdfs:label "provider 1" .
+<procedure/1> rdf:type owl:NamedInvidual, :procedure .
+<procedure/1> rdfs:label "provider 1" .
+<procedure/1/service_code/D2330> rdf:type owl:NamedInvidual, :D2330 .
+<procedure/1/service_code/D2330> rdfs:label "D2330" .
+<patient/10001/tooth/1> rdf:type owl:NamedInvidual, :tooth_1 .
+<patient/10001/tooth/1> rdfs:label "tooth 1 of patient 10001" .
+<patient/10001/tooth/1/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10001/tooth/1/surface/o> rdfs:label "occlusal surface of tooth 1 in patient 10001" .
+<material/D2330/1> rdf:type owl:NamedInvidual, :resin .
+<material/D2330/1> rdfs:label "resin placed in tooth 1 of patient 10001" .
+
+<procedure/1> :service_date "2013-01-01"^^xsd:date .
+<procedure/1> :has_participant <patient/10001> .
+<procedure/1> :has_participant <provider/1> .
+<procedure/1> :has_participant <patient/10001/tooth/1> .
+<procedure/1> :has_participant <material/D2330/1> .
+
+<material/D2330/1> :part_of <patient/10001/tooth/1/surface/o> .
+<patient/10001/tooth/1/surface/o> :part_of <patient/10001/tooth/1> .
+<patient/10001/tooth/1> :part_of <patient/10001> .
+
+<procedure/1/service_code/D2330> :is_about <procedure/1> .
+
+<provider/2> rdf:type owl:NamedInvidual, :provider .
+<provider/2> rdfs:label "provider 2" .
+<procedure/2> rdf:type owl:NamedInvidual, :procedure .
+<procedure/2> rdfs:label "provider 2" .
+<procedure/2/service_code/D2331> rdf:type owl:NamedInvidual, :D2331 .
+<procedure/2/service_code/D2331> rdfs:label "D2331" .
+<patient/10002/tooth/2> rdf:type owl:NamedInvidual, :tooth_2 .
+<patient/10002/tooth/2> rdfs:label "tooth 2 of patient 10002" .
+<patient/10002/tooth/2/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10002/tooth/2/surface/m> rdfs:label "mesial surface of tooth 2 in patient 10002" .
+<patient/10002/tooth/2/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10002/tooth/2/surface/o> rdfs:label "occlusal surface of tooth 2 in patient 10002" .
+<material/D2331/2> rdf:type owl:NamedInvidual, :resin .
+<material/D2331/2> rdfs:label "resin placed in tooth 2 of patient 10002" .
+
+<procedure/2> :service_date "2013-02-01"^^xsd:date .
+<procedure/2> :has_participant <patient/10002> .
+<procedure/2> :has_participant <provider/2> .
+<procedure/2> :has_participant <patient/10002/tooth/2> .
+<procedure/2> :has_participant <material/D2331/2> .
+
+<material/D2331/2> :part_of <patient/10002/tooth/2/surface/m> .
+<patient/10002/tooth/2/surface/m> :part_of <patient/10002/tooth/2> .
+<material/D2331/2> :part_of <patient/10002/tooth/2/surface/o> .
+<patient/10002/tooth/2/surface/o> :part_of <patient/10002/tooth/2> .
+<patient/10002/tooth/2> :part_of <patient/10002> .
+
+<procedure/2/service_code/D2331> :is_about <procedure/2> .
+
+<provider/3> rdf:type owl:NamedInvidual, :provider .
+<provider/3> rdfs:label "provider 3" .
+<procedure/3> rdf:type owl:NamedInvidual, :procedure .
+<procedure/3> rdfs:label "provider 3" .
+<procedure/3/service_code/D2332> rdf:type owl:NamedInvidual, :D2332 .
+<procedure/3/service_code/D2332> rdfs:label "D2332" .
+<patient/10003/tooth/3> rdf:type owl:NamedInvidual, :tooth_3 .
+<patient/10003/tooth/3> rdfs:label "tooth 3 of patient 10003" .
+<patient/10003/tooth/3/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10003/tooth/3/surface/m> rdfs:label "mesial surface of tooth 3 in patient 10003" .
+<patient/10003/tooth/3/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10003/tooth/3/surface/o> rdfs:label "occlusal surface of tooth 3 in patient 10003" .
+<patient/10003/tooth/3/surface/l> rdf:type owl:NamedInvidual, :lingual .
+<patient/10003/tooth/3/surface/l> rdfs:label "lingual surface of tooth 3 in patient 10003" .
+<material/D2332/3> rdf:type owl:NamedInvidual, :resin .
+<material/D2332/3> rdfs:label "resin placed in tooth 3 of patient 10003" .
+
+<procedure/3> :service_date "2013-03-01"^^xsd:date .
+<procedure/3> :has_participant <patient/10003> .
+<procedure/3> :has_participant <provider/3> .
+<procedure/3> :has_participant <patient/10003/tooth/3> .
+<procedure/3> :has_participant <material/D2332/3> .
+
+<material/D2332/3> :part_of <patient/10003/tooth/3/surface/m> .
+<patient/10003/tooth/3/surface/m> :part_of <patient/10003/tooth/3> .
+<material/D2332/3> :part_of <patient/10003/tooth/3/surface/o> .
+<patient/10003/tooth/3/surface/o> :part_of <patient/10003/tooth/3> .
+<material/D2332/3> :part_of <patient/10003/tooth/3/surface/l> .
+<patient/10003/tooth/3/surface/l> :part_of <patient/10003/tooth/3> .
+<patient/10003/tooth/3> :part_of <patient/10003> .
+
+<procedure/3/service_code/D2332> :is_about <procedure/3> .
+
+<provider/1> rdf:type owl:NamedInvidual, :provider .
+<provider/1> rdfs:label "provider 1" .
+<procedure/4> rdf:type owl:NamedInvidual, :procedure .
+<procedure/4> rdfs:label "provider 1" .
+<procedure/4/service_code/D2335> rdf:type owl:NamedInvidual, :D2335 .
+<procedure/4/service_code/D2335> rdfs:label "D2335" .
+<patient/10004/tooth/1> rdf:type owl:NamedInvidual, :tooth_1 .
+<patient/10004/tooth/1> rdfs:label "tooth 1 of patient 10004" .
+<patient/10004/tooth/1/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10004/tooth/1/surface/m> rdfs:label "mesial surface of tooth 1 in patient 10004" .
+<patient/10004/tooth/1/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10004/tooth/1/surface/o> rdfs:label "occlusal surface of tooth 1 in patient 10004" .
+<patient/10004/tooth/1/surface/f> rdf:type owl:NamedInvidual, :facial .
+<patient/10004/tooth/1/surface/f> rdfs:label "facial surface of tooth 1 in patient 10004" .
+<patient/10004/tooth/1/surface/l> rdf:type owl:NamedInvidual, :lingual .
+<patient/10004/tooth/1/surface/l> rdfs:label "lingual surface of tooth 1 in patient 10004" .
+<material/D2335/4> rdf:type owl:NamedInvidual, :resin .
+<material/D2335/4> rdfs:label "resin placed in tooth 1 of patient 10004" .
+
+<procedure/4> :service_date "2013-04-01"^^xsd:date .
+<procedure/4> :has_participant <patient/10004> .
+<procedure/4> :has_participant <provider/1> .
+<procedure/4> :has_participant <patient/10004/tooth/1> .
+<procedure/4> :has_participant <material/D2335/4> .
+
+<material/D2335/4> :part_of <patient/10004/tooth/1/surface/m> .
+<patient/10004/tooth/1/surface/m> :part_of <patient/10004/tooth/1> .
+<material/D2335/4> :part_of <patient/10004/tooth/1/surface/o> .
+<patient/10004/tooth/1/surface/o> :part_of <patient/10004/tooth/1> .
+<material/D2335/4> :part_of <patient/10004/tooth/1/surface/f> .
+<patient/10004/tooth/1/surface/f> :part_of <patient/10004/tooth/1> .
+<material/D2335/4> :part_of <patient/10004/tooth/1/surface/l> .
+<patient/10004/tooth/1/surface/l> :part_of <patient/10004/tooth/1> .
+<patient/10004/tooth/1> :part_of <patient/10004> .
+
+<procedure/4/service_code/D2335> :is_about <procedure/4> .
+
+<provider/2> rdf:type owl:NamedInvidual, :provider .
+<provider/2> rdfs:label "provider 2" .
+<procedure/5> rdf:type owl:NamedInvidual, :procedure .
+<procedure/5> rdfs:label "provider 2" .
+<procedure/5/service_code/D2140> rdf:type owl:NamedInvidual, :D2140 .
+<procedure/5/service_code/D2140> rdfs:label "D2140" .
+<patient/10005/tooth/2> rdf:type owl:NamedInvidual, :tooth_2 .
+<patient/10005/tooth/2> rdfs:label "tooth 2 of patient 10005" .
+<patient/10005/tooth/2/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10005/tooth/2/surface/m> rdfs:label "mesial surface of tooth 2 in patient 10005" .
+<material/D2140/5> rdf:type owl:NamedInvidual, :amalagam .
+<material/D2140/5> rdfs:label "amalagam placed in tooth 2 of patient 10005" .
+
+<procedure/5> :service_date "2013-05-01"^^xsd:date .
+<procedure/5> :has_participant <patient/10005> .
+<procedure/5> :has_participant <provider/2> .
+<procedure/5> :has_participant <patient/10005/tooth/2> .
+<procedure/5> :has_participant <material/D2140/5> .
+
+<material/D2140/5> :part_of <patient/10005/tooth/2/surface/m> .
+<patient/10005/tooth/2/surface/m> :part_of <patient/10005/tooth/2> .
+<patient/10005/tooth/2> :part_of <patient/10005> .
+
+<procedure/5/service_code/D2140> :is_about <procedure/5> .
+
+<provider/3> rdf:type owl:NamedInvidual, :provider .
+<provider/3> rdfs:label "provider 3" .
+<procedure/6> rdf:type owl:NamedInvidual, :procedure .
+<procedure/6> rdfs:label "provider 3" .
+<procedure/6/service_code/D2150> rdf:type owl:NamedInvidual, :D2150 .
+<procedure/6/service_code/D2150> rdfs:label "D2150" .
+<patient/10006/tooth/3> rdf:type owl:NamedInvidual, :tooth_3 .
+<patient/10006/tooth/3> rdfs:label "tooth 3 of patient 10006" .
+<patient/10006/tooth/3/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10006/tooth/3/surface/m> rdfs:label "mesial surface of tooth 3 in patient 10006" .
+<patient/10006/tooth/3/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10006/tooth/3/surface/o> rdfs:label "occlusal surface of tooth 3 in patient 10006" .
+<material/D2150/6> rdf:type owl:NamedInvidual, :amalagam .
+<material/D2150/6> rdfs:label "amalagam placed in tooth 3 of patient 10006" .
+
+<procedure/6> :service_date "2013-06-01"^^xsd:date .
+<procedure/6> :has_participant <patient/10006> .
+<procedure/6> :has_participant <provider/3> .
+<procedure/6> :has_participant <patient/10006/tooth/3> .
+<procedure/6> :has_participant <material/D2150/6> .
+
+<material/D2150/6> :part_of <patient/10006/tooth/3/surface/m> .
+<patient/10006/tooth/3/surface/m> :part_of <patient/10006/tooth/3> .
+<material/D2150/6> :part_of <patient/10006/tooth/3/surface/o> .
+<patient/10006/tooth/3/surface/o> :part_of <patient/10006/tooth/3> .
+<patient/10006/tooth/3> :part_of <patient/10006> .
+
+<procedure/6/service_code/D2150> :is_about <procedure/6> .
+
+<provider/1> rdf:type owl:NamedInvidual, :provider .
+<provider/1> rdfs:label "provider 1" .
+<procedure/7> rdf:type owl:NamedInvidual, :procedure .
+<procedure/7> rdfs:label "provider 1" .
+<procedure/7/service_code/D2160> rdf:type owl:NamedInvidual, :D2160 .
+<procedure/7/service_code/D2160> rdfs:label "D2160" .
+<patient/10007/tooth/1> rdf:type owl:NamedInvidual, :tooth_1 .
+<patient/10007/tooth/1> rdfs:label "tooth 1 of patient 10007" .
+<patient/10007/tooth/1/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10007/tooth/1/surface/m> rdfs:label "mesial surface of tooth 1 in patient 10007" .
+<patient/10007/tooth/1/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10007/tooth/1/surface/o> rdfs:label "occlusal surface of tooth 1 in patient 10007" .
+<patient/10007/tooth/1/surface/d> rdf:type owl:NamedInvidual, :distal .
+<patient/10007/tooth/1/surface/d> rdfs:label "distal surface of tooth 1 in patient 10007" .
+<material/D2160/7> rdf:type owl:NamedInvidual, :amalagam .
+<material/D2160/7> rdfs:label "amalagam placed in tooth 1 of patient 10007" .
+
+<procedure/7> :service_date "2013-07-01"^^xsd:date .
+<procedure/7> :has_participant <patient/10007> .
+<procedure/7> :has_participant <provider/1> .
+<procedure/7> :has_participant <patient/10007/tooth/1> .
+<procedure/7> :has_participant <material/D2160/7> .
+
+<material/D2160/7> :part_of <patient/10007/tooth/1/surface/m> .
+<patient/10007/tooth/1/surface/m> :part_of <patient/10007/tooth/1> .
+<material/D2160/7> :part_of <patient/10007/tooth/1/surface/o> .
+<patient/10007/tooth/1/surface/o> :part_of <patient/10007/tooth/1> .
+<material/D2160/7> :part_of <patient/10007/tooth/1/surface/d> .
+<patient/10007/tooth/1/surface/d> :part_of <patient/10007/tooth/1> .
+<patient/10007/tooth/1> :part_of <patient/10007> .
+
+<procedure/7/service_code/D2160> :is_about <procedure/7> .
+
+<provider/2> rdf:type owl:NamedInvidual, :provider .
+<provider/2> rdfs:label "provider 2" .
+<procedure/8> rdf:type owl:NamedInvidual, :procedure .
+<procedure/8> rdfs:label "provider 2" .
+<procedure/8/service_code/D2161> rdf:type owl:NamedInvidual, :D2161 .
+<procedure/8/service_code/D2161> rdfs:label "D2161" .
+<patient/10008/tooth/2> rdf:type owl:NamedInvidual, :tooth_2 .
+<patient/10008/tooth/2> rdfs:label "tooth 2 of patient 10008" .
+<patient/10008/tooth/2/surface/m> rdf:type owl:NamedInvidual, :mesial .
+<patient/10008/tooth/2/surface/m> rdfs:label "mesial surface of tooth 2 in patient 10008" .
+<patient/10008/tooth/2/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10008/tooth/2/surface/o> rdfs:label "occlusal surface of tooth 2 in patient 10008" .
+<patient/10008/tooth/2/surface/d> rdf:type owl:NamedInvidual, :distal .
+<patient/10008/tooth/2/surface/d> rdfs:label "distal surface of tooth 2 in patient 10008" .
+<patient/10008/tooth/2/surface/l> rdf:type owl:NamedInvidual, :lingual .
+<patient/10008/tooth/2/surface/l> rdfs:label "lingual surface of tooth 2 in patient 10008" .
+<material/D2161/8> rdf:type owl:NamedInvidual, :amalagam .
+<material/D2161/8> rdfs:label "amalagam placed in tooth 2 of patient 10008" .
+
+<procedure/8> :service_date "2013-08-01"^^xsd:date .
+<procedure/8> :has_participant <patient/10008> .
+<procedure/8> :has_participant <provider/2> .
+<procedure/8> :has_participant <patient/10008/tooth/2> .
+<procedure/8> :has_participant <material/D2161/8> .
+
+<material/D2161/8> :part_of <patient/10008/tooth/2/surface/m> .
+<patient/10008/tooth/2/surface/m> :part_of <patient/10008/tooth/2> .
+<material/D2161/8> :part_of <patient/10008/tooth/2/surface/o> .
+<patient/10008/tooth/2/surface/o> :part_of <patient/10008/tooth/2> .
+<material/D2161/8> :part_of <patient/10008/tooth/2/surface/d> .
+<patient/10008/tooth/2/surface/d> :part_of <patient/10008/tooth/2> .
+<material/D2161/8> :part_of <patient/10008/tooth/2/surface/l> .
+<patient/10008/tooth/2/surface/l> :part_of <patient/10008/tooth/2> .
+<patient/10008/tooth/2> :part_of <patient/10008> .
+
+<procedure/8/service_code/D2161> :is_about <procedure/8> .
+
+<provider/3> rdf:type owl:NamedInvidual, :provider .
+<provider/3> rdfs:label "provider 3" .
+<procedure/9> rdf:type owl:NamedInvidual, :procedure .
+<procedure/9> rdfs:label "provider 3" .
+<procedure/9/service_code/D2330> rdf:type owl:NamedInvidual, :D2330 .
+<procedure/9/service_code/D2330> rdfs:label "D2330" .
+<patient/10009/tooth/3> rdf:type owl:NamedInvidual, :tooth_3 .
+<patient/10009/tooth/3> rdfs:label "tooth 3 of patient 10009" .
+<patient/10009/tooth/3/surface/d> rdf:type owl:NamedInvidual, :distal .
+<patient/10009/tooth/3/surface/d> rdfs:label "distal surface of tooth 3 in patient 10009" .
+<material/D2330/9> rdf:type owl:NamedInvidual, :resin .
+<material/D2330/9> rdfs:label "resin placed in tooth 3 of patient 10009" .
+
+<procedure/9> :service_date "2013-09-01"^^xsd:date .
+<procedure/9> :has_participant <patient/10009> .
+<procedure/9> :has_participant <provider/3> .
+<procedure/9> :has_participant <patient/10009/tooth/3> .
+<procedure/9> :has_participant <material/D2330/9> .
+
+<material/D2330/9> :part_of <patient/10009/tooth/3/surface/d> .
+<patient/10009/tooth/3/surface/d> :part_of <patient/10009/tooth/3> .
+<patient/10009/tooth/3> :part_of <patient/10009> .
+
+<procedure/9/service_code/D2330> :is_about <procedure/9> .
+
+<provider/1> rdf:type owl:NamedInvidual, :provider .
+<provider/1> rdfs:label "provider 1" .
+<procedure/10> rdf:type owl:NamedInvidual, :procedure .
+<procedure/10> rdfs:label "provider 1" .
+<procedure/10/service_code/D2140> rdf:type owl:NamedInvidual, :D2140 .
+<procedure/10/service_code/D2140> rdfs:label "D2140" .
+<patient/10010/tooth/4> rdf:type owl:NamedInvidual, :tooth_4 .
+<patient/10010/tooth/4> rdfs:label "tooth 4 of patient 10010" .
+<patient/10010/tooth/4/surface/o> rdf:type owl:NamedInvidual, :occlusal .
+<patient/10010/tooth/4/surface/o> rdfs:label "occlusal surface of tooth 4 in patient 10010" .
+<material/D2140/10> rdf:type owl:NamedInvidual, :amalagam .
+<material/D2140/10> rdfs:label "amalagam placed in tooth 4 of patient 10010" .
+
+<procedure/10> :service_date "2013-10-01"^^xsd:date .
+<procedure/10> :has_participant <patient/10010> .
+<procedure/10> :has_participant <provider/1> .
+<procedure/10> :has_participant <patient/10010/tooth/4> .
+<procedure/10> :has_participant <material/D2140/10> .
+
+<material/D2140/10> :part_of <patient/10010/tooth/4/surface/o> .
+<patient/10010/tooth/4/surface/o> :part_of <patient/10010/tooth/4> .
+<patient/10010/tooth/4> :part_of <patient/10010> .
+
+<procedure/10/service_code/D2140> :is_about <procedure/10> .
+

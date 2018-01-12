@@ -172,5 +172,5 @@ def translate_services(data_file='lib/services_1.xlsx',
 
     return df
 
-translate_patients(save_ttl=True)
-translate_services(save_ttl=True)
+translate_patients(data_file='lib/patients_1.xlsx', output_file='output/patients_1.ttl',save_ttl=True)
+translate_services(data_file='lib/services_1.xlsx', output_file='output/services_1.ttl',save_ttl=True)

@@ -1,0 +1,98 @@
+# axioms for prefixes
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# custom prefixes
+@base <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> .
+@prefix : <http://purl.obolibrary.org/obo/simple-dental-ontology.owl/> . 
+
+# ontology uri
+<http://purl.obolibrary.org/obo/simple-dental-ontology.owl/translate.owl> rdf:type owl:Ontology .
+
+<patient/10001> rdf:type owl:NamedInvidual, :patient .
+<patient/10001> rdfs:label "patient 10001" .
+<patient/10001> :birth_date "1950-01-01"^^xsd:date .
+
+<patient/10001/gender/M> rdf:type owl:NamedInvidual, :male_gender .
+<patient/10001/gender/M> rdfs:label "patient 10001 gender" .
+<patient/10001> :has_quality <patient/10001/gender/M> .
+
+<patient/10002> rdf:type owl:NamedInvidual, :patient .
+<patient/10002> rdfs:label "patient 10002" .
+<patient/10002> :birth_date "1960-01-02"^^xsd:date .
+
+<patient/10002/gender/F> rdf:type owl:NamedInvidual, :female_gender .
+<patient/10002/gender/F> rdfs:label "patient 10002 gender" .
+<patient/10002> :has_quality <patient/10002/gender/F> .
+
+<patient/10003> rdf:type owl:NamedInvidual, :patient .
+<patient/10003> rdfs:label "patient 10003" .
+<patient/10003> :birth_date "1970-01-03"^^xsd:date .
+
+<patient/10003/gender/M> rdf:type owl:NamedInvidual, :male_gender .
+<patient/10003/gender/M> rdfs:label "patient 10003 gender" .
+<patient/10003> :has_quality <patient/10003/gender/M> .
+
+<patient/10004> rdf:type owl:NamedInvidual, :patient .
+<patient/10004> rdfs:label "patient 10004" .
+<patient/10004> :birth_date "1980-01-04"^^xsd:date .
+
+<patient/10004/gender/F> rdf:type owl:NamedInvidual, :female_gender .
+<patient/10004/gender/F> rdfs:label "patient 10004 gender" .
+<patient/10004> :has_quality <patient/10004/gender/F> .
+
+<patient/10005> rdf:type owl:NamedInvidual, :patient .
+<patient/10005> rdfs:label "patient 10005" .
+<patient/10005> :birth_date "1990-01-05"^^xsd:date .
+
+<patient/10005/gender/M> rdf:type owl:NamedInvidual, :male_gender .
+<patient/10005/gender/M> rdfs:label "patient 10005 gender" .
+<patient/10005> :has_quality <patient/10005/gender/M> .
+
+<patient/10006> rdf:type owl:NamedInvidual, :patient .
+<patient/10006> rdfs:label "patient 10006" .
+<patient/10006> :birth_date "1955-01-06"^^xsd:date .
+
+<patient/10006/gender/F> rdf:type owl:NamedInvidual, :female_gender .
+<patient/10006/gender/F> rdfs:label "patient 10006 gender" .
+<patient/10006> :has_quality <patient/10006/gender/F> .
+
+<patient/10007> rdf:type owl:NamedInvidual, :patient .
+<patient/10007> rdfs:label "patient 10007" .
+<patient/10007> :birth_date "1965-01-07"^^xsd:date .
+
+<patient/10007/gender/M> rdf:type owl:NamedInvidual, :male_gender .
+<patient/10007/gender/M> rdfs:label "patient 10007 gender" .
+<patient/10007> :has_quality <patient/10007/gender/M> .
+
+<patient/10008> rdf:type owl:NamedInvidual, :patient .
+<patient/10008> rdfs:label "patient 10008" .
+<patient/10008> :birth_date "1975-01-08"^^xsd:date .
+
+<patient/10008/gender/F> rdf:type owl:NamedInvidual, :female_gender .
+<patient/10008/gender/F> rdfs:label "patient 10008 gender" .
+<patient/10008> :has_quality <patient/10008/gender/F> .
+
+<patient/10009> rdf:type owl:NamedInvidual, :patient .
+<patient/10009> rdfs:label "patient 10009" .
+<patient/10009> :birth_date "1985-01-09"^^xsd:date .
+
+<patient/10009/gender/M> rdf:type owl:NamedInvidual, :male_gender .
+<patient/10009/gender/M> rdfs:label "patient 10009 gender" .
+<patient/10009> :has_quality <patient/10009/gender/M> .
+
+<patient/10010> rdf:type owl:NamedInvidual, :patient .
+<patient/10010> rdfs:label "patient 10010" .
+<patient/10010> :birth_date "1995-01-10"^^xsd:date .
+
+<patient/10010/gender/F> rdf:type owl:NamedInvidual, :female_gender .
+<patient/10010/gender/F> rdfs:label "patient 10010 gender" .
+<patient/10010> :has_quality <patient/10010/gender/F> .
+
