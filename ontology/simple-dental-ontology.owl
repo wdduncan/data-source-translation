@@ -52,6 +52,28 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_participant"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/input_into"/>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</obo:IAO_0000117>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-03T03:42:41Z</dc:date>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_output -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_output">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_participant"/>
+        <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/output_of"/>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</obo:IAO_0000117>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-03T03:42:47Z</dc:date>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_part -->
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_part">
@@ -77,6 +99,26 @@
 
     <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_quality">
         <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/quality_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/input_into -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/input_into">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/particpates_in"/>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</obo:IAO_0000117>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-03T03:44:20Z</dc:date>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/output_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/output_of">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/particpates_in"/>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</obo:IAO_0000117>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-03T03:43:36Z</dc:date>
     </owl:ObjectProperty>
     
 
@@ -158,7 +200,7 @@
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/procedure"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_part"/>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input"/>
                         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/amalagam"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -237,6 +279,12 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/gender">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/quality_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/human"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T03:46:25Z</dc:date>
     </owl:Class>
@@ -386,6 +434,18 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/procedure">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/restoration_material"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/tooth"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T03:47:48Z</dc:date>
     </owl:Class>
@@ -420,7 +480,7 @@
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/procedure"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_part"/>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_input"/>
                         <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/resin"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -442,10 +502,36 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/restored_tooth -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/restored_tooth">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/tooth"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/has_part"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/restoration_material"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <obo:IAO_0000117 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</obo:IAO_0000117>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-03T03:47:31Z</dc:date>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/simple-dental-ontology.owl/tooth -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/tooth">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/entity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/part_of"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/simple-dental-ontology.owl/human"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T03:47:52Z</dc:date>
     </owl:Class>

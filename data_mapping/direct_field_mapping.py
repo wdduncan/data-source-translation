@@ -86,7 +86,7 @@ def main(input_file="", output_file="", print_output=True):
 
 
 ################################
-# main()
+main()
 # main("patients_1.xlsx", "output/patients-1-direct-fields.ttl")
 # main("patients_2.xlsx", "output/patients-2-direct-fields.ttl")
 

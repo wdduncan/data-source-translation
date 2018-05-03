@@ -39,12 +39,12 @@ def direct_translation_excel(file_path, base_uri="", ontology_uri="", imports=""
 
 
 def main_direct_translate_excel(reify_fields=False):
-    axioms = direct_translation_excel("patients_1.xlsx", reify_fields=reify_fields)
+    axioms = direct_translation_excel("patients_2.xlsx", reify_fields=reify_fields)
 
     if reify_fields:
-        save_axioms(axioms, "output/patients-1-direct-reify-fields.ttl")
+        save_axioms(axioms, "output/patients-2-direct-reify-fields.ttl")
     else:
-        save_axioms(axioms, "output/patients-1-direct.ttl")
+        save_axioms(axioms, "output/patients-2-direct.ttl")
 
     print_axioms(axioms)
 
