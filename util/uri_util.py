@@ -18,6 +18,19 @@ def make_uri_map(filename):
             short_uri = str(subj.encode('ascii', 'ignore')).lower().split('/')[-1]
             uri_map[short_uri] = str(subj.encode('ascii', 'ignore'))
 
+    # g.parse(filename)
+    # print  g.triples( (None, None, None) )
+    # for subj, obj in g.subject_objects(RDFS.label):
+    for subj, pred, obj in g.triples((None, None, None)):
+            # g.query("select ?subj ?pred ?obj where {?subj <http://www.w3.org/2000/01/rdf-schema#label> ?obj .}"):
+            # g.triples((None, None, None)):
+            # g.query("select ?subj ?pred ?obj where { ?subj rdfs:label ?obj .} limit 100"):
+
+        print (subj, pred, obj)
+        labelx = str(obj.encode('ascii', 'ignore')).lower()
+        print labelx
+        uri_map[labelx] = str(subj.encode('ascii', 'ignore'))
+
     return uri_map
 
 def write_uri_map(uri_map, filename='uri_map.txt'):
@@ -50,5 +63,6 @@ def load_uri_map(force=False, filepath=__file__, filename='uri_map.txt'):
 uri_map = make_uri_map('simple-dental-ontology.owl')
 # print uri_map
 # print uri_map.items()
-print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
-write_uri_map(uri_map)
+# print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
+# write_uri_map(uri_map)
+# print uri_map['restored tooth']

@@ -1,6 +1,7 @@
 import os
 import rdflib
 from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode
+from textwrap import dedent
 from datetime import datetime
 import pandas as pds
 
@@ -17,6 +18,10 @@ def make_uri_map(filename):
             # use encode('ascii', 'ignore') to ignore unicode characters
             short_uri = str(subj.encode('ascii', 'ignore')).lower().split('/')[-1]
             uri_map[short_uri] = str(subj.encode('ascii', 'ignore'))
+
+    for subj, obj in g.subject_objects(RDFS.label):
+        label = str(obj.encode('ascii', 'ignore')).lower().split('/')[-1]
+        uri_map[label] = str(subj.encode('ascii', 'ignore'))
 
     return uri_map
 
@@ -42,8 +47,37 @@ def load_uri_map(force=False, filename='uri_map.txt'):
     # return uri_map
     return uri_map
 
+def write_object_property_functions(ontology, pyfile="ontology_generated_functions_ttl.py"):
+    # build graph
+    g = rdflib.Graph()
+    g.parse(ontology)
+
+    with open(pyfile, 'w') as f:
+        for prop in g.subjects(RDF.type, OWL.ObjectProperty):
+            # print prop
+            fname = g.label(prop).replace(' ', '_')
+
+            f.write(dedent("""
+                def {function_name}_ttl(uri1, uri2):
+                    return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
+                
+                """.format(function_name=fname, prop_uri=prop)))
+
+        for prop in g.subjects(RDF.type, OWL.DatatypeProperty):
+            # print prop
+            fname = g.label(prop).replace(' ', '_')
+
+            f.write(dedent("""
+                def {function_name}_ttl(uri1, uri2):
+                    return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
+
+                """.format(function_name=fname, prop_uri=prop)))
+
+
 uri_map = make_uri_map('simple-dental-ontology.owl')
+write_uri_map(uri_map)
 # print uri_map
 # print uri_map.items()
-print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
-write_uri_map(uri_map)
+# print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
+
+write_object_property_functions('simple-dental-ontology.owl')
