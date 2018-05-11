@@ -47,31 +47,6 @@ def load_uri_map(force=False, filename='uri_map.txt'):
     # return uri_map
     return uri_map
 
-def write_object_property_functions(ontology, pyfile="generated_ontology_functions_ttl.py"):
-    # build graph
-    g = rdflib.Graph()
-    g.parse(ontology)
-
-    with open(pyfile, 'w') as f:
-        for prop in g.subjects(RDF.type, OWL.ObjectProperty):
-            # print prop
-            fname = g.label(prop).replace(' ', '_')
-
-            f.write(dedent("""
-                def {function_name}_ttl(uri1, uri2):
-                    return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
-                
-                """.format(function_name=fname, prop_uri=prop)))
-
-        for prop in g.subjects(RDF.type, OWL.DatatypeProperty):
-            # print prop
-            fname = g.label(prop).replace(' ', '_')
-
-            f.write(dedent("""
-                def {function_name}_ttl(uri1, uri2):
-                    return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
-
-                """.format(function_name=fname, prop_uri=prop)))
 
 
 uri_map = make_uri_map('simple-dental-ontology.owl')
@@ -80,4 +55,4 @@ write_uri_map(uri_map)
 # print uri_map.items()
 # print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
 
-write_object_property_functions('simple-dental-ontology.owl')
+
