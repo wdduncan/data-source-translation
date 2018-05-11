@@ -77,23 +77,23 @@ def build_ontology_functions(ontology_source,
 
     with open(pyfile, 'w') as f:
         # create a function for each object property
-        f.write("### object properties ###\n\n")
-        for prop in g.subjects(RDF.type, OWL.ObjectProperty):
+        output("### object properties ###\n\n")
+        for prop in g.subjects(RDF.type, OWL.ObjectProperty): # query for object properteis
             fname = format_as_python_name(get_label(prop)) # create function name
             function_string = format_function_property_string(fname, prop) # create python function string
             output(function_string)
 
 
         # create a function for each data property
-        f.write("\n### data properties ###\n\n")
-        for prop in g.subjects(RDF.type, OWL.DatatypeProperty):
+        output("\n### data properties ###\n\n")
+        for prop in g.subjects(RDF.type, OWL.DatatypeProperty): # query for data properties
             fname = format_as_python_name(get_label(prop))  # create function name
             function_string = format_function_property_string(fname, prop)  # create python function string
             output(function_string)
 
         # create a function for each class that returns a uri for an individual / instance
-        f.write("\n### classes ###\n\n")
-        for class_uri in g.subjects(RDF.type, OWL.Class):
+        output("\n### classes ###\n\n")
+        for class_uri in g.subjects(RDF.type, OWL.Class): # query for classes
             if type(class_uri) != rdflib.term.BNode:
                 fname = format_as_python_name(get_label(class_uri))
                 function_string = format_class_uri_function_string(fname, class_uri)
