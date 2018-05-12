@@ -1,7 +1,11 @@
 # coding=utf-8
 from textwrap import dedent
 
-def prefixes_ttl(base="", ontology_uri=""):
+
+################# funcitons from template_ttl.py #################
+
+
+def prefixes(base="", ontology_uri=""):
     # specify the base uri
     if base.strip() == "":
         base = "http://purl.data-source-translation.org/"
@@ -34,17 +38,37 @@ def prefixes_ttl(base="", ontology_uri=""):
     return ttl
 
 
-def declare_individual_ttl(uri, class_uri, label=""):
+def triple(subj, pred, obj):
+    return """{0} {1} {2} .\n""".format(subj, pred, obj)
+
+
+def declare_individual(uri, class_uri, label=""):
     ttl = dedent("""{0} rdf:type owl:NamedInvidual, {1} .\n""".format(uri, class_uri))
     if len(label.strip()) > 0:
         ttl += """{0} rdfs:label "{1}" .\n""".format(uri, label)
     return ttl
 
 
-def declare_class_ttl(class_uri, label=""):
+def declare_class(class_uri, label=""):
     ttl = """{0} rdf:type owl:Class .\n""".format(class_uri)
     if len(label.strip()) > 0:
         ttl += """{0} rdfs:label "{1}" .\n""".format(class_uri, label)
 
     return ttl
 
+
+
+def declare_object_property(prop_uri, label=""):
+    ttl = """{0} rdf:type owl:ObjectProperty .\n""".format(prop_uri)
+    if len(label.strip()) > 0:
+        ttl += """{0} rdfs:label "{1}" .\n""".format(prop_uri, label)
+
+    return ttl
+
+
+def declare_data_property(prop_uri, label=""):
+    ttl = """{0} rdf:type owl:DataProperty .\n""".format(prop_uri)
+    if len(label.strip()) > 0:
+        ttl += """{0} rdfs:label "{1}" .\n""".format(prop_uri, label)
+
+    return ttl

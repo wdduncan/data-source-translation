@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.data-source-translation.org/"
-     xml:base="http://purl.data-source-translation.org/"
+<rdf:RDF xmlns="http://purl.data-source-translation.org/data-source-translation.owl#"
+     xml:base="http://purl.data-source-translation.org/data-source-translation.owl"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -8,6 +8,7 @@
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:purl="http://purl.data-source-translation.org/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
     <owl:Ontology rdf:about="http://purl.data-source-translation.org/data-source-translation.owl"/>
@@ -22,6 +23,106 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/database_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:46Z</dc:date>
+        <rdfs:label>database name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/database_type">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:54:08Z</dc:date>
+        <rdfs:label>database type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/datatype -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/datatype">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:16:45Z</dc:date>
+        <rdfs:label>datatype</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/datatype_size -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/datatype_size">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:22:28Z</dc:date>
+        <rdfs:label>datatype size</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/field_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/field_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:06:27Z</dc:date>
+        <rdfs:label>field name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_delimiter -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_delimiter">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:24Z</dc:date>
+        <rdfs:label>file delimiter</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_format -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_format">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:15:57Z</dc:date>
+        <rdfs:label>file format</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:00Z</dc:date>
+        <rdfs:label>file name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_type">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:46Z</dc:date>
+        <rdfs:label>file type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/project_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/project_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:06:15Z</dc:date>
+        <rdfs:label>project name</rdfs:label>
+    </owl:AnnotationProperty>
     
 
 
@@ -51,6 +152,26 @@
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:24:40Z</dc:date>
         <rdfs:label>semantic type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/server_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/server_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:36Z</dc:date>
+        <rdfs:label>server name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/table_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/table_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:51Z</dc:date>
+        <rdfs:label>table name</rdfs:label>
     </owl:AnnotationProperty>
     
 
@@ -94,6 +215,27 @@
     
 
 
+    <!-- http://purl.data-source-translation.org/defined_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/defined_by">
+        <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/defines"/>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:51:48Z</dc:date>
+        <rdfs:comment>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</rdfs:comment>
+        <rdfs:label>defined by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/defines -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/defines">
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:51:43Z</dc:date>
+        <rdfs:comment>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</rdfs:comment>
+        <rdfs:label>defines</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -105,13 +247,14 @@
     
 
 
-    <!-- http://purl.data-source-translation.org/has_date_time_value -->
+    <!-- http://purl.data-source-translation.org/has_datetime_value -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/has_date_time_value">
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/has_datetime_value">
         <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/has_value"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:47Z</dc:date>
+        <rdfs:label>has datetime value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -123,6 +266,7 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:27:21Z</dc:date>
+        <rdfs:label>has float value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -134,6 +278,7 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:28:16Z</dc:date>
+        <rdfs:label>has int value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -145,6 +290,7 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:40Z</dc:date>
+        <rdfs:label>has integer value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -156,6 +302,7 @@
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:08Z</dc:date>
+        <rdfs:label>has string value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -163,6 +310,8 @@
     <!-- http://purl.data-source-translation.org/has_value -->
 
     <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/has_value">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date>2017-09-30T04:25:47Z</dc:date>
         <rdfs:label>has value</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -261,7 +410,7 @@ https://www.pcmag.com/encyclopedia/term/40794/data-item</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_record">
         <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/dataset"/>
-        <rdfs:comment>a dataset that is organized (or structured) into one or more data fields; typically a data record is a single row, but not always
+        <rdfs:comment>a dataset that is organized (or structured) into one or more data items; typically a data record is a single row, but not always
 
 https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
         <rdfs:label>data record</rdfs:label>
