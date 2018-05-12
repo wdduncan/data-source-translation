@@ -1,6 +1,7 @@
 # coding=utf-8
-from translation_functions_functions
+from generate_ontology_functions import *
+
 
 def format_data_source_name(data_source):
-    name = data_source.strip()
-    name =
+    name = format_uri_as_label(data_source)
+    return name
