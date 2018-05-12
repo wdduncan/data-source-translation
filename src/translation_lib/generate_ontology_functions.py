@@ -140,4 +140,4 @@ def build_ontology_functions(ontology_source,
                 output(uri_string)
 
 # build_ontology_functions('simple-dental-ontology.owl', "simple_dental_ontology_ttl.py", print_output=True)
-build_ontology_functions('data-source-ontology.owl', print_output=True)
+# build_ontology_functions('data-source-ontology.owl', print_output=True)
