@@ -236,6 +236,16 @@
     
 
 
+    <!-- http://purl.data-source-translation.org/test_relation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/test_relation">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_relation"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-13T05:10:32Z</dc:date>
+    </owl:ObjectProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //

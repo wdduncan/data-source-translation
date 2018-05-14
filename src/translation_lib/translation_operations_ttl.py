@@ -53,18 +53,32 @@ def translate_df(df, ontology_uri, base):
     axioms = [prefixes(base, ontology_uri)] # inialize axioms with prefixes
 
     # declare field names as object properties
-    axioms.append(translate_df_fields(df))
+    axioms.append(declare_df_fields(df))
 
     return axioms
 
 
-def translate_df_fields(df):
-    ttls = ["\n# declare object properties"]
+def set_field_uri(id=""):
+    if len(str(id)) < 1: id = uuid.uuid4()
+    return "<data_relation/{0}>".format(txf.format_uri_name(id))
+
+
+def set_record_uri(id=""):
+    if len(str(id)) < 1: id = uuid.uuid4()
+    return "<data_record/{0}>".format(id)
+
+
+def set_data_item_uri(id=""):
+    if len(str(id)) < 1: id = uuid.uuid4()
+    return "<data_item/{0}>".format(id)
+
+
+def declare_df_fields(df):
+    ttls = ["\n# declare df fields as object properties"]
 
     field_names = list(df.columns)
     for field_name in field_names:
-        uri = "<data_relation/{0}>".format(txf.format_uri_name(field_name))
-        ttl = txf.declare_object_property(uri, field_name, txf.data_relation_uri())
+        ttl = declare_df_field(field_name)
         ttls.append(ttl)
 
     # join all ttl statements
@@ -72,32 +86,48 @@ def translate_df_fields(df):
     return ttl
 
 
-def translate_df_records(df):
-    def set_field_uris(x):
-        return "<data_relation/{0}>".format(txf.format_uri_name(x))
+def declare_df_field(field_name):
+    uri = set_field_uri(field_name)
+    ttl = txf.declare_object_property(uri, field_name, txf.data_relation_uri())
+    return ttl
 
-    def set_data_item_uris(x):
-        return "<data_item/{0}>".format(uuid.uuid4())
 
+def translate_df_records(df, field_uris=""):
     ttls = ["\n# declare records"]
 
-    field_uris = map(set_field_uris, list(df.columns)) # get list field name uris
+    if len(field_uris) < 1:
+        field_uris = map(set_field_uri, list(df.columns)) # get list field name uris
 
     for record in df.itertuples():
-        record_uri = "<data_record/{0}>".format(uuid.uuid4()) # create record uri
+        record_uri = set_record_uri()  # create record uri
         ttls.append(txf.declare_individual(record_uri, txf.data_record_uri()))
 
         values = record[1:] # get list of values in record, NB: start with 1; 0 is the index
-        data_item_uris = map(set_data_item_uris, values) # create list of uris for each data item
+        data_item_uris = map(set_data_item_uri, values) # create list of uris for each data item
 
-        for idx, data_item_uri in enumerate(data_item_uris):
+        for idx, value in enumerate(values):
             # create individual data items with values
-            ttls.append(txf.declare_individual(data_item_uri, txf.data_item_uri()))
-            ttls.append(txf.has_value(data_item_uri, values[idx]))
-
-            # relate data item to record
-            ttls.append(txf.triple(record_uri, field_uris[idx], data_item_uri))
+            ttls.append(declare_df_data_item(record_uri, field_uris[idx], value))
 
     # join all ttl statements
     ttl = "\n".join(ttls)
+    return ttl
+
+
+def declare_df_record(record, id=""):
+    record_uri = set_record_uri(id)  # create record uri
+    ttl = txf.declare_individual(record_uri, txf.data_record_uri())
+    return ttl
+
+
+def declare_df_data_item(record_uri, field_uri, value, id=""):
+    data_item_uri = set_data_item_uri(id)
+
+    # create individual data items with values
+    ttl = txf.declare_individual(data_item_uri, txf.data_item_uri())
+    ttl += txf.has_value(data_item_uri, value)
+
+    # relate data item to record
+    ttl += txf.triple(record_uri, field_uri, data_item_uri)
+
     return ttl
