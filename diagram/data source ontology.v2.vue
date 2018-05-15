@@ -1,18 +1,18 @@
 <!-- Tufts VUE 3.3.0 concept-map (data source ontology.v2.vue) 2018-05-15 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Tue May 15 09:47:51 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Tue May 15 18:41:06 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="data source ontology.v2.vue" created="1526390538627" x="0.0"
     y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526392071568" size="18116"
-        spec="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology.v2.vue"
+    <resource referenceCreated="1526424066501" size="11617"
+        spec="/Users/wi28705/repos/data-source-translation/diagram/data source ontology.v2.vue"
         type="1" xsi:type="URLResource">
         <title>data source ontology.v2.vue</title>
-        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology.v2.vue"/>
+        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/data source ontology.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -138,20 +138,20 @@
         <ID1 xsi:type="node">9</ID1>
         <ID2 xsi:type="node">10</ID2>
     </child>
-    <child ID="16" label=" {field name} datum value " layerID="1"
+    <child ID="16" label=" {field name} value " layerID="1"
         created="1526390582122" x="386.44998" y="274.28625"
-        width="263.11148" height="81.04114" strokeWidth="1.0"
+        width="258.78043" height="76.6192" strokeWidth="1.0"
         strokeStyle="2" autoSized="false" controlCount="1"
         arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/63f91612c0a8010e0aecbff4ad169a92</URIString>
-        <point1 x="386.94998" y="347.60577"/>
-        <point2 x="649.06146" y="274.78625"/>
+        <point1 x="386.94998" y="346.8256"/>
+        <point2 x="644.7304" y="274.78625"/>
         <ID1 xsi:type="node">6</ID1>
         <ID2 xsi:type="node">10</ID2>
-        <ctrlPoint0 x="591.0" y="379.0" xsi:type="point"/>
+        <ctrlPoint0 x="563.25" y="368.3363" xsi:type="point"/>
     </child>
     <layer ID="1" label="Layer 1" created="1526390538631" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
@@ -163,7 +163,7 @@
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1526390538626"
             x="0.0" y="0.0" width="1.4E-45" height="1.4E-45"
-            strokeWidth="0.0" autoSized="false" currentIndex="-1" open="true">
+            strokeWidth="0.0" autoSized="false" currentIndex="0" open="true">
             <strokeColor>#B3993333</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>
@@ -210,6 +210,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology.v2.vue</saveFile>
+    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/data source ontology.v2.vue</saveFile>
 </LW-MAP>

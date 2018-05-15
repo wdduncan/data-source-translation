@@ -1,18 +1,18 @@
 <!-- Tufts VUE 3.3.0 concept-map (data source ontology example.v2.vue) 2018-05-15 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Tue May 15 09:47:26 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Tue May 15 18:41:32 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="data source ontology example.v2.vue" created="1526391092712"
     x="0.0" y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526392047021" size="11724"
-        spec="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue"
+    <resource referenceCreated="1526424092511" size="11683"
+        spec="/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue"
         type="1" xsi:type="URLResource">
         <title>data source ontology example.v2.vue</title>
-        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue"/>
+        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -29,8 +29,8 @@
         <URIString>http://vue.tufts.edu/rdf/resource/64002f47c0a8010e0aecbff4b745b197</URIString>
         <shape xsi:type="rectangle"/>
     </child>
-    <child ID="7" label="mrn" layerID="1" created="1526391101356"
-        x="650.30005" y="102.5" width="42.0" height="25.0"
+    <child ID="7" label="tumor type" layerID="1" created="1526391101356"
+        x="636.30005" y="96.5" width="73.0" height="25.0"
         strokeWidth="1.0" autoSized="false" xsi:type="node">
         <fillColor>#FFC63B</fillColor>
         <strokeColor>#000000</strokeColor>
@@ -59,9 +59,9 @@
         <URIString>http://vue.tufts.edu/rdf/resource/64002f48c0a8010e0aecbff44b53a7f9</URIString>
         <shape xsi:type="rectangle"/>
     </child>
-    <child ID="10" label="1001" layerID="1" created="1526391101356"
-        x="941.3" y="174.84998" width="48.4" height="26.400002"
-        strokeWidth="1.0" autoSized="true" xsi:type="node">
+    <child ID="10" label="5" layerID="1" created="1526391101356"
+        x="941.3" y="174.84998" width="37.700012" height="29.150024"
+        strokeWidth="1.0" autoSized="false" xsi:type="node">
         <fillColor>#33A8F5</fillColor>
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
@@ -84,29 +84,29 @@
         <ctrlPoint0 x="585.3501" y="260.6637" xsi:type="point"/>
     </child>
     <child ID="12" label=" member of " layerID="1"
-        created="1526391101356" x="561.5056" y="118.614296"
-        width="89.29443" height="55.03573" strokeWidth="1.0"
+        created="1526391101356" x="561.25146" y="118.2081"
+        width="75.548584" height="55.441925" strokeWidth="1.0"
         autoSized="false" controlCount="1" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/64002f48c0a8010e0aecbff46abb3d17</URIString>
-        <point1 x="650.30005" y="119.114296"/>
+        <point1 x="636.30005" y="118.7081"/>
         <point2 x="562.0056" y="173.15002"/>
         <ID1 xsi:type="node">7</ID1>
         <ID2 xsi:type="node">8</ID2>
         <ctrlPoint0 x="591.3501" y="130.6637" xsi:type="point"/>
     </child>
     <child ID="13" label=" member of " layerID="1"
-        created="1526391101356" x="691.80005" y="116.08306"
-        width="104.40863" height="62.066963" strokeWidth="1.0"
+        created="1526391101356" x="708.80005" y="113.673546"
+        width="87.40863" height="64.47648" strokeWidth="1.0"
         autoSized="false" controlCount="1" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/64002f48c0a8010e0aecbff480fae798</URIString>
         <point1 x="795.7087" y="177.65002"/>
-        <point2 x="692.30005" y="116.58306"/>
+        <point2 x="709.30005" y="114.173546"/>
         <ID1 xsi:type="node">9</ID1>
         <ID2 xsi:type="node">7</ID2>
         <ctrlPoint0 x="764.92395" y="122.05774" xsi:type="point"/>
@@ -126,32 +126,32 @@
         <ctrlPoint0 x="771.3501" y="259.6637" xsi:type="point"/>
     </child>
     <child ID="15" label=" has value " layerID="1"
-        created="1526391101356" x="841.80005" y="181.31998"
-        width="100.07312" height="14.0" strokeWidth="1.0"
+        created="1526391101356" x="841.80005" y="182.0906"
+        width="100.05359" height="14.0" strokeWidth="1.0"
         autoSized="false" controlCount="0" arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/64002f49c0a8010e0aecbff4088ca879</URIString>
-        <point1 x="842.30005" y="188.50156"/>
-        <point2 x="941.37317" y="188.13841"/>
+        <point1 x="842.30005" y="188.8482"/>
+        <point2 x="941.35364" y="189.333"/>
         <ID1 xsi:type="node">9</ID1>
         <ID2 xsi:type="node">10</ID2>
     </child>
-    <child ID="16" label=" {field name} datum value " layerID="1"
-        created="1526391101356" x="710.80005" y="200.75"
-        width="248.39478" height="82.93329" strokeWidth="1.0"
+    <child ID="16" label=" has tumor type value " layerID="1"
+        created="1526391101356" x="710.80005" y="203.5"
+        width="242.34564" height="70.54611" strokeWidth="1.0"
         strokeStyle="2" autoSized="false" controlCount="1"
         arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/64002f49c0a8010e0aecbff4ba1d1892</URIString>
-        <point1 x="711.30005" y="276.6334"/>
-        <point2 x="958.6948" y="201.25"/>
+        <point1 x="711.30005" y="272.83575"/>
+        <point2 x="952.6457" y="204.0"/>
         <ID1 xsi:type="node">6</ID1>
         <ID2 xsi:type="node">10</ID2>
-        <ctrlPoint0 x="904.35004" y="306.6637" xsi:type="point"/>
+        <ctrlPoint0 x="913.0" y="281.0" xsi:type="point"/>
     </child>
     <layer ID="1" label="Layer 1" created="1526391092713" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
@@ -163,7 +163,7 @@
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1526391092712"
             x="0.0" y="0.0" width="1.4E-45" height="1.4E-45"
-            strokeWidth="0.0" autoSized="false" currentIndex="-1" open="true">
+            strokeWidth="0.0" autoSized="false" currentIndex="0" open="true">
             <strokeColor>#B3CC33CC</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>
@@ -210,6 +210,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue</saveFile>
+    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue</saveFile>
 </LW-MAP>
