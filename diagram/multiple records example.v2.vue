@@ -1,18 +1,18 @@
 <!-- Tufts VUE 3.3.0 concept-map (multiple records example.v2.vue) 2018-05-15 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Tue May 15 18:29:54 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Tue May 15 23:28:09 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="multiple records example.v2.vue" created="1504073566911"
     x="0.0" y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526423394897" size="13608"
-        spec="/Users/wi28705/repos/data-source-translation/diagram/multiple records example.v2.vue"
+    <resource referenceCreated="1526441289332" size="13608"
+        spec="/Users/widuncan/repos/git/data-source-translation/diagram/multiple records example.v2.vue"
         type="1" xsi:type="URLResource">
         <title>multiple records example.v2.vue</title>
-        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/multiple records example.v2.vue"/>
+        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/multiple records example.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -60,7 +60,7 @@
         <child ID="10" label="5" created="1504073568358" x="34.0"
             y="22.0" width="42.0" height="30.75" strokeWidth="1.0"
             autoSized="false" xsi:type="node">
-            <fillColor>#33A8F5</fillColor>
+            <fillColor>#C6E8FF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
             <font>Arial-bold-16</font>
@@ -129,7 +129,7 @@
         <child ID="47" label="9" created="1526422823875" x="34.0"
             y="22.0" width="42.0" height="30.75" strokeWidth="1.0"
             autoSized="false" xsi:type="node">
-            <fillColor>#33A8F5</fillColor>
+            <fillColor>#C6E8FF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
             <font>Arial-bold-16</font>
@@ -250,6 +250,6 @@
     </PathwayList>
     <date>2017-08-30</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/multiple records example.v2.vue</saveFile>
+    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/multiple records example.v2.vue</saveFile>
 </LW-MAP>

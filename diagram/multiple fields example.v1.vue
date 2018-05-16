@@ -1,18 +1,18 @@
 <!-- Tufts VUE 3.3.0 concept-map (multiple fields example.v1.vue) 2018-05-15 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Tue May 15 18:32:59 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Tue May 15 23:28:39 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="multiple fields example.v1.vue" created="1526423089494"
     x="0.0" y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526423579366" size="16401"
-        spec="/Users/wi28705/repos/data-source-translation/diagram/multiple fields example.v1.vue"
+    <resource referenceCreated="1526441319073" size="17057"
+        spec="/Users/widuncan/repos/git/data-source-translation/diagram/multiple fields example.v1.vue"
         type="1" xsi:type="URLResource">
         <title>multiple fields example.v1.vue</title>
-        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/multiple fields example.v1.vue"/>
+        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/multiple fields example.v1.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -61,7 +61,7 @@
         <child ID="10" label="1001" created="1526423090323" x="34.0"
             y="22.0" width="59.6" height="34.6" strokeWidth="1.0"
             autoSized="true" xsi:type="node">
-            <fillColor>#33A8F5</fillColor>
+            <fillColor>#C6E8FF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
             <font>Arial-bold-16</font>
@@ -121,7 +121,7 @@
         <child ID="16" label="9" created="1526423090323" x="34.0"
             y="22.0" width="42.0" height="30.75" strokeWidth="1.0"
             autoSized="false" xsi:type="node">
-            <fillColor>#33A8F5</fillColor>
+            <fillColor>#C6E8FF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
             <font>Arial-bold-16</font>
@@ -200,7 +200,7 @@
         <child ID="25" label="F" created="1526423322479" x="34.0"
             y="22.0" width="26.5" height="27.5" strokeWidth="1.0"
             autoSized="true" xsi:type="node">
-            <fillColor>#33A8F5</fillColor>
+            <fillColor>#C6E8FF</fillColor>
             <strokeColor>#000000</strokeColor>
             <textColor>#000000</textColor>
             <font>Arial-bold-16</font>
@@ -274,7 +274,7 @@
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1526423089494"
             x="0.0" y="0.0" width="1.4E-45" height="1.4E-45"
-            strokeWidth="0.0" autoSized="false" currentIndex="-1" open="true">
+            strokeWidth="0.0" autoSized="false" currentIndex="0" open="true">
             <strokeColor>#B3CC33CC</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>
@@ -321,6 +321,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/multiple fields example.v1.vue</saveFile>
+    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/multiple fields example.v1.vue</saveFile>
 </LW-MAP>

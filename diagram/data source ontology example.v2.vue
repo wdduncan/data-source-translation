@@ -1,18 +1,18 @@
 <!-- Tufts VUE 3.3.0 concept-map (data source ontology example.v2.vue) 2018-05-15 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Tue May 15 18:41:32 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Tue May 15 23:27:16 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="none" ID="0"
     label="data source ontology example.v2.vue" created="1526391092712"
     x="0.0" y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526424092511" size="11683"
-        spec="/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue"
+    <resource referenceCreated="1526441236981" size="11728"
+        spec="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue"
         type="1" xsi:type="URLResource">
         <title>data source ontology example.v2.vue</title>
-        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue"/>
+        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -62,7 +62,7 @@
     <child ID="10" label="5" layerID="1" created="1526391101356"
         x="941.3" y="174.84998" width="37.700012" height="29.150024"
         strokeWidth="1.0" autoSized="false" xsi:type="node">
-        <fillColor>#33A8F5</fillColor>
+        <fillColor>#C6E8FF</fillColor>
         <strokeColor>#000000</strokeColor>
         <textColor>#000000</textColor>
         <font>Arial-bold-12</font>
@@ -138,20 +138,20 @@
         <ID1 xsi:type="node">9</ID1>
         <ID2 xsi:type="node">10</ID2>
     </child>
-    <child ID="16" label=" has tumor type value " layerID="1"
-        created="1526391101356" x="710.80005" y="203.5"
-        width="242.34564" height="70.54611" strokeWidth="1.0"
+    <child ID="16" label=" has tumor &#xa;type value " layerID="1"
+        created="1526391101356" x="710.80005" y="201.58057"
+        width="238.38855" height="70.98462" strokeWidth="1.0"
         strokeStyle="2" autoSized="false" controlCount="1"
         arrowState="2" xsi:type="link">
         <strokeColor>#404040</strokeColor>
         <textColor>#404040</textColor>
         <font>Arial-bold-12</font>
         <URIString>http://vue.tufts.edu/rdf/resource/64002f49c0a8010e0aecbff4ba1d1892</URIString>
-        <point1 x="711.30005" y="272.83575"/>
-        <point2 x="952.6457" y="204.0"/>
+        <point1 x="711.30005" y="272.0652"/>
+        <point2 x="948.6886" y="202.08057"/>
         <ID1 xsi:type="node">6</ID1>
         <ID2 xsi:type="node">10</ID2>
-        <ctrlPoint0 x="913.0" y="281.0" xsi:type="point"/>
+        <ctrlPoint0 x="882.65" y="275.0" xsi:type="point"/>
     </child>
     <layer ID="1" label="Layer 1" created="1526391092713" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
@@ -210,6 +210,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/data source ontology example.v2.vue</saveFile>
+    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/data source ontology example.v2.vue</saveFile>
 </LW-MAP>
