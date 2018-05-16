@@ -32,15 +32,20 @@ def translate_excel(data_file, base):
 
 def test_rdf():
     df = pds.ExcelFile("test_data/patients_1.xlsx").parse()
-    dfg = make_graph_df(df)
+    dfg = make_data_df(df)
     print dfg.serialize(format="turtle")
 
 
-def make_graph_df(df):
-    def make_uri(refs):
-        format_str = "%s/" * (len(refs) - 1) + "%s"
-        uri = format_str % refs
-        return URIRef(uri)
+def make_data_df(df):
+    def make_uri(base_uri, entity_uri="", base_end_char="/"):
+        if base_uri.endswith("/") or base_uri.endswith("#"):
+            uri = "%s%s" % (str(base_uri), entity_uri)
+            return URIRef(uri.strip())
+        elif len(str(entity_uri)) > 0:
+            uri = "%s%s%s" % (str(base_uri), base_end_char, str(entity_uri).strip())
+            return URIRef(uri.strip())
+        else:
+            return URIRef(str(base_uri).strip())
 
     n = Namespace("http://example.org/people/")
     dst = Namespace("http://purl.data-source-translation.org/")
@@ -49,21 +54,23 @@ def make_graph_df(df):
 
     g = Graph()
 
-    for field in list(df.columns):
-        field_uri = URIRef( "%s/%s" % (data.field, field))
-        g.add((field_uri, RDF.type, OWL.ObjectProperty))
-        g.add((field_uri, RDFS.subPropertyOf, dst.data_relation))
+    # declare fields
+    for field_name in list(df.columns):
+        field_uri =  make_uri(data.field, field_name)
+        g.add((field_uri, RDF.type, OWL.NamedIndividual))
+        g.add((field_uri, RDF.type, dst.data_field))
 
     for (idx, series) in df.iterrows():
-        record_uri = URIRef( "%s/%s" % (dst.record, idx))
+        record_uri = make_uri(data.record, idx)
         g.add((record_uri, RDF.type, OWL.NamedIndividual))
         g.add((record_uri, RDF.type, dst.data_record))
 
         for (field, value) in series.iteritems():
-            field_uri = URIRef( "%s/%s" % (data.field, field))
-            data_uri = URIRef("%s/%s" % (record_uri, field))
+            field_uri = make_uri(data.field, field_name)
+            data_uri = make_uri(record_uri, field)
 
-            g.add((record_uri, field_uri, data_uri))
+            g.add((record_uri, dst.has_member, data_uri))
+            g.add((record_uri, dst.has_member, data_uri))
             g.add((data_uri, dst.has_value, Literal(value)))
 
     return g

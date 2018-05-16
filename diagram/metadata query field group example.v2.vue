@@ -1,7 +1,7 @@
 <!-- Tufts VUE 3.3.0 concept-map (metadata query field group example.v2.vue) 2018-05-16 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Wed May 16 00:46:08 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Wed May 16 15:01:01 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,11 +9,11 @@
     label="metadata query field group example.v2.vue"
     created="1526441595496" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526445968897" size="26415"
-        spec="/Users/widuncan/repos/git/data-source-translation/diagram/metadata query field group example.v2.vue"
+    <resource referenceCreated="1526497261871" size="26415"
+        spec="/Users/wi28705/repos/data-source-translation/diagram/metadata query field group example.v2.vue"
         type="1" xsi:type="URLResource">
         <title>metadata query field group example.v2.vue</title>
-        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/metadata query field group example.v2.vue"/>
+        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/metadata query field group example.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -178,9 +178,9 @@
         <ID2 xsi:type="node">26</ID2>
     </child>
     <child ID="53"
-        label="SELECT * WHERE { &#xa;    &#xa;    &#xa;      ?record :has_member ?data_item . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?data_item_1 :has_value ?v1; &#xa;    &#xa;    &#xa;                   :member_of :site . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?data_item_2 :has_value ?v2; &#xa;    &#xa;    &#xa;                   :member_of :morphology .&#xa;    &#xa;    &#xa;        &#xa;    &#xa;    &#xa;      ?data_item_3 :has_value ?v3; &#xa;    &#xa;    &#xa;                   :member_of :behavior . &#xa;    &#xa;    &#xa;       &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?spec :defines :field_group; &#xa;    &#xa;    &#xa;            :semantic_type NCIt:C40025 .&#xa;    &#xa;    &#xa;            &#xa;    &#xa;    &#xa;      :field_group &#xa;    &#xa;    &#xa;        :has_member :site, :morphology, behavior .&#xa;    &#xa;    &#xa;         &#xa;    &#xa;    &#xa;      :site :has_specified_value: ?v1 .&#xa;    &#xa;    &#xa;      :morphology :has_specified_value: ?v2 .&#xa;    &#xa;    &#xa;      :behavior :has_specified_value: ?v3."
-        layerID="1" created="1526442210146" x="197.00073" y="-75.43729"
-        width="290.0" height="322.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
+        label="SELECT * WHERE { ?record :has_member ?data_item . ?data_item_1 :has_value ?v1; :member_of :site . ?data_item_2 :has_value ?v2; :member_of :morphology . ?data_item_3 :has_value ?v3; :member_of :behavior . ?spec :defines :field_group; :semantic_type NCIt:C40025 . :field_group :has_member :site, :morphology, behavior . :site :has_specified_value: ?v1 . :morphology :has_specified_value: ?v2 . :behavior :has_specified_value: ?v3."
+        layerID="1" created="1526442210146" x="196.00073" y="-121.43729"
+        width="305.0" height="361.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
         <textColor>#000000</textColor>
         <font>-plain-14</font>
@@ -199,138 +199,75 @@
   &lt;/head&gt;
   &lt;body&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;SELECT * WHERE { 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;SELECT * WHERE { &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;?record :has_member ?data_item . 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;?record :has_member ?data_item . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;?data_item_1 :has_value ?v1; 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;?data_item_1 :has_value ?v1; &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;             :member_of :site . 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:member_of :site . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;?data_item_2 :has_value ?v2; 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;?data_item_2 :has_value ?v2; &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;             :member_of :morphology .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:member_of :morphology . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;  
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;?data_item_3 :has_value ?v3; 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;?data_item_3 :has_value ?v3; &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;             :member_of :behavior . 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:member_of :behavior . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt; 
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;?spec :defines :field_group; 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;?spec :defines :field_group; &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;      :semantic_type NCIt:C40025 .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:semantic_type NCIt:C40025 . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;      
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:field_group 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:field_group &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;  :has_member :site, :morphology, behavior .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:has_member :site, :morphology, behavior . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;   
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:site :has_specified_value: ?v1 .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:site :has_specified_value: ?v1 . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:morphology :has_specified_value: ?v2 .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:morphology :has_specified_value: ?v2 . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
       &lt;font style="font-size:14;"&gt;:behavior :has_specified_value: ?v3.&lt;/font&gt;
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </richText>
-        <label>SELECT * WHERE { 
-    
-    
-      ?record :has_member ?data_item . 
-    
-    
-      
-    
-    
-      ?data_item_1 :has_value ?v1; 
-    
-    
-                   :member_of :site . 
-    
-    
-      
-    
-    
-      ?data_item_2 :has_value ?v2; 
-    
-    
-                   :member_of :morphology .
-    
-    
-        
-    
-    
-      ?data_item_3 :has_value ?v3; 
-    
-    
-                   :member_of :behavior . 
-    
-    
-       
-    
-    
-      
-    
-    
-      ?spec :defines :field_group; 
-    
-    
-            :semantic_type NCIt:C40025 .
-    
-    
-            
-    
-    
-      :field_group 
-    
-    
-        :has_member :site, :morphology, behavior .
-    
-    
-         
-    
-    
-      :site :has_specified_value: ?v1 .
-    
-    
-      :morphology :has_specified_value: ?v2 .
-    
-    
-      :behavior :has_specified_value: ?v3.</label>
+        <label>SELECT * WHERE { ?record :has_member ?data_item . ?data_item_1 :has_value ?v1; :member_of :site . ?data_item_2 :has_value ?v2; :member_of :morphology . ?data_item_3 :has_value ?v3; :member_of :behavior . ?spec :defines :field_group; :semantic_type NCIt:C40025 . :field_group :has_member :site, :morphology, behavior . :site :has_specified_value: ?v1 . :morphology :has_specified_value: ?v2 . :behavior :has_specified_value: ?v3.</label>
     </child>
     <child ID="57" label="record #1" layerID="1" created="1526442796031"
         x="-205.34503" y="5.3731003" width="66.0" height="22.0"
@@ -482,7 +419,7 @@
     <PathwayList currentPathway="0" revealerIndex="-1">
         <pathway ID="0" label="Untitled Pathway" created="1526441595496"
             x="0.0" y="0.0" width="1.4E-45" height="1.4E-45"
-            strokeWidth="0.0" autoSized="false" currentIndex="-1" open="true">
+            strokeWidth="0.0" autoSized="false" currentIndex="0" open="true">
             <strokeColor>#B333CC33</strokeColor>
             <textColor>#000000</textColor>
             <font>SansSerif-plain-14</font>
@@ -529,6 +466,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/metadata query field group example.v2.vue</saveFile>
+    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/metadata query field group example.v2.vue</saveFile>
 </LW-MAP>

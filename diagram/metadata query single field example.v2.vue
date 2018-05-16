@@ -1,7 +1,7 @@
 <!-- Tufts VUE 3.3.0 concept-map (metadata query single field example.v2.vue) 2018-05-16 -->
 <!-- Tufts VUE: http://vue.tufts.edu/ -->
-<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.localized/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
-<!-- Do Not Remove: Saved date Wed May 16 00:06:33 EDT 2018 by widuncan on platform Mac OS X 10.12.6 in JVM 1.8.0_45-b14 -->
+<!-- Do Not Remove: VUE mapping @version(1.1) jar:file:/Applications/VUE.app/Contents/Resources/Java/VUE.jar!/tufts/vue/resources/lw_mapping_1_1.xml -->
+<!-- Do Not Remove: Saved date Wed May 16 11:12:16 EDT 2018 by wi28705 on platform Mac OS X 10.12.6 in JVM 1.8.0_131-b11 -->
 <!-- Do Not Remove: Saving version @(#)VUE: built October 8 2015 at 1658 by tomadm on Linux 2.6.32-504.23.4.el6.x86_64 i386 JVM 1.7.0_21-b11(bits=32) -->
 <?xml version="1.0" encoding="US-ASCII"?>
 <LW-MAP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -9,11 +9,11 @@
     label="metadata query single field example.v2.vue"
     created="1526424114639" x="0.0" y="0.0" width="1.4E-45"
     height="1.4E-45" strokeWidth="0.0" autoSized="false">
-    <resource referenceCreated="1526443593102" size="15281"
-        spec="/Users/widuncan/repos/git/data-source-translation/diagram/metadata query single field example.v2.vue"
+    <resource referenceCreated="1526483536824" size="15255"
+        spec="/Users/wi28705/repos/data-source-translation/diagram/metadata query single field example.v2.vue"
         type="1" xsi:type="URLResource">
         <title>metadata query single field example.v2.vue</title>
-        <property key="File" value="/Users/widuncan/repos/git/data-source-translation/diagram/metadata query single field example.v2.vue"/>
+        <property key="File" value="/Users/wi28705/repos/data-source-translation/diagram/metadata query single field example.v2.vue"/>
     </resource>
     <fillColor>#FFFFFF</fillColor>
     <strokeColor>#404040</strokeColor>
@@ -142,7 +142,7 @@
         <ID2 xsi:type="node">20</ID2>
     </child>
     <child ID="39"
-        label="SELECT * WHERE { &#xa;    &#xa;    &#xa;      ?record &#xa;    &#xa;    &#xa;      :has_member ?data_item . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?data_item &#xa;    &#xa;    &#xa;      :has_value ?v; &#xa;    &#xa;    &#xa;      :member_of :tumor_type . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?spec &#xa;    &#xa;    &#xa;      :defines :tumor_type; &#xa;    &#xa;    &#xa;      :semantic_type NCIt:C40025 .&#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      :tumor_type &#xa;    &#xa;    &#xa;         :has_specified_value: ?v;"
+        label="SELECT * WHERE { &#xa;    &#xa;    &#xa;      ?record &#xa;    &#xa;    &#xa;      :has_member ?data_item . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?data_item &#xa;    &#xa;    &#xa;      :has_value ?v; &#xa;    &#xa;    &#xa;      :member_of :tumor_type . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      ?spec &#xa;    &#xa;    &#xa;        :defines :tumor_type; &#xa;    &#xa;    &#xa;        :semantic_type NCIt:C40025 . &#xa;    &#xa;    &#xa;      &#xa;    &#xa;    &#xa;      :tumor_type &#xa;    &#xa;    &#xa;        :has_specified_value: ?v ."
         layerID="1" created="1526425001076" x="376.00003" y="-738.0"
         width="225.0" height="257.0" strokeWidth="0.0" autoSized="false" xsi:type="text">
         <strokeColor>#404040</strokeColor>
@@ -190,19 +190,19 @@
       &lt;font style="font-size:14;"&gt;?spec &lt;/font&gt;
     &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:defines :tumor_type; &lt;/font&gt;
+      &lt;font style="font-size:14;"&gt;  :defines :tumor_type; &lt;/font&gt;
     &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:semantic_type NCIt:C40025 .
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;  :semantic_type NCIt:C40025 . &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;
-&lt;/font&gt;    &lt;/p&gt;
+      
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;:tumor_type 
-&lt;/font&gt;    &lt;/p&gt;
+      &lt;font style="font-size:14;"&gt;:tumor_type &lt;/font&gt;
+    &lt;/p&gt;
     &lt;p color="#000000" style="color: #000000"&gt;
-      &lt;font style="font-size:14;"&gt;   :has_specified_value: ?v;&lt;/font&gt;
+      &lt;font style="font-size:14;"&gt;  :has_specified_value: ?v .&lt;/font&gt;
     &lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -234,10 +234,10 @@
       ?spec 
     
     
-      :defines :tumor_type; 
+        :defines :tumor_type; 
     
     
-      :semantic_type NCIt:C40025 .
+        :semantic_type NCIt:C40025 . 
     
     
       
@@ -246,7 +246,7 @@
       :tumor_type 
     
     
-         :has_specified_value: ?v;</label>
+        :has_specified_value: ?v .</label>
     </child>
     <layer ID="1" label="Layer 1" created="1526424114639" x="0.0"
         y="0.0" width="1.4E-45" height="1.4E-45" strokeWidth="0.0" autoSized="false">
@@ -305,6 +305,6 @@
     </PathwayList>
     <date>2018-05-15</date>
     <modelVersion>6</modelVersion>
-    <saveLocation>/Users/widuncan/repos/git/data-source-translation/diagram</saveLocation>
-    <saveFile>/Users/widuncan/repos/git/data-source-translation/diagram/metadata query single field example.v2.vue</saveFile>
+    <saveLocation>/Users/wi28705/repos/data-source-translation/diagram</saveLocation>
+    <saveFile>/Users/wi28705/repos/data-source-translation/diagram/metadata query single field example.v2.vue</saveFile>
 </LW-MAP>
