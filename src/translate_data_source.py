@@ -12,6 +12,7 @@ def translate_excel(data_file, base):
     g = make_graph_df(df, "http://purl.example.translation/")
     test_query(g) # test querying
 
+    # return g.serialize()
     return g.serialize(format="turtle")
 
 
