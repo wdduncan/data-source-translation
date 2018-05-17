@@ -1,58 +1,90 @@
 import os
+import re
 import rdflib
-from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode
-from textwrap import dedent
-from datetime import datetime
-import pandas as pds
+from rdflib import URIRef
 
 
-def make_uri_map(filename):
-    # build graph
-    g = rdflib.Graph()
-    g.parse(filename)
+def make_uri(base_uri, entity_uri="", base_end_char="/"):
+    """:returns a URIRef based on the base uri and entity uri"""
 
-    # add mapping: lowercase short uri / label -> uri
-    uri_map = {}
-    for subj in g.subjects(RDF.type, OWL.Class):
-        if type(subj) != rdflib.term.BNode:
-            # use encode('ascii', 'ignore') to ignore unicode characters
-            short_uri = str(subj.encode('ascii', 'ignore')).lower().split('/')[-1]
-            uri_map[short_uri] = str(subj.encode('ascii', 'ignore'))
-
-    for subj, obj in g.subject_objects(RDFS.label):
-        label = str(obj.encode('ascii', 'ignore')).lower().strip()
-        uri_map[label] = str(subj.encode('ascii', 'ignore'))
-
-    return uri_map
-
-def write_uri_map(uri_map, filename='uri_map.txt'):
-    # save label2uri to file
-    with open(filename, 'w') as f:
-        f.write(str(uri_map)) # note: uri_map is converted to string
-
-
-def load_uri_map(force=False, filename='uri_map.txt'):
-    # create and the uri_map under the following two coditions:
-    # the file does NOT exist OR force is True
-    # uri_map_full_name = os.path.join(filepath, filename)
-    uri_map_full_name = os.path.join(os.path.abspath('.'), filename)
-    if force == True or os.path.exists(uri_map_full_name) == False:
-        uri_map = make_uri_map()
-        write_uri_map(uri_map, uri_map_full_name) # write uri_map to file
-    # otherwise read uri_map from file
+    base_uri = parse_base_uri(base_uri, base_end_char)
+    if len(str(entity_uri).strip()) > 0:
+        uri = "%s%s%s" % (str(base_uri), str(base_end_char).strip(), str(entity_uri).strip())
+        return URIRef(uri.strip())
     else:
-        # print "load from file"
-        uri_map = eval(open(uri_map_full_name).read())
-
-    # return uri_map
-    return uri_map
+        return URIRef(str(base_uri).strip())
 
 
+def parse_base_uri(base_uri, base_end_char="/"):
+    """formats the base uri so that it ends with a '/','#', or the end_char"""
+    if str(base_uri).endswith("/") or str(base_uri).endswith("#"):
+        return base_uri
+    else:
+        return "{0}{1}".format(str(base_uri).strip(), str(base_end_char).strip())
 
-uri_map = make_uri_map('simple-dental-ontology.owl')
-write_uri_map(uri_map)
-# print uri_map
-# print uri_map.items()
-# print pds.DataFrame(uri_map.items(), columns=['label', 'uri'])
+
+def strip_extension(name):
+    """character's after the first '.' in name"""
+    return  name.split('.') [0]
+
+
+def parse_python_name(name):
+    """parses name into valid python syntax"""
+    py_name = name.replace(' ', '_')
+    py_name = py_name.replace('.', '_')
+    py_name = py_name.replace('-', '_')
+    py_name = py_name.replace('+', '_')
+    py_name = py_name.replace('=', '_')
+    py_name = py_name.replace('!', '_')
+    py_name = py_name.replace(',', '_')
+    py_name = py_name.replace('*', '_')
+    py_name = py_name.replace('@', '_')
+    py_name = py_name.replace('&', '_')
+    py_name = py_name.replace('$', '_')
+    py_name = py_name.replace('~', '_')
+    py_name = py_name.replace('?', '_')
+    py_name = py_name.replace(':', '_')
+    py_name = py_name.replace('%20', '_')
+    py_name = re.sub(r'[^a-z,A-Z,0-9,_]', '', py_name)
+    return py_name
+
+
+def parse_uri_as_label(uri, make_lower=True, make_upper=False, replace_underscore=False):
+    """
+    for uris that have label like ending (e.g., http://example.com/foo_bar)
+    return the last portion (e.g., foo_bar)
+    if replace_underscore is true, the underscrores are replaced with sapces (e.g., foo bar)
+    """
+    # use the last portion of the uri as label
+    # use encode('ascii', 'ignore') to ignore unicode characters
+    if '#' in str(uri):  # check if uri uses '#' syntax
+        short_uri = str(uri.encode('ascii', 'ignore')).split('#')[-1]
+    else:
+        short_uri = str(uri.encode('ascii', 'ignore')).split('/')[-1]
+
+    # determine underscore usage
+    if replace_underscore:
+        short_uri = short_uri.replace("_", " ")
+
+    # determine case
+    if make_lower:
+        short_uri = parse_python_name(short_uri.lower())
+    elif make_upper:
+        short_uri = parse_python_name(short_uri.upper())
+
+    return short_uri
+
+
+def parse_file_name(data_file, remove_extension=False):
+    """
+    returns the last part of a file name (e.g., /user/data/foo.xml -> foo.xml)
+    if remove_extension is True, the characters after the last period are removed
+    """
+    file_name = str(data_file.encode('ascii', 'ignore')).strip().split('/')[-1]
+    if remove_extension:
+        file_name = strip_extension(file_name)
+
+    return file_name
+
 
 

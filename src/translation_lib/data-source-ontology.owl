@@ -376,6 +376,7 @@ https://www.pcmag.com/encyclopedia/term/40771/data-element</rdfs:comment>
     <!-- http://purl.data-source-translation.org/data_field -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_field">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
         <rdfs:comment>A physical structure in a form, file or database that holds data. A field is one or more bytes in size. A collection of fields makes up a data record; for example, ORDER #, NAME, ADDRESS, CITY, etc. The terms field and &quot;box&quot; are often used synonymously such as a &quot;search field&quot; or &quot;search box&quot; on a Web page.
 
 The field is the common denominator for database searches. For example, the STATE field is referenced when the query to find &quot;all customers who live in Florida&quot; is made to a database. When totaling transactions, the ORDER_AMOUNT field is summed. JOB_TITLE is referenced when looking for certain employees.
@@ -393,9 +394,10 @@ https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
     <!-- http://purl.data-source-translation.org/data_file -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_file">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_source"/>
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:17:23Z</dc:date>
+        <rdfs:comment>An electronic file which stores data to be used by a computer application or system.</rdfs:comment>
         <rdfs:label>data file</rdfs:label>
     </owl:Class>
     
@@ -404,6 +406,7 @@ https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
     <!-- http://purl.data-source-translation.org/data_item -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_item">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:32:09Z</dc:date>
         <rdfs:comment>A unit of data stored in a field. For example, &quot;M000675&quot; and &quot;M000676&quot; are data items in the &quot;Account Number&quot; field in two records (the data element &quot;Account Number&quot;).
@@ -419,7 +422,7 @@ https://www.pcmag.com/encyclopedia/term/40794/data-item</rdfs:comment>
     <!-- http://purl.data-source-translation.org/data_record -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_record">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/dataset"/>
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
         <rdfs:comment>a dataset that is organized (or structured) into one or more data items; typically a data record is a single row, but not always
 
 https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
@@ -457,10 +460,23 @@ https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
     
 
 
+    <!-- http://purl.data-source-translation.org/data_structure -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_structure">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:42:26Z</dc:date>
+        <rdfs:comment>A data structure is a specialized format for organizing and storing data. General data structure types include the array, the file, the record, the table, the tree, and so on. Any data structure is designed to organize data to suit a specific purpose so that it can be accessed and worked with in appropriate ways. In computer programming, a data structure may be selected or designed to store data for the purpose of working on it with various algorithms.
+
+https://searchsqlserver.techtarget.com/definition/data-structure</rdfs:comment>
+        <rdfs:label>data structure</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.data-source-translation.org/data_table -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_table">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/dataset"/>
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:19:43Z</dc:date>
         <rdfs:label>data table</rdfs:label>
@@ -482,32 +498,57 @@ https://en.wiktionary.org/wiki/value_domain</rdfs:comment>
     
 
 
-    <!-- http://purl.data-source-translation.org/database -->
+    <!-- http://purl.data-source-translation.org/database_data_item -->
 
-    <owl:Class rdf:about="http://purl.data-source-translation.org/database">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_source"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.data-source-translation.org/dataset -->
-
-    <owl:Class rdf:about="http://purl.data-source-translation.org/dataset">
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:42:26Z</dc:date>
-        <rdfs:comment>a collect of one or more data items</rdfs:comment>
-        <rdfs:label>dataset</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.data-source-translation.org/relational_database -->
-
-    <owl:Class rdf:about="http://purl.data-source-translation.org/relational_database">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/database"/>
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_data_item">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_item"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:16:43Z</dc:date>
-        <rdfs:label>relational database</rdfs:label>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:44Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_field -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_field">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_field"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:32Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_record -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_record">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_record"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:53Z</dc:date>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_system -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_system">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_source"/>
+        <rdfs:comment>A computer-software application that interacts with end-users, other applications, and the database itself to capture and analyze data. A general-purpose DBMS allows the definition, creation, querying, update, and administration of databases.
+
+https://en.wikipedia.org/wiki/Database</rdfs:comment>
+        <rdfs:comment>An organized collection of data.
+
+https://en.wikipedia.org/wiki/Database</rdfs:comment>
+        <rdfs:label>database system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_table -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_table">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_table"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:23Z</dc:date>
     </owl:Class>
     
 
@@ -523,16 +564,31 @@ https://en.wiktionary.org/wiki/value_domain</rdfs:comment>
     
 
 
+    <!-- http://purl.data-source-translation.org/relational_database_system -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/relational_database_system">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/database_system"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:16:43Z</dc:date>
+        <rdfs:comment>A database based on the relational model of data, as proposed by E. F. Codd in 1970.
+
+https://en.wikipedia.org/wiki/Relational_database</rdfs:comment>
+        <rdfs:label>relational database system</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.data-source-translation.org/spreadsheet -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/spreadsheet">
         <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_file"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:32:36Z</dc:date>
+        <rdfs:comment>A data file in which data is arranged in the rows and columns of a grid and can be manipulated and used in calculations.</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
 
