@@ -9,7 +9,7 @@ def make_uri(base_uri, entity_uri="", base_end_char="/"):
 
     base_uri = parse_base_uri(base_uri, base_end_char)
     if len(str(entity_uri).strip()) > 0:
-        uri = "%s%s%s" % (str(base_uri), str(base_end_char).strip(), str(entity_uri).strip())
+        uri = "%s%s" % (str(base_uri), str(entity_uri).strip())
         return URIRef(uri.strip())
     else:
         return URIRef(str(base_uri).strip())

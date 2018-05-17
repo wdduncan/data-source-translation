@@ -1,11 +1,8 @@
 # coding=utf-8
-import translation_lib.translation_ontology_functions_ttl as txf
-import translation_lib.translation_operations_ttl as txo
 import pandas as pds
-import datetime as dtm
 from translation_lib.uri_util import *
+from translation_lib.translation_operations import *
 from rdflib import Graph, RDF, RDFS, OWL, Namespace, BNode, URIRef, Literal, XSD
-import rdflib.extras.infixowl as rowl
 
 def translate_excel(data_file, base):
     # load Excel file into dataframe
@@ -17,31 +14,70 @@ def translate_excel(data_file, base):
 
 
 def make_graph_df(df, data_namespace):
-    dst = Namespace("http://purl.data-source-translation.org/")
-    data = Namespace(data_namespace)
+    # namespaces for data source ontology
+    dst = Namespace("http://purl.data-source-translation.org/") # base uri
+    dp = Namespace(dst + "data_property/") # data properties
+    op = Namespace(dst + "object_property/") # object properties
 
+    # namespaces for data being translated
+    data = Namespace(parse_base_uri(data_namespace)) # base uri
+    rv = Namespace(data + "data_property/record_value/")  # record values (shortcut)
+    fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
+
+    # declare graph to hold triples
     g = Graph()
 
-    # declare fields
-    for field_name in list(df.columns):
-        field_uri =  make_uri(data.field, field_name)
+    # create a maps of:
+    #   field names -> uris
+    #   field names -> field value uris
+    #   field names -> record value uris
+    fmap = make_field_uri_map(data.field, list(df.columns))
+    rv_map = make_field_uri_map(rv, list(df.columns))
+    fv_map = make_field_uri_map(fv, list(df.columns))
+
+    # declare fields in field map
+    for field_uri in fmap.values():
         g.add((field_uri, RDF.type, OWL.NamedIndividual))
         g.add((field_uri, RDF.type, dst.data_field))
 
+    # declare record value and field value data properties (shortcut properties)
+    # these properties help make querying easier
+    for col_name in list(df.columns):
+        rv_uri =  make_uri(rv.field, col_name)
+        g.add((rv_uri, RDF.type, OWL.DatatypeProperty))
+        g.add((rv_uri, RDFS.subPropertyOf, dp.record_value))
+
+        fv_uri = make_uri(fv.field, col_name)
+        g.add((fv_uri, RDF.type, OWL.DatatypeProperty))
+        g.add((fv_uri, RDFS.subPropertyOf, dp.record_value))
+
+    # translate data
     for (idx, series) in df.iterrows():
         record_uri = make_uri(data.record, idx)
         g.add((record_uri, RDF.type, OWL.NamedIndividual))
         g.add((record_uri, RDF.type, dst.data_record))
 
-        for (field, value) in series.iteritems():
-            field_uri = make_uri(data.field, field_name)
-            data_uri = make_uri(record_uri, field)
+        for (field_name, value) in series.iteritems():
+            field_uri = fmap[field_name]
+            data_item_uri = make_uri(record_uri, field_name)
 
-            g.add((record_uri, dst.has_member, data_uri))
-            g.add((record_uri, dst.has_member, data_uri))
-            g.add((data_uri, dst.has_value, Literal(value)))
+            # declare data item (and value)
+            g.add((data_item_uri, RDF.type, OWL.NamedIndvidual))
+            g.add((data_item_uri, RDF.type, dst.data_item))
+            g.add((data_item_uri, dst.has_value, Literal(value)))
+
+            # relate data item to record and field
+            g.add((record_uri, dst.has_member, data_item_uri))
+            g.add((field_uri, dst.has_member, data_item_uri))
+
+            # relate record and field to value (shortcuts)
+            rv_uri = rv_map[field_name]
+            fv_uri = fv_map[field_name]
+            g.add((data_item_uri, rv_uri, Literal(value)))
+            g.add((data_item_uri, fv_uri, Literal(value)))
 
     return g
 
 
+# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
 print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")

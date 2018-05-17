@@ -52,6 +52,28 @@ def load_uri_map(force=False, filename='uri_map.txt'):
     return uri_map
 
 
+def make_field_uri_map(base_uri, field_names):
+    """
+    given a base uri and a list of field names
+    :return a dictionary of key = field name, value = uri of field
+    """
+    map = {}
+    for field_name in field_names:
+        map[field_name] = make_uri(base_uri, field_name)
+
+    return map
+
+
+def make_field_value_uri_map(base_uri, field_names):
+    """
+    given a base uri and a list of field names
+    :return a dictionary of key = field name, value = uri of field
+    """
+    map = {}
+    for field_name in field_names:
+        map[field_name] = make_uri(base_uri, field_name)
+
+    return map
 # uri_map = make_uri_map('simple-dental-ontology.owl')
 # write_uri_map(uri_map)
 # print uri_map
