@@ -8,7 +8,10 @@ def translate_excel(data_file, base):
     # load Excel file into dataframe
     df = pds.ExcelFile(data_file).parse()
 
+    # build data graph
     g = make_graph_df(df, "http://purl.example.translation/")
+    test_query(g) # test querying
+
     return g.serialize(format="turtle")
 
 
@@ -73,11 +76,45 @@ def make_graph_df(df, data_namespace):
             # relate record and field to value (shortcuts)
             rv_uri = rv_map[field_name]
             fv_uri = fv_map[field_name]
-            g.add((data_item_uri, rv_uri, Literal(value)))
-            g.add((data_item_uri, fv_uri, Literal(value)))
+            g.add((record_uri, rv_uri, Literal(value)))
+            g.add((fmap[field_name], fv_uri, Literal(value)))
 
     return g
 
+def test_query(g):
+    results = \
+        g.query("""
+            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            prefix field: <http://purl.data-source-translation.org/data_field>
+            prefix fv: <http://purl.example.translation/data_property/field_value/> 
+            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
+            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
+            
+            select ?field ?v where {
+              ?field a field: .
+              # ?field a ?type .
+              ?field ns2:patient_id ?v .}
+            """)
+    # for result in results: print result
 
-# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
-print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+    results = \
+        g.query("""
+            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            prefix field: <http://purl.data-source-translation.org/data_field>
+            prefix fv: <http://purl.example.translation/data_property/field_value/> 
+            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
+            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
+            
+            construct {
+              ?field rdfs:label ?v
+            } where {
+              ?field a field: .
+              ?field ns2:patient_id ?v .}
+            """)
+
+    for result in results: print result
+
+translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+# print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
