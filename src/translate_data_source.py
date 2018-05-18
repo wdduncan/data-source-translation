@@ -17,7 +17,7 @@ def translate_excel(data_file, base):
 
 
 
-def make_graph_df(df, data_namespace):
+def make_graph_df(df, data_namespace, data_soruce=""):
     # namespaces for data source ontology
     dst = Namespace("http://purl.data-source-translation.org/") # base uri
     dp = Namespace(dst + "data_property/") # data properties
@@ -25,7 +25,7 @@ def make_graph_df(df, data_namespace):
 
     # namespaces for data being translated
     data = Namespace(parse_base_uri(data_namespace)) # base uri
-    rv = Namespace(data + "data_property/record_value/")  # record values (shortcut)
+    # rv = Namespace(data + "data_property/record_value/")  # record values (shortcut) BD: Not using record value (5/18/2018)
     fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
 
     # declare graph to hold triples
@@ -35,8 +35,8 @@ def make_graph_df(df, data_namespace):
     #   field names -> uris
     #   field names -> field value uris
     #   field names -> record value uris
+    # rv_map = make_field_uri_map(rv, list(df.columns)) # BD: Not using record value (5/18/2018)
     fmap = make_field_uri_map(data.field, list(df.columns))
-    rv_map = make_field_uri_map(rv, list(df.columns))
     fv_map = make_field_uri_map(fv, list(df.columns))
 
     # declare fields in field map
@@ -47,9 +47,10 @@ def make_graph_df(df, data_namespace):
     # declare record value and field value data properties (shortcut properties)
     # these properties help make querying easier
     for col_name in list(df.columns):
-        rv_uri =  make_uri(rv.field, col_name)
-        g.add((rv_uri, RDF.type, OWL.DatatypeProperty))
-        g.add((rv_uri, RDFS.subPropertyOf, dp.record_value))
+        # BD: Not using record value (5/18/2018)
+        # rv_uri =  make_uri(rv.field, col_name)
+        # g.add((rv_uri, RDF.type, OWL.DatatypeProperty))
+        # g.add((rv_uri, RDFS.subPropertyOf, dp.record_value))
 
         fv_uri = make_uri(fv.field, col_name)
         g.add((fv_uri, RDF.type, OWL.DatatypeProperty))
@@ -75,9 +76,11 @@ def make_graph_df(df, data_namespace):
             g.add((field_uri, dst.has_member, data_item_uri))
 
             # relate record and field to value (shortcuts)
-            rv_uri = rv_map[field_name]
+            # rv_uri = rv_map[field_name] # BD: Not using record value (5/18/2018)
+            # g.add((record_uri, rv_uri, Literal(value))) # BD: Not using record value (5/18/2018)
+
+            # relate record to value in field (shortcut)
             fv_uri = fv_map[field_name]
-            g.add((record_uri, rv_uri, Literal(value)))
             g.add((fmap[field_name], fv_uri, Literal(value)))
 
     return g

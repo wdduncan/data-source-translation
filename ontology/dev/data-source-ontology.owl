@@ -486,6 +486,14 @@ https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
     <!-- http://purl.data-source-translation.org/data_source -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_source">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.data-source-translation.org/object_property/has_member"/>
+                <owl:someValuesFrom rdf:resource="http://purl.data-source-translation.org/data_record"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-18T18:05:43Z</dc:date>
         <rdfs:label>data source</rdfs:label>
     </owl:Class>
     
@@ -575,7 +583,7 @@ https://en.wiktionary.org/wiki/value_domain</rdfs:comment>
     <!-- http://purl.data-source-translation.org/database_system -->
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/database_system">
-        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_source"/>
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/information_system"/>
         <rdfs:comment>A computer-software application that interacts with end-users, other applications, and the database itself to capture and analyze data. A general-purpose DBMS allows the definition, creation, querying, update, and administration of databases.
 
 https://en.wikipedia.org/wiki/Database</rdfs:comment>
@@ -594,6 +602,17 @@ https://en.wikipedia.org/wiki/Database</rdfs:comment>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:23Z</dc:date>
         <rdfs:label>database table</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/information_system -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/information_system">
+        <rdfs:comment>An organized system for the collection, organization, storage and communication of information.
+
+https://en.wikipedia.org/wiki/Information_system</rdfs:comment>
+        <rdfs:label>information system</rdfs:label>
     </owl:Class>
     
 
