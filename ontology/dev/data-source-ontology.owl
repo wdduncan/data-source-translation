@@ -1,0 +1,639 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.data-source-translation.org/data-source-translation.owl/"
+     xml:base="http://purl.data-source-translation.org/data-source-translation.owl/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:purl="http://purl.data-source-translation.org/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://purl.data-source-translation.org/data-source-translation.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/database_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:46Z</dc:date>
+        <rdfs:label>database name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/database_type">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:54:08Z</dc:date>
+        <rdfs:label>database type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/datatype -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/datatype">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:16:45Z</dc:date>
+        <rdfs:label>datatype</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/datatype_size -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/datatype_size">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:22:28Z</dc:date>
+        <rdfs:label>datatype size</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/field_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/field_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:06:27Z</dc:date>
+        <rdfs:label>field name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_delimiter -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_delimiter">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:24Z</dc:date>
+        <rdfs:label>file delimiter</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_format -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_format">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:15:57Z</dc:date>
+        <rdfs:label>file format</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:00Z</dc:date>
+        <rdfs:label>file name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/file_type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/file_type">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:53:46Z</dc:date>
+        <rdfs:label>file type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/project_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/project_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T04:06:15Z</dc:date>
+        <rdfs:label>project name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/semantic_source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/semantic_source">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:24:45Z</dc:date>
+        <rdfs:label>semantic source</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/semantic_translation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/semantic_translation">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:25:02Z</dc:date>
+        <rdfs:label>semantic translation</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/semantic_type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/semantic_type">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:24:40Z</dc:date>
+        <rdfs:label>semantic type</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/server_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/server_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:36Z</dc:date>
+        <rdfs:label>server name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/table_name -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.data-source-translation.org/table_name">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:52:51Z</dc:date>
+        <rdfs:label>table name</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/data_relation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/data_relation">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:20:42Z</dc:date>
+        <rdfs:label>data relation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/defined_by -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/defined_by">
+        <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/object_property/defines"/>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:51:48Z</dc:date>
+        <rdfs:comment>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</rdfs:comment>
+        <rdfs:label>defined by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/defines -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/defines">
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:51:43Z</dc:date>
+        <rdfs:comment>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</rdfs:comment>
+        <rdfs:label>defines</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/has_member -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/has_member">
+        <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/object_property/member_of"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:05:40Z</dc:date>
+        <rdfs:label>has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/member_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/member_of">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:05:21Z</dc:date>
+        <rdfs:label>member of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/field_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/field_value">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:12:40Z</dc:date>
+        <rdfs:label>field value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_datetime_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_datetime_value">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_property/has_value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:47Z</dc:date>
+        <rdfs:label>has datetime value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_float_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_float_value">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_property/has_value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:27:21Z</dc:date>
+        <rdfs:label>has float value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_int_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_int_value">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_property/has_value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:28:16Z</dc:date>
+        <rdfs:label>has int value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_integer_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_integer_value">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_property/has_value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:40Z</dc:date>
+        <rdfs:label>has integer value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_null_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_null_value">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:13:13Z</dc:date>
+        <rdfs:label>has null value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_string_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_string_value">
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/data_property/has_value"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:25:08Z</dc:date>
+        <rdfs:label>has string value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/has_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/has_value">
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date>2017-09-30T04:25:47Z</dc:date>
+        <rdfs:label>has value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_property/record_value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.data-source-translation.org/data_property/record_value">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:12:22Z</dc:date>
+        <rdfs:label>record value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.data-source-translation.org/common_data_element -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/common_data_element">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_element"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T15:44:30Z</dc:date>
+        <rdfs:comment>Common Data Elements (CDEs) are standardized terms for the collection and exchange of data. CDEs are metadata; they describe the type of data being collected, not the data itself. A basic example of metadata is the question presented on a form, &quot;Patient Name,&quot; whereas an example of data would be &quot;Jane Smith.&quot;
+
+https://wiki.nci.nih.gov/display/caDSR/CTEP+Common+Data+Elements</rdfs:comment>
+        <rdfs:label>common data element</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_element -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_element">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_specification"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T13:59:26Z</dc:date>
+        <rdfs:comment>Fields, Data Elements and Data Items
+Although often used interchangeably, there are several terms that refer to the same unit of storage in a data record. A &quot;data element&quot; is the logical definition of the field, while a &quot;data item&quot; is the actual data stored in the field. For example, for each CITY data element defined in a record, there are many CITY fields (structures) in the database that hold the data items (New York, Chicago, Phoenix, etc.).
+
+https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
+        <rdfs:comment>The fundamental data structure in a data processing system. Any unit of data defined for processing is a data element; for example, ACCOUNT NUMBER, NAME, ADDRESS and CITY. A data element is defined by size (in characters) and type (alphanumeric, numeric only, true/false, date, etc.). A specific set of values or range of values may also be part of the definition.
+
+Technically, a data element is a logical definition of data, whereas a field is the physical unit of storage in a record. For example, the data element ACCOUNT NUMBER, which exists only once, is stored in the ACCOUNT NUMBER field in each customer record and in the ACCOUNT NUMBER field in each order record. See field.
+
+https://www.pcmag.com/encyclopedia/term/40771/data-element</rdfs:comment>
+        <rdfs:comment>a human readable phrase or sentence associated with a data element within a data dictionary that describes the meaning or semantics of a data element</rdfs:comment>
+        <rdfs:label>data element</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_field -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_field">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
+        <rdfs:comment>A physical structure in a form, file or database that holds data. A field is one or more bytes in size. A collection of fields makes up a data record; for example, ORDER #, NAME, ADDRESS, CITY, etc. The terms field and &quot;box&quot; are often used synonymously such as a &quot;search field&quot; or &quot;search box&quot; on a Web page.
+
+The field is the common denominator for database searches. For example, the STATE field is referenced when the query to find &quot;all customers who live in Florida&quot; is made to a database. When totaling transactions, the ORDER_AMOUNT field is summed. JOB_TITLE is referenced when looking for certain employees.
+
+https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
+        <rdfs:comment>Fields, Data Elements and Data Items
+Although often used interchangeably, there are several terms that refer to the same unit of storage in a data record. A &quot;data element&quot; is the logical definition of the field, while a &quot;data item&quot; is the actual data stored in the field. For example, for each CITY data element defined in a record, there are many CITY fields (structures) in the database that hold the data items (New York, Chicago, Phoenix, etc.).
+
+https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
+        <rdfs:label>data field</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_file -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_file">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:17:23Z</dc:date>
+        <rdfs:comment>An electronic file which stores data to be used by a computer application or system.</rdfs:comment>
+        <rdfs:label>data file</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_item -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_item">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:32:09Z</dc:date>
+        <rdfs:comment>A unit of data stored in a field. For example, &quot;M000675&quot; and &quot;M000676&quot; are data items in the &quot;Account Number&quot; field in two records (the data element &quot;Account Number&quot;).
+
+https://www.pcmag.com/encyclopedia/term/40794/data-item</rdfs:comment>
+        <rdfs:comment>Depending on the context, a data item may or may not be a data field. For example, in a filing cabinet, each document is a data item, but not a field.</rdfs:comment>
+        <rdfs:comment>an atomic (or single) unit of information that exists (or is concretized) as a sequence of symbols that can undergo information processing</rdfs:comment>
+        <rdfs:label>data item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_record -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_record">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
+        <rdfs:comment>a dataset that is organized (or structured) into one or more data items; typically a data record is a single row, but not always
+
+https://en.wikipedia.org/wiki/Record_(computer_science)</rdfs:comment>
+        <rdfs:label>data record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_schema -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_schema">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_specification"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:18:06Z</dc:date>
+        <rdfs:label>data schema</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_source -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_source">
+        <rdfs:label>data source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_specification -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_specification">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-10-01T02:52:32Z</dc:date>
+        <rdfs:label>data specification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_structure -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_structure">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:42:26Z</dc:date>
+        <rdfs:comment>A data structure is a specialized format for organizing and storing data. General data structure types include the array, the file, the record, the table, the tree, and so on. Any data structure is designed to organize data to suit a specific purpose so that it can be accessed and worked with in appropriate ways. In computer programming, a data structure may be selected or designed to store data for the purpose of working on it with various algorithms.
+
+https://searchsqlserver.techtarget.com/definition/data-structure</rdfs:comment>
+        <rdfs:label>data structure</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_table -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_table">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_structure"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:19:43Z</dc:date>
+        <rdfs:label>data table</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/data_value_domain -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/data_value_domain">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_specification"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T14:53:30Z</dc:date>
+        <rdfs:comment>The set of allowed values for a data element.
+
+https://en.wiktionary.org/wiki/value_domain</rdfs:comment>
+        <rdfs:label>data value domain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_data_item -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_data_item">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_item"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:44Z</dc:date>
+        <rdfs:label>database data item</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_field -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_field">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_field"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:32Z</dc:date>
+        <rdfs:label>database field</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_record -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_record">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_record"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:53Z</dc:date>
+        <rdfs:label>database record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_system -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_system">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_source"/>
+        <rdfs:comment>A computer-software application that interacts with end-users, other applications, and the database itself to capture and analyze data. A general-purpose DBMS allows the definition, creation, querying, update, and administration of databases.
+
+https://en.wikipedia.org/wiki/Database</rdfs:comment>
+        <rdfs:comment>An organized collection of data.
+
+https://en.wikipedia.org/wiki/Database</rdfs:comment>
+        <rdfs:label>database system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/database_table -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/database_table">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_table"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T03:09:23Z</dc:date>
+        <rdfs:label>database table</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/relational_database_schema -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/relational_database_schema">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_schema"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:30:54Z</dc:date>
+        <rdfs:label>relational database schema</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/relational_database_system -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/relational_database_system">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/database_system"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-11T21:16:43Z</dc:date>
+        <rdfs:comment>A database based on the relational model of data, as proposed by E. F. Codd in 1970.
+
+https://en.wikipedia.org/wiki/Relational_database</rdfs:comment>
+        <rdfs:label>relational database system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/spreadsheet -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/spreadsheet">
+        <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_file"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-30T04:32:36Z</dc:date>
+        <rdfs:comment>A data file in which data is arranged in the rows and columns of a grid and can be manipulated and used in calculations.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
