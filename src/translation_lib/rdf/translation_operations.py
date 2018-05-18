@@ -1,6 +1,17 @@
-import os
+import os,sys,inspect
+
+# this code is needed to referrence the util.uri_util module
+# https://gist.github.com/JungeAlexander/6ce0a5213f3af56d7369
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
+# import util.uri_util
+
+# from uri_util import *
+from util.uri_util import *
+
 import rdflib
-from uri_util import *
+# from uri_util import *
 from rdflib import RDFS, RDF, OWL, Namespace
 
 
@@ -23,11 +34,13 @@ def make_uri_map(filename):
 
     return uri_map
 
+
 def make_field_uri_map(base_uri, field_names):
     """:returns a dictionary with k = field name and v = uri of field"""
     map = {}
     for field_name in field_names:
         map[field_name] = make_uri(base_uri, field_name)
+
 
 def write_uri_map(uri_map, filename='uri_map.txt'):
     # save label2uri to file

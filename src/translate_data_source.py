@@ -1,7 +1,7 @@
 # coding=utf-8
 import pandas as pds
-from translation_lib.uri_util import *
-from translation_lib.translation_operations import *
+from translation_lib.util.uri_util import *
+from translation_lib.rdf.translation_operations import *
 from rdflib import Graph, RDF, RDFS, OWL, Namespace, BNode, URIRef, Literal, XSD
 
 def translate_excel(data_file, base):
