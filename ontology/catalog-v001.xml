@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data-source/patients_2/patients_2.owl" uri="patients-2-direct-fields.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data-source/patients_1/patients_1.owl" uri="patients-1-direct-fields.ttl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/simple-dental-ontology.owl" uri="simple-dental-ontology.owl"/>
-    <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/data-source-ontology.owl" uri="data-source-ontology.owl"/>
-    <group id="imports" prefer="public" xml:base=""/>
-</catalog>
