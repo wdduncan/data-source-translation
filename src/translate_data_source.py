@@ -10,7 +10,7 @@ def translate_excel(data_file, base):
 
     # build data graph
     g = make_graph_df(df, "http://purl.example.translation/")
-    test_query(g) # test querying
+    # test_query(g) # test querying
 
     # return g.serialize()
     return g.serialize(format="turtle")
@@ -147,5 +147,5 @@ def test_query(g):
 
     for result in results: print result
 
-translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
-# print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")

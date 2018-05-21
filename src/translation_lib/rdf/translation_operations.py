@@ -72,6 +72,7 @@ def make_field_uri_map(base_uri, field_names):
     """
     map = {}
     for field_name in field_names:
+        field_name = parse_python_name(field_name) # remove invalid chars from field name
         map[field_name] = make_uri(base_uri, field_name)
 
     return map
