@@ -17,19 +17,42 @@ def translate_excel(data_file, base):
 
 
 
-def make_graph_df(df, data_namespace, data_soruce=""):
+def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri=""):
+    """
+    :param df: Pandas dataframe to be trasformed in rdflib graph
+    :param data_namespace_uri: Base URI of the graph containing the translated data
+    :param data_source: Name of the data source containing the data
+    :param data_source_base_uri: Base URI of the data source if you wish it to be different than the data URI
+    :return: Rdflib graph of triples representing the data
+
+    This function transforms a Pandas dataframe into a Rdflib graph. The translation scheme is based on the data source
+    translation ontology found at https://github.com/wdduncan/data-source-translation.
+    """
     # namespaces for data source ontology
     dst = Namespace("http://purl.data-source-translation.org/") # base uri
     dp = Namespace(dst + "data_property/") # data properties
     op = Namespace(dst + "object_property/") # object properties
 
     # namespaces for data being translated
-    data = Namespace(parse_base_uri(data_namespace)) # base uri
+    data = Namespace(parse_base_uri(data_namespace_uri)) # base uri
     # rv = Namespace(data + "data_property/record_value/")  # record values (shortcut) BD: Not using record value (5/18/2018)
     fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
 
+    # create datasource uri
+    data_source_uri = None
+    if len(data_source.strip()) > 0:
+        data_source = parse_python_name(data_source)
+        if (data_source_base_uri.strip()) > 0:
+            data_source_uri = make_uri(data_source_base_uri, data_source)
+        else:
+            data_source_uri = make_uri(data, data_source)
+
     # declare graph to hold triples
     g = Graph()
+
+    # add data source to ontology
+    if data_source_uri:
+        g.add((data_source_uri, RDF.type, OWL.NamedIndividual))
 
     # create a maps of:
     #   field names -> uris
@@ -61,6 +84,10 @@ def make_graph_df(df, data_namespace, data_soruce=""):
         record_uri = make_uri(data.record, idx)
         g.add((record_uri, RDF.type, OWL.NamedIndividual))
         g.add((record_uri, RDF.type, dst.data_record))
+
+        # link reord to data source (if given)
+        if data_source_uri:
+            g.add(data_source_uri, dst.has_member, record_uri)
 
         for (field_name, value) in series.iteritems():
             field_uri = fmap[field_name]
