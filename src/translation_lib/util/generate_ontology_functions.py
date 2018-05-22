@@ -1,13 +1,13 @@
 # coding=utf-8
 import os
 import rdflib
-from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode
+from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace
 from textwrap import dedent
 import re
 from datetime import datetime
 import pandas as pds
 
-
+graph = Graph()
 def format_as_python_name(name):
     py_name = name.replace(' ', '_')
     py_name = py_name.replace('.owl', '')
@@ -41,18 +41,42 @@ def format_function_property_string(function_name, prop_uri, datatype=""):
         """.format(function_name=function_name, prop_uri=prop_uri)
     return function_string
 
+def format_function_property_triple(function_name,prop_uri):
+
+    function_string =    """
+        def {function_name}_rdf(uri1,uri2,graph):
+                      uri1 = URIRef(uri1)
+                      uri2 = URIRef(uri2)
+                      graph.add((uri1,URIRef("{prop_uri}"),uri2))
+                      return graph
+
+        """.format(function_name=function_name, prop_uri=prop_uri)
+
+    function_string += """
+        {function_name}_rdf.uri = "<{prop_uri}>"
+        """.format(function_name=function_name, prop_uri=str(prop_uri))
+
+    function_string += """                                             
+        {function_name}_rdf.label = "{function_name}"                       
+        """.format(function_name=function_name, prop_uri=str(function_name))
+    return function_string
 
 def format_uri_function_string(function_name, uri):
      function_string = """
-        def {function_name}_uri(id=""):
-            if len(id.strip()) > 0:
-                return "<{uri}/%s>" % id
-            else:
-                return "<{uri}>" 
+        def {function_name}_rdf(id): 
+            return "<{uri}/%s>" % id              
 
         """.format(function_name=function_name, uri=uri)
-     return function_string
 
+     function_string += """                                             
+        {function_name}_rdf.uri = "<{uri}>"                       
+         """.format(function_name=function_name, uri=str(uri))
+
+     function_string += """                                             
+        {function_name}_rdf.label = "{function_name}"                  
+         """.format(function_name=function_name, prop_uri=str(function_name))
+     
+     return function_string
 
 def format_uri_as_label(uri, make_lower=True):
     # use the last portion of the uri as label
@@ -103,6 +127,17 @@ def build_ontology_functions(ontology_source,
     g.parse(ontology_source)
 
     with open(pyfile, 'w') as f:
+        output("from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace")
+
+        # create a function for each object property
+        output("################# object properties #################\n\n")
+        for prop in g.subjects(RDF.type, OWL.ObjectProperty):  # query for object properteis
+            fname = format_as_python_name(get_label(prop))  # create function name
+            function_string = format_function_property_triple(fname,prop)  # create python function string
+            uri_string = format_uri_function_string(fname, prop)
+            output(function_string)
+            output(uri_string)
+
         # create a function for each object property
         output("################# object properties #################\n\n")
         for prop in g.subjects(RDF.type, OWL.ObjectProperty): # query for object properteis
@@ -140,4 +175,4 @@ def build_ontology_functions(ontology_source,
                 output(uri_string)
 
 # build_ontology_functions('simple-dental-ontology.owl', "simple_dental_ontology_ttl.py", print_output=True)
-# build_ontology_functions('data-source-ontology.owl', print_output=True)
+build_ontology_functions('data-source-ontology.owl', print_output=True)
