@@ -500,7 +500,7 @@ https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_record">
         <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_collection"/>
-        <obo:IAO_0000115>Data that is organized (or structured) as one or more related data items with each data item belonging to a distinct field.</obo:IAO_0000115>
+        <obo:IAO_0000115>Data that is organized (or structured) as one or more related data items with each data item belonging to a distinct data field.</obo:IAO_0000115>
         <obo:IAO_0000119>https://en.wikipedia.org/wiki/Record_(computer_science)</obo:IAO_0000119>
         <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date>2018-05-11T21:19:43Z</dc:date>
