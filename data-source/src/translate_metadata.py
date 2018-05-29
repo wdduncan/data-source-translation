@@ -3,18 +3,20 @@ import pandas as pds
 from translation_lib.util.uri_util import *
 from translation_lib.rdf.translation_operations import *
 from rdflib import Graph, RDF, RDFS, OWL, Namespace, BNode, URIRef, Literal, XSD
+from rdflib.namespace import NamespaceManager
 
-def translate_excel(data_file, base):
+
+def translate_metadata_excel(data_file, base):
     # load Excel file into dataframe
     df = pds.ExcelFile(data_file).parse()
 
     # build data graph
-    g = make_graph_df(df, "http://purl.example.translation/")
-    # test_query(g) # test querying
+    data_g = make_graph_df(df, base)
+    # print(data_g.serialize(format="turtle"))
 
+    meta_g = make_metadata_graph(data_g, base)
     # return g.serialize()
-    return g.serialize(format="turtle")
-
+    # return meta_g.serialize(format="turtle")
 
 
 def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri=""):
@@ -29,12 +31,12 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
     translation ontology found at https://github.com/wdduncan/data-source-translation.
     """
     # namespaces for data source ontology
-    dst = Namespace("http://purl.data-source-translation.org/") # base uri
-    dp = Namespace(dst + "data_property/") # data properties
-    op = Namespace(dst + "object_property/") # object properties
+    dst = Namespace("http://purl.data-source-translation.org/")  # base uri
+    dp = Namespace(dst + "data_property/")  # data properties
+    op = Namespace(dst + "object_property/")  # object properties
 
     # namespaces for data being translated
-    data = Namespace(parse_base_uri(data_namespace_uri)) # base uri
+    data = Namespace(parse_base_uri(data_namespace_uri))  # base uri
     # rv = Namespace(data + "data_property/record_value/")  # record values (shortcut) BD: Not using record value (5/18/2018)
     fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
 
@@ -48,7 +50,7 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
             data_source_uri = make_uri(data, data_source)
 
     # declare graph to hold triples
-    g = Graph()
+    g = Graph(identifier=data_namespace_uri)
 
     # add data source to ontology
     if data_source_uri:
@@ -113,40 +115,57 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
 
     return g
 
-def test_query(g):
-    results = \
-        g.query("""
-            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            prefix field: <http://purl.data-source-translation.org/data_field>
-            prefix fv: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
-            
-            select ?field ?v where {
-              ?field a field: .
-              # ?field a ?type .
-              ?field ns2:patient_id ?v .}
-            """)
-    # for result in results: print result
 
-    results = \
-        g.query("""
-            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            prefix field: <http://purl.data-source-translation.org/data_field>
-            prefix fv: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
-            
-            construct {
-              ?field rdfs:label ?v
-            } where {
-              ?field a field: .
-              ?field ns2:patient_id ?v .}
-            """)
+def make_metadata_graph(graph, data_namespace_uri, data_source="", data_source_base_uri=""):
+    """
 
-    for result in results: print result
+    :param graph: rdflib data graph
+    :return: rdflib graph with metadata relations
+    """
+    # print(graph.identifier)
+    # for n in graph.namespace_manager.namespaces(): print(n)
 
-# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
-print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+    meta_graph = Graph()
+
+    # namespaces for data source ontology
+    dst = Namespace("http://purl.data-source-translation.org/")  # base uri
+    dp = Namespace(dst + "data_property/")  # data properties
+    op = Namespace(dst + "object_property/")  # object properties
+
+    # namespaces translated data
+    data = Namespace(parse_base_uri(data_namespace_uri))  # base uri
+    data_field = Namespace(data + "data_field/")
+    fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
+
+    # values = graph.subjects(RDFS.subPropertyOf, dp.field_value)
+    # for v in values: print v
+
+    print graph.serialize(format="turtle")
+    # for data_item in graph.objects(dst.data_record, dp.has_member): print data_item
+    data_fields = graph.subjects(RDF.type, dst.data_field)
+    field_data_items = graph.objects(data_field.field, dst.has_member) # find field daga items
+
+    # print(field_data_items)
+    # for f in field_data_items: print f
+
+    # field_data_items = None
+    # for data_field in data_fields:
+    #     short_uri = str(data_field).split("/")[-1]
+    #     if short_uri == "field":
+    #         field_data_items = graph.objects(data_field, dst.has_member)
+    #         break
+
+    data_records = graph.subjects(RDF.type, dst.data_record)
+    # for record in data_records:
+    #     # items = graph.objects(record, dst.has_member)
+    #     # for i in items: print graph.value(i, dst.has_value)
+    #     for s, p, o in graph.triples((record, None, None)):
+    #         print s, p, o
+
+    # data_item = graph.value(data_field, dst.has_member)
+    # print data_item
+    # value = graph.value(data_item, dst.has_value)
+    # print value
+
+translate_metadata_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/")
+# print translate_metadata_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/")

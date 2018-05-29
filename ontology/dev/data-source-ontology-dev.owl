@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.data-source-translation.org/data-source-translation.owl#"
-     xml:base="http://purl.data-source-translation.org/data-source-translation.owl"
+<rdf:RDF xmlns="http://purl.data-source-translation.org/dev/data-source-translation.owl#"
+     xml:base="http://purl.data-source-translation.org/dev/data-source-translation.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
@@ -13,7 +13,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://purl.data-source-translation.org/data-source-translation.owl">
+    <owl:Ontology rdf:about="http://purl.data-source-translation.org/dev/data-source-translation.owl">
         <owl:imports rdf:resource="http://purl.obolibrary.org/obo/iao/dev/ontology-metadata.owl"/>
     </owl:Ontology>
     
@@ -206,6 +206,16 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.data-source-translation.org/is_about -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/is_about">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-29T01:55:44Z</dc:date>
+        <rdfs:label>is about</rdfs:label>
+    </owl:ObjectProperty>
     
 
 
@@ -455,6 +465,22 @@ https://www.pcmag.com/encyclopedia/term/40771/data-element</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_field">
         <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_collection"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.data-source-translation.org/object_property/has_member"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.data-source-translation.org/data_item"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.data-source-translation.org/object_property/member_of"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.data-source-translation.org/data_record"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000115>Data that is organized (or structured) as one or more related data items with each data item belonging to distinct data record.</obo:IAO_0000115>
         <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date>2018-05-11T21:19:43Z</dc:date>
@@ -500,6 +526,22 @@ https://www.pcmag.com/encyclopedia/term/43134/field</rdfs:comment>
 
     <owl:Class rdf:about="http://purl.data-source-translation.org/data_record">
         <rdfs:subClassOf rdf:resource="http://purl.data-source-translation.org/data_collection"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.data-source-translation.org/object_property/has_member"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.data-source-translation.org/data_item"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://purl.data-source-translation.org/object_property/member_of"/>
+                                <owl:someValuesFrom rdf:resource="http://purl.data-source-translation.org/data_field"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000115>Data that is organized (or structured) as one or more related data items with each data item belonging to a distinct data field.</obo:IAO_0000115>
         <obo:IAO_0000119>https://en.wikipedia.org/wiki/Record_(computer_science)</obo:IAO_0000119>
         <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
@@ -668,6 +710,26 @@ https://en.wikipedia.org/wiki/Database</rdfs:comment>
 
 https://en.wikipedia.org/wiki/Information_system</rdfs:comment>
         <rdfs:label>information system</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.data-source-translation.org/metadata -->
+
+    <owl:Class rdf:about="http://purl.data-source-translation.org/metadata">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.data-source-translation.org/data"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.data-source-translation.org/is_about"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.data-source-translation.org/data"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-29T01:59:13Z</dc:date>
     </owl:Class>
     
 
