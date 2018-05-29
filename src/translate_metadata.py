@@ -75,13 +75,13 @@ def make_metadata_graph(graph, metadata_namespace_uri, target_namespace_uri, dat
         metadata_graph.add((record, annotation.semantic_type, sem_type_uri)) # add semantic type
 
         # add semantic specification information to metadata graph
-        sem_label_value = graph.value(record, fv.semantic_type)
+        sem_label_value = graph.value(record, fv.semantic_label)
         metadata_graph.add((record, annotation.semantic_label, sem_label_value)) # add semantic label
 
         # add semantic specification information to metadata graph
         sem_source_value = graph.value(record, fv.semantic_source)
         sem_source_uri = URIRef(sem_source_value)
-        metadata_graph.add((record, annotation.semantic_type, sem_source_uri))
+        metadata_graph.add((record, annotation.semantic_source, sem_source_uri))
 
         # get value of data item and add specified value information
         value = graph.value(data_item, dp.data_value)
@@ -126,5 +126,5 @@ def make_data_specification_graph(metadata_graph, metadata_namespace_uri, target
 # translate_data_specification_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
 # print translate_data_specification_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
 
-# translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
-print translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# print translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
