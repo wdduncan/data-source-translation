@@ -9,7 +9,7 @@ def translate_excel(data_file, base):
     df = pds.ExcelFile(data_file).parse()
 
     # build data graph
-    g = make_graph_df(df, "http://purl.example.translation/")
+    g = make_data_graph_df(df, "http://purl.example.translation/")
     # test_query(g) # test querying
 
     # return g.serialize()
@@ -17,7 +17,7 @@ def translate_excel(data_file, base):
 
 
 
-def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri=""):
+def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri=""):
     """
     :param df: Pandas dataframe to be trasformed in rdflib graph
     :param data_namespace_uri: Base URI of the graph containing the translated data
@@ -29,14 +29,14 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
     translation ontology found at https://github.com/wdduncan/data-source-translation.
     """
     # namespaces for data source ontology
-    dst = Namespace("http://purl.data-source-translation.org/") # base uri
-    dp = Namespace(dst + "data_property/") # data properties
-    op = Namespace(dst + "object_property/") # object properties
+    dst = Namespace("http://purl.data-source-translation.org/")  # base uri
+    dp = Namespace(dst + "data_property/")  # data properties
+    op = Namespace(dst + "object_property/")  # object properties
 
     # namespaces for data being translated
-    data = Namespace(parse_base_uri(data_namespace_uri)) # base uri
-    # rv = Namespace(data + "data_property/record_value/")  # record values (shortcut) BD: Not using record value (5/18/2018)
+    data = Namespace(parse_base_uri(data_namespace_uri))  # base uri
     fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
+    fdi = Namespace(data + "object_property/field_data_item/")  # field data items (shortcut)
 
     # create datasource uri
     data_source_uri = None
@@ -48,36 +48,37 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
             data_source_uri = make_uri(data, data_source)
 
     # declare graph to hold triples
-    g = Graph()
+    g = Graph(identifier=data_namespace_uri)
 
     # add data source to ontology
     if data_source_uri:
         g.add((data_source_uri, RDF.type, OWL.NamedIndividual))
+        g.add((data_source_uri, RDF.type, dst.data_source))
 
     # create a maps of:
     #   field names -> uris
-    #   field names -> field value uris
-    #   field names -> record value uris
-    # rv_map = make_field_uri_map(rv, list(df.columns)) # BD: Not using record value (5/18/2018)
-    fmap = make_field_uri_map(data.data_field, list(df.columns))
+    #   field names -> field value uris (data properties)
+    #   field names -> field data item uris (object properties)
+    field_map = make_field_uri_map(data.data_field, list(df.columns))
     fv_map = make_field_uri_map(fv, list(df.columns))
+    fdi_map = make_field_uri_map(fdi, list(df.columns))
+
 
     # declare fields in field map
-    for field_uri in fmap.values():
+    for field_uri in field_map.values():
         g.add((field_uri, RDF.type, OWL.NamedIndividual))
         g.add((field_uri, RDF.type, dst.data_field))
 
-    # declare record value and field value data properties (shortcut properties)
+    # declare field value data and field data item properties (shortcut properties)
     # these properties help make querying easier
     for col_name in list(df.columns):
-        # BD: Not using record value (5/18/2018)
-        # rv_uri =  make_uri(rv.field, col_name)
-        # g.add((rv_uri, RDF.type, OWL.DatatypeProperty))
-        # g.add((rv_uri, RDFS.subPropertyOf, dp.record_value))
-
         fv_uri = make_uri(fv, col_name)
         g.add((fv_uri, RDF.type, OWL.DatatypeProperty))
         g.add((fv_uri, RDFS.subPropertyOf, dp.field_value))
+
+        fdi_uri = make_uri(fdi, col_name)
+        g.add((fdi_uri, RDF.type, OWL.ObjectProperty))
+        g.add((fdi_uri, RDFS.subPropertyOf, op.has_member))
 
     # translate data
     for (idx, series) in df.iterrows():
@@ -90,26 +91,25 @@ def make_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="
             g.add(data_source_uri, dst.has_member, record_uri)
 
         for (field_name, value) in series.iteritems():
-            field_uri = fmap[field_name]
+            field_uri = field_map[field_name]
             data_item_uri = make_uri(record_uri, field_name)
 
             # declare data item (and value)
             g.add((data_item_uri, RDF.type, OWL.NamedIndvidual))
             g.add((data_item_uri, RDF.type, dst.data_item))
-            g.add((data_item_uri, dst.has_value, Literal(value)))
+            g.add((data_item_uri, dp.data_value, Literal(value)))
 
             # relate data item to record and field
             g.add((record_uri, dst.has_member, data_item_uri))
             g.add((field_uri, dst.has_member, data_item_uri))
 
-            # relate record and field to value (shortcuts)
-            # rv_uri = rv_map[field_name] # BD: Not using record value (5/18/2018)
-            # g.add((record_uri, rv_uri, Literal(value))) # BD: Not using record value (5/18/2018)
-
-            # relate record to value in field (shortcut)
+            # relate record to value (i.e., field value) (shortcut)
             fv_uri = fv_map[field_name]
-            g.add((fmap[field_name], fv_uri, Literal(value)))
             g.add((record_uri, fv_uri, Literal(value)))
+
+            # relate record to data item (field data item) (shortcut)
+            fdi_uri = fdi_map[field_name]
+            g.add((record_uri, fdi_uri, data_item_uri))
 
     return g
 
@@ -148,5 +148,5 @@ def test_query(g):
 
     for result in results: print result
 
-# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
-print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+# print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
