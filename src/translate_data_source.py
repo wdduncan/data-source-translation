@@ -12,8 +12,8 @@ def translate_excel(data_file, base):
     g = make_data_graph_df(df, "http://purl.example.translation/")
     # test_query(g) # test querying
 
-    # return g.serialize()
-    return g.serialize(format="turtle")
+    # print g.serialize(format="turtle")
+    return g
 
 
 
@@ -88,7 +88,7 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
 
         # link reord to data source (if given)
         if data_source_uri:
-            g.add(data_source_uri, dst.has_member, record_uri)
+            g.add(data_source_uri, op.has_member, record_uri)
 
         for (field_name, value) in series.iteritems():
             field_uri = field_map[field_name]
@@ -100,8 +100,8 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
             g.add((data_item_uri, dp.data_value, Literal(value)))
 
             # relate data item to record and field
-            g.add((record_uri, dst.has_member, data_item_uri))
-            g.add((field_uri, dst.has_member, data_item_uri))
+            g.add((record_uri, op.has_member, data_item_uri))
+            g.add((field_uri, op.has_member, data_item_uri))
 
             # relate record to value (i.e., field value) (shortcut)
             fv_uri = fv_map[field_name]
@@ -148,5 +148,6 @@ def test_query(g):
 
     for result in results: print result
 
-translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+# translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
 # print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+# print translate_excel("test_data/services_1.xlsx", "http://purl.example.translation/")

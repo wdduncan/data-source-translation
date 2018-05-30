@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.data-source-translation.org/dev/data-source-translation.owl/"
-     xml:base="http://purl.data-source-translation.org/dev/data-source-translation.owl/"
+<rdf:RDF xmlns="http://purl.data-source-translation.org/dev/data-source-translation.owl#"
+     xml:base="http://purl.data-source-translation.org/dev/data-source-translation.owl"
      xmlns:annotation="http://purl.data-source-translation.org/annotation/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
@@ -224,7 +224,7 @@
     <!-- http://purl.data-source-translation.org/object_property/defined_by -->
 
     <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/defined_by">
-        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/object_property/is_about"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/object_property/inverse_is_about"/>
         <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/object_property/defines"/>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-12T03:51:48Z</dc:date>
         <rdfs:comment>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</rdfs:comment>
@@ -251,6 +251,17 @@
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-17T17:05:40Z</dc:date>
         <rdfs:label>has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.data-source-translation.org/object_property/inverse_is_about -->
+
+    <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/inverse_is_about">
+        <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/object_property/is_about"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-30T02:50:07Z</dc:date>
+        <rdfs:label>inverse is about</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -308,7 +319,7 @@
     <!-- http://purl.data-source-translation.org/object_property/specified_by -->
 
     <owl:ObjectProperty rdf:about="http://purl.data-source-translation.org/object_property/specified_by">
-        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/object_property/is_about"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.data-source-translation.org/object_property/inverse_is_about"/>
         <owl:inverseOf rdf:resource="http://purl.data-source-translation.org/object_property/specifies"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-29T21:49:59Z</dc:date>
