@@ -113,40 +113,6 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
 
     return g
 
-def test_query(g):
-    results = \
-        g.query("""
-            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            prefix field: <http://purl.data-source-translation.org/data_field>
-            prefix fv: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
-            
-            select ?field ?v where {
-              ?field a field: .
-              # ?field a ?type .
-              ?field ns2:patient_id ?v .}
-            """)
-    # for result in results: print result
-
-    results = \
-        g.query("""
-            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-            prefix field: <http://purl.data-source-translation.org/data_field>
-            prefix fv: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns2: <http://purl.example.translation/data_property/field_value/> 
-            prefix ns3: <http://purl.example.translation/data_property/record_value/> 
-            
-            construct {
-              ?field rdfs:label ?v
-            } where {
-              ?field a field: .
-              ?field ns2:patient_id ?v .}
-            """)
-
-    for result in results: print result
 
 # translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
 # print translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
