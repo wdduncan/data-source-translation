@@ -132,7 +132,7 @@ def test_metadata_query():
     data_graph = \
         translate_excel("test_data/services_1.xlsx", "http://purl.example.translation/")
     metadata_graph = \
-        translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+        translate_data_to_graph_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
     dental_graph = \
         Graph(identifier="simple-dental-ontology.owl").parse("translation_lib/ontology/simple-dental-ontology.owl")
     source_graph =\
@@ -180,13 +180,13 @@ def test_metadata_query():
         # print graph.serialize(format="turtle")
 
 
-# translate_metadata_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
-# print translate_metadata_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# translate_metadata_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# print translate_metadata_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
 
-# translate_data_specification_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
-# print translate_data_specification_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# translate_data_specification_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# print translate_data_specification_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
 
-# translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
-# print translate_data_to_graph_excel("test_data/simple_dental_data_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# translate_data_to_graph_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
+# print translate_data_to_graph_excel("test_data/services_1_specification.xlsx", "http://purl.example.metadata/", "http://purl.example.translation/")
 
 test_metadata_query()
