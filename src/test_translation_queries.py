@@ -144,8 +144,8 @@ def test_metadata_patients_query():
         select ?record ?spec ?field ?value ?type 
         where {
           # ?type rdfs:subClassOf ont:patient .
-           ?type rdfs:subClassOf ont:gender .
-          # ?type rdfs:subClassOf ont:female_gender . # query engine doesn't not execute rdfs:subClassOf correctly
+          # ?type rdfs:subClassOf ont:gender .
+          ?type rdfs:subClassOf* ont:female_gender . # without a reasoner property path is needed
           ?spec op:specifies ?field;
                 annotation:semantic_type ?type .
           # optional { ?spec dp:specified_value ?value .}
