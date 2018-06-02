@@ -1,13 +1,13 @@
 # coding=utf-8
 import os
 import rdflib
-from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace
+from rdflib import Graph, ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace
 from textwrap import dedent
 import re
 from datetime import datetime
 import pandas as pds
 
-graph = Graph()
+
 def format_as_python_name(name):
     py_name = name.replace(' ', '_')
     py_name = py_name.replace('.owl', '')
@@ -33,50 +33,142 @@ def format_as_python_name(name):
     return py_name
 
 
-def format_function_property_string(function_name, prop_uri, datatype=""):
+def ttl_function_object_property(function_name, prop_uri, datatype=""):
     function_string = """
         def {function_name}(uri1, uri2):
             return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
 
         """.format(function_name=function_name, prop_uri=prop_uri)
+    function_string += """
+            {function_name}.uri = "<{prop_uri}>"
+            """.format(function_name=function_name, prop_uri=str(prop_uri))
+    function_string += """                                             
+            {function_name}.label = "{function_name}"                       
+            """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
-def format_function_property_triple(function_name,prop_uri):
 
+def ttl_function_data_property(function_name, prop_uri, datatype=""):
+    function_string = """
+        def {function_name}(uri1, uri2):
+            return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
+
+        """.format(function_name=function_name, prop_uri=prop_uri)
+    function_string += """
+                {function_name}.uri = "<{prop_uri}>"
+                """.format(function_name=function_name, prop_uri=str(prop_uri))
+    function_string += """                                             
+                {function_name}.label = "{function_name}"                       
+                """.format(function_name=function_name, prop_uri=str(function_name))
+    return function_string
+
+
+def ttl_function_annotation_property(function_name, prop_uri, datatype=""):
+    function_string = """
+        def {function_name}(uri1, uri2):
+            return "%s <{prop_uri}> %s . \\n" % (uri1, uri2) 
+
+        """.format(function_name=function_name, prop_uri=prop_uri)
+    function_string += """
+                {function_name}.uri = "<{prop_uri}>"
+                """.format(function_name=function_name, prop_uri=str(prop_uri))
+    function_string += """                                             
+                {function_name}.label = "{function_name}"                       
+                """.format(function_name=function_name, prop_uri=str(function_name))
+    return function_string
+
+
+def ttl_function_class(class_name, class_uri):
+    function_string = """
+        def {class_name}(id): 
+            return "<{class_uri}/%s>" % id.strip()             
+
+        """.format(class_name=class_name, class_uri=class_uri)
+    function_string += """                                             
+        {class_name}.uri = "<{class_uri}>"                       
+         """.format(class_name=class_name, class_uri=str(class_uri))
+    function_string += """                                             
+        {class_name}.label = "{class_name}"                  
+         """.format(class_name=class_name)
+    return function_string
+
+
+
+def rdflib_function_object_property(function_name, prop_uri):
     function_string =    """
-        def {function_name}_rdf(uri1,uri2,graph):
+        def {function_name}(graph,uri1,uri2):
                       uri1 = URIRef(uri1)
                       uri2 = URIRef(uri2)
                       graph.add((uri1,URIRef("{prop_uri}"),uri2))
                       return graph
 
         """.format(function_name=function_name, prop_uri=prop_uri)
-
     function_string += """
-        {function_name}_rdf.uri = "<{prop_uri}>"
+        {function_name}.uri = URIRef("{prop_uri}")
         """.format(function_name=function_name, prop_uri=str(prop_uri))
-
     function_string += """                                             
-        {function_name}_rdf.label = "{function_name}"                       
+        {function_name}.label = "{function_name}"                       
         """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
-def format_uri_function_string(function_name, uri):
-     function_string = """
-        def {function_name}_rdf(id): 
-            return "<{uri}/%s>" % id              
 
-        """.format(function_name=function_name, uri=uri)
 
-     function_string += """                                             
-        {function_name}_rdf.uri = "<{uri}>"                       
-         """.format(function_name=function_name, uri=str(uri))
+def rdflib_function_data_property(function_name, prop_uri):
+    function_string =    """
+        def {function_name}(graph,uri1,value):
+                      uri1 = URIRef(uri1)
+                      graph.add((uri1,URIRef("{prop_uri}"),Literal(value)))
+                      return graph
 
-     function_string += """                                             
-        {function_name}_rdf.label = "{function_name}"                  
-         """.format(function_name=function_name, prop_uri=str(function_name))
-     
-     return function_string
+        """.format(function_name=function_name, prop_uri=prop_uri)
+    function_string += """
+        {function_name}.uri = URIRef("{prop_uri}")
+        """.format(function_name=function_name, prop_uri=str(prop_uri))
+    function_string += """                                             
+        {function_name}.label = "{function_name}"                       
+        """.format(function_name=function_name, prop_uri=str(function_name))
+    return function_string
+
+
+def rdflib_function_annotation_property(function_name, prop_uri):
+    function_string =    """
+        def {function_name}(graph,uri1,value="", uri2=""):
+            uri1 = URIRef(uri1)
+            if len(value) > 0:
+                graph.add((uri1,URIRef("{prop_uri}"),value))
+            else:
+                uri2 = URIRef(uri2)
+                graph.add((uri1,URIRef("{prop_uri}"),uri2))
+            return graph
+
+        """.format(function_name=function_name, prop_uri=prop_uri)
+    function_string += """
+        {function_name}.uri = URIRef("{prop_uri}")
+        """.format(function_name=function_name, prop_uri=str(prop_uri))
+    function_string += """                                             
+        {function_name}.label = "{function_name}"                       
+        """.format(function_name=function_name, prop_uri=str(function_name))
+    return function_string
+
+
+def rdflib_function_class(class_name, class_uri):
+    function_string = """
+        def {class_name}(id): 
+            uri = "{class_uri}/%s" % id.strip()  
+            return "URIRef({class_uri})" % id              
+
+        """.format(class_name=class_name, class_uri=class_uri)
+
+    function_string += """                                             
+        {class_name}.uri = URIRef("{class_uri}")                       
+         """.format(class_name=class_name, class_uri=str(class_uri))
+
+    function_string += """                                             
+        {class_name}.label = "{class_name}"                  
+         """.format(class_name=class_name)
+
+    return function_string
+
 
 def format_uri_as_label(uri, make_lower=True):
     # use the last portion of the uri as label
@@ -92,27 +184,71 @@ def format_uri_as_label(uri, make_lower=True):
         return format_as_python_name(short_uri)
 
 
-def format_generated_functions_file_name(ontology_source, pyfile_name="", make_lower=True):
+def get_label(graph, uri, make_lower):
+    label = str(graph.label(uri)) # get rdfs:label for uri
+    if len(label.strip()) < 1: # if no label, use last part of uri
+        label = format_uri_as_label(uri, make_lower)
+    return label
+
+
+def format_generated_functions_file_name(ontology_source, pyfile_name="", make_lower=True, function_type="rdflib"):
     # specify name of the python file name for generated functions
     pyfile_name = pyfile_name.strip()
     if len(pyfile_name) > 0:
         pyfile = pyfile_name
     else:
         ontology = format_uri_as_label(ontology_source.strip(), make_lower=make_lower)
-        pyfile = "{0}_generated_functions_ttl.py".format(format_as_python_name(ontology))
+        pyfile = "{0}_generated_functions_{1}.py".format(format_as_python_name(ontology), function_type.strip())
 
     return pyfile
+
+
+def generate_function_object_property(field_name, property, function_type="rdflib"):
+    if function_type.strip() == "rdflib":
+        return rdflib_function_object_property(field_name, property)
+    else:
+        return ttl_function_object_property(field_name, property)
+
+
+def generate_function_data_property(field_name, property, function_type="rdflib"):
+    if function_type.strip() == "rdflib":
+        return rdflib_function_data_property(field_name, property)
+    else:
+        return ttl_function_data_property(field_name, property)
+
+
+def generate_function_annotation_property(field_name, property, function_type="rdflib"):
+    if function_type.strip() == "rdflib":
+        return rdflib_function_annotation_property(field_name, property)
+    else:
+        return ttl_function_annotation_property(field_name, property)
+
+
+def generate_function_class(class_name, class_uri, function_type="rdflib"):
+    if function_type.strip() == "rdflib":
+        return rdflib_function_class(class_name, class_uri)
+    else:
+        return ttl_function_object_property(class_name, class_uri)
+
+
+
+def generate_common_ontology_functions(funciton_type="rdflib"):
+    filename = ""
+    if funciton_type.strip() == "rdflib":
+        filename = "common_ontology_functions_rdflib.py"
+    else:
+        filename = "common_ontology_functions_ttl.py"
+
+    with open(filename, 'r') as f:
+        return f.read()
+
 
 def build_ontology_functions(ontology_source,
                              pyfile_name="",
                              print_output=False,
                              save_output=True,
-                             make_lower=True):
-    def get_label(uri):
-        label = str(g.label(uri)) # get rdfs:label for uri
-        if len(label.strip()) < 1: # if no label, use last part of uri
-            label = format_uri_as_label(uri, make_lower)
-        return label
+                             make_lower=True,
+                             function_type="rdflib"):
 
     def output(output_string):
         if save_output: f.write(dedent(output_string))  # write output to file
@@ -120,59 +256,52 @@ def build_ontology_functions(ontology_source,
 
     # specify name of the output file
     pyfile = \
-        format_generated_functions_file_name(ontology_source, pyfile_name=pyfile_name, make_lower=make_lower)
+        format_generated_functions_file_name(ontology_source,
+                                             pyfile_name=pyfile_name,
+                                             make_lower=make_lower,
+                                             function_type=function_type)
 
     # build graph
-    g = rdflib.Graph()
-    g.parse(ontology_source)
+    graph = Graph()
+    graph.parse(ontology_source)
 
     with open(pyfile, 'w') as f:
-        output("from rdflib import ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace")
+        # this generated in the common ontology functions
+        # output("from rdflib import Graph, ConjunctiveGraph, URIRef, RDFS, Literal, RDF, OWL, BNode,Graph, Namespace \n\n")
+
+        # output the common ontology functions
+        output(generate_common_ontology_functions(function_type))
 
         # create a function for each object property
-        output("################# object properties #################\n\n")
-        for prop in g.subjects(RDF.type, OWL.ObjectProperty):  # query for object properteis
-            fname = format_as_python_name(get_label(prop))  # create function name
-            function_string = format_function_property_triple(fname,prop)  # create python function string
-            uri_string = format_uri_function_string(fname, prop)
-            output(function_string)
-            output(uri_string)
+        output("################# object properties #################\n")
 
-        # create a function for each object property
-        output("################# object properties #################\n\n")
-        for prop in g.subjects(RDF.type, OWL.ObjectProperty): # query for object properteis
-            fname = format_as_python_name(get_label(prop)) # create function name
-            function_string = format_function_property_string(fname, prop) # create python function string
-            uri_string = format_uri_function_string(fname, prop)
+        for property in graph.subjects(RDF.type, OWL.ObjectProperty):  # query for object properties
+            field_name = format_as_python_name(get_label(graph, property, make_lower))  # create function property name
+            function_string = generate_function_object_property(field_name, property, function_type)  # create python function property string
             output(function_string)
-            output(uri_string)
-
 
         # create a function for each data property
-        output("\n################# data properties #################\n\n")
-        for prop in g.subjects(RDF.type, OWL.DatatypeProperty): # query for data properties
-            fname = format_as_python_name(get_label(prop))  # create function name
-            function_string = format_function_property_string(fname, prop)  # create python function string
-            uri_string = format_uri_function_string(fname, prop)
+        output("\n################# data properties #################\n")
+        for property in graph.subjects(RDF.type, OWL.DatatypeProperty): # query for data properties
+            field_name = format_as_python_name(get_label(graph, property, make_lower))  # create function property name
+            function_string = generate_function_data_property(field_name, property, function_type)  # create python function property string
             output(function_string)
-            output(uri_string)
 
         # create a function for each annotation property
-        output("\n################# annotation properties #################\n\n")
-        for prop in g.subjects(RDF.type, OWL.AnnotationProperty):  # query for data properties
-            fname = format_as_python_name(get_label(prop))  # create function name
-            function_string = format_function_property_string(fname, prop)  # create python function string
-            uri_string = format_uri_function_string(fname, prop)
+        output("\n################# annotation properties #################\n")
+        for property in graph.subjects(RDF.type, OWL.AnnotationProperty):  # query for annotation properties
+            field_name = format_as_python_name(get_label(graph, property, make_lower))  # create function property name
+            function_string = generate_function_annotation_property(field_name, property, function_type)  # create python function property string
             output(function_string)
-            output(uri_string)
 
         # create a function for each class that returns a uri for an individual / instance
-        output("\n################# classes #################\n\n")
-        for class_uri in g.subjects(RDF.type, OWL.Class): # query for classes
+        output("\n################# classes #################\n")
+        for class_uri in graph.subjects(RDF.type, OWL.Class): # query for classes
             if type(class_uri) != rdflib.term.BNode:
-                class_name = format_as_python_name(get_label(class_uri))  # create class name
-                uri_string = format_uri_function_string(class_name, class_uri)
+                class_name = format_as_python_name(get_label(graph, class_uri, make_lower))  # create class name
+                uri_string = generate_function_class(class_name, class_uri, function_type)
                 output(uri_string)
 
 # build_ontology_functions('simple-dental-ontology.owl', "simple_dental_ontology_ttl.py", print_output=True)
-build_ontology_functions('data-source-ontology.owl', print_output=True)
+build_ontology_functions('../ontology/data-source-ontology.owl', print_output=True)
+# print generate_common_ontology_functions()

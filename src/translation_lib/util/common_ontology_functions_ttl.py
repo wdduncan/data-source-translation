@@ -1,9 +1,10 @@
 # coding=utf-8
 from textwrap import dedent
+from rdflib import Graph,URIRef,RDF,OWL,RDFS, Literal
 import re
 
 
-################# funcitons from template_ttl.py #################
+################# funcitons from common_ontology_functions_ttl.py ###################
 
 
 def triple(subj, pred, obj):
@@ -52,23 +53,3 @@ def declare_data_property(prop_uri, label="", parent_uri=""):
         ttl += """{0} rdfs:label "{1}" .\n""".format(prop_uri, label)
 
     return ttl
-
-
-def format_uri_name(name):
-    uri_name = name.replace(' ', '_')
-    uri_name = uri_name.replace('.', '_')
-    uri_name = uri_name.replace('-', '_')
-    uri_name = uri_name.replace('+', '_')
-    uri_name = uri_name.replace('=', '_')
-    uri_name = uri_name.replace('!', '_')
-    uri_name = uri_name.replace(',', '_')
-    uri_name = uri_name.replace('*', '_')
-    uri_name = uri_name.replace('@', '_')
-    uri_name = uri_name.replace('&', '_')
-    uri_name = uri_name.replace('$', '_')
-    uri_name = uri_name.replace('~', '_')
-    uri_name = uri_name.replace('?', '_')
-    uri_name = uri_name.replace(':', '_')
-    uri_name = uri_name.replace('%20', '_')
-    uri_name = re.sub(r'[^a-z,A-Z,0-9,_]', '', uri_name)
-    return uri_name
