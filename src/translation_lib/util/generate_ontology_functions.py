@@ -40,10 +40,10 @@ def ttl_function_object_property(function_name, prop_uri, datatype=""):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-            {function_name}.uri = "<{prop_uri}>"
+            {function_name}_uri = "<{prop_uri}>"
             """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-            {function_name}.label = "{function_name}"                       
+            {function_name}_label = "{function_name}"                       
             """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -55,10 +55,10 @@ def ttl_function_data_property(function_name, prop_uri, datatype=""):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-                {function_name}.uri = "<{prop_uri}>"
+                {function_name}_uri = "<{prop_uri}>"
                 """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-                {function_name}.label = "{function_name}"                       
+                {function_name}_label = "{function_name}"                       
                 """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -70,10 +70,10 @@ def ttl_function_annotation_property(function_name, prop_uri, datatype=""):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-                {function_name}.uri = "<{prop_uri}>"
+                {function_name}_uri = "<{prop_uri}>"
                 """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-                {function_name}.label = "{function_name}"                       
+                {function_name}_label = "{function_name}"                       
                 """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -85,10 +85,10 @@ def ttl_function_class(class_name, class_uri):
 
         """.format(class_name=class_name, class_uri=class_uri)
     function_string += """                                             
-        {class_name}.uri = "<{class_uri}>"                       
+        {class_name}_uri = "<{class_uri}>"                       
          """.format(class_name=class_name, class_uri=str(class_uri))
     function_string += """                                             
-        {class_name}.label = "{class_name}"                  
+        {class_name}_label = "{class_name}"                  
          """.format(class_name=class_name)
     return function_string
 
@@ -104,10 +104,10 @@ def rdflib_function_object_property(function_name, prop_uri):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-        {function_name}.uri = URIRef("{prop_uri}")
+        {function_name}_uri = URIRef("{prop_uri}")
         """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-        {function_name}.label = "{function_name}"                       
+        {function_name}_label = "{function_name}"                       
         """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -122,10 +122,10 @@ def rdflib_function_data_property(function_name, prop_uri):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-        {function_name}.uri = URIRef("{prop_uri}")
+        {function_name}_uri = URIRef("{prop_uri}")
         """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-        {function_name}.label = "{function_name}"                       
+        {function_name}_label = "{function_name}"                       
         """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -143,10 +143,10 @@ def rdflib_function_annotation_property(function_name, prop_uri):
 
         """.format(function_name=function_name, prop_uri=prop_uri)
     function_string += """
-        {function_name}.uri = URIRef("{prop_uri}")
+        {function_name}_uri = URIRef("{prop_uri}")
         """.format(function_name=function_name, prop_uri=str(prop_uri))
     function_string += """                                             
-        {function_name}.label = "{function_name}"                       
+        {function_name}_label = "{function_name}"                       
         """.format(function_name=function_name, prop_uri=str(function_name))
     return function_string
 
@@ -160,11 +160,11 @@ def rdflib_function_class(class_name, class_uri):
         """.format(class_name=class_name, class_uri=class_uri)
 
     function_string += """                                             
-        {class_name}.uri = URIRef("{class_uri}")                       
+        {class_name}_uri = URIRef("{class_uri}")                       
          """.format(class_name=class_name, class_uri=str(class_uri))
 
     function_string += """                                             
-        {class_name}.label = "{class_name}"                  
+        {class_name}_label = "{class_name}"                  
          """.format(class_name=class_name)
 
     return function_string

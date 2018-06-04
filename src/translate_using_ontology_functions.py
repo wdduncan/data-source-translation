@@ -37,7 +37,7 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
 
     # add data source to ontology
     if data_source_uri:
-        gof.declare_individual(graph, data_source_uri, gof.data_source.uri)
+        gof.declare_individual(graph, data_source_uri, gof.data_source_uri)
 
     # create a maps of:
     #   field names -> uris
@@ -49,21 +49,21 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
 
     # declare fields in field map
     for field_uri in field_map.values():
-        gof.declare_individual(graph, field_uri, gof.data_field.uri)
+        gof.declare_individual(graph, field_uri, gof.data_field_uri)
 
     # declare field value data and field data item properties (shortcut properties)
     # these properties help make querying easier
     for col_name in list(df.columns):
         fv_uri = make_uri(fv, col_name)
-        gof.declare_data_property(graph, fv_uri, gof.field_value.uri)
+        gof.declare_data_property(graph, fv_uri, gof.field_value_uri)
 
         fdi_uri = make_uri(fdi, col_name)
-        gof.declare_object_property(graph, fdi_uri, gof.has_member.uri)
+        gof.declare_object_property(graph, fdi_uri, gof.has_member_uri)
 
     # translate data
     for (idx, series) in df.iterrows():
         record_uri = make_uri(data.data_record, idx)
-        gof.declare_individual(graph, record_uri, gof.data_record.uri)
+        gof.declare_individual(graph, record_uri, gof.data_record_uri)
 
         # link reord to data source (if given)
         if data_source_uri:
@@ -74,7 +74,7 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
             data_item_uri = make_uri(record_uri, field_name)
 
             # declare data item (and value)
-            gof.declare_individual(graph, data_item_uri, gof.data_item.uri)
+            gof.declare_individual(graph, data_item_uri, gof.data_item_uri)
             gof.data_value(graph, data_item_uri, value)
 
             # relate data item to record and field
