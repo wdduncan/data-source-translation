@@ -20,7 +20,9 @@ def test_data_graph_query():
             """)
 
     print "num results: ", len(results)
-    for result in results: print result
+    print "type: ", type(results)
+
+    for result in results: print tuple(result)
 
 
 def test_construct_query():
@@ -44,8 +46,13 @@ def test_construct_query():
             """)
 
     print "num results: ", len(results)
-    for result in results: print result
+    print "type: ", type(results)
+    temp_graph = Graph()
 
+    for result in results:
+        temp_graph.add(result)
+        # print result
+    print temp_graph.serialize(format="turtle")
 
 def test_metadata_services_1_query():
     data_graph = \
@@ -169,6 +176,6 @@ def test_metadata_patients_query():
 
 
 # test_data_graph_query()
-# test_construct_query()
+test_construct_query()
 # test_metadata_services_1_query()
-test_metadata_patients_query()
+# test_metadata_patients_query()
