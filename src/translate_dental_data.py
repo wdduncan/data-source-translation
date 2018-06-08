@@ -79,10 +79,10 @@ def test_query(graph):
     query_str = query_prefixes()
     query_str += \
     """
-    select female_uri where {
-        ?record a dst:data_record;
-                fv:gender ?gender_value .
-        if(?gender_value = "F", URI(concat(str(?record), " 
+    select ?female_uri where {
+    ?record a dst:data_record;
+            fv:gender ?gender_value .
+    if(?gender_value = "F", URI(concat(str(?record), "/patient/gender/", str(?gender_value)))
     
     """
 def instantiate_entities():
