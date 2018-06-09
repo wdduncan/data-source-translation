@@ -54,36 +54,65 @@ def make_data_graph():
 
 def instantiate_patients(graph):
     query_str = query_prefixes()
-    query_str += \
+    query_strx = \
     """
+    ## needs to run in graphdb to work
     construct {
-      ?female_uri a ont:female_patient .
-      # ?male_uri a ont:male_patient .
+        ?female_uri rdf:type ont:female_patient .
+        ?male_uri rdf:type ont:male_patient .
     } where {
-      {
-        select female_uri where {
-            ?record a dst:data_record;
-                    fv:gender ?gender_value .
-            bind(if(?gender_value = "F"
-                
+        {
+            ?record fv:patient_id|fv:subject_id ?female_id;
+                    fv:gender|fv:sex ?female_value .
+            values ?female_value {"F" "Female"}
+        } union {
+            ?record fv:patient_id|fv:subject_id ?male_id;
+                    fv:gender|fv:sex ?male_value .
+            values ?male_value {"M" "Male"}
         }
-      }
-      
-      {
-      
-      }
+
+        bind(URI(CONCAT(str(?record), "/patient/", str(?female_id))) as ?female_uri)
+        bind(URI(CONCAT(str(?record), "/patient/", str(?male_id))) as ?male_uri)
     }
     """
+    query_str += \
+        """
+        ## needs to run in graphdb to work
+        select * where {
+            ?record fv:patient_id|fv:subject_id ?id;
+                    fv:gender|fv:sex ?gender_value .
+        }
+        """
+
+    results = graph.query(query_str)
+    for result in results:
+        # graph.add(result)
+        print result
+    # print graph.serialize(format="turtle")
+
+
 
 def test_query(graph):
     query_str = query_prefixes()
     query_str += \
     """
-    select ?female_uri where {
-    ?record a dst:data_record;
-            fv:gender ?gender_value .
-    if(?gender_value = "F", URI(concat(str(?record), "/patient/gender/", str(?gender_value)))
+    construct {
+        ?female_uri a ont:female_patient .
+        ?male_uri a ont:male_patient .
+    } where {
+        {
+            ?record fv:patient_id|fv:subject_id ?female_id;
+                    fv:gender|fv:sex ?female_value .
+            values ?female_value {"F" "Female"}
+        } union {
+            ?record fv:patient_id|fv:subject_id ?male_id;
+                    fv:gender|fv:sex ?male_value .
+            values ?male_value {"M" "Male"}
+        }
     
+        bind(URI(CONCAT(str(?record), "/patient/", str(?female_id))) as ?female_uri)
+        bind(URI(CONCAT(str(?record), "/patient/", str(?male_id))) as ?male_uri)
+    }
     """
 def instantiate_entities():
     graph = make_data_graph()
