@@ -7,6 +7,11 @@ import re
 from datetime import datetime
 import pandas as pds
 
+def data_source_uri(datasrcuri):
+
+    datasrcuri = URIRef(datasrcuri)
+
+    return datasrcuri
 
 def format_as_python_name(name):
     py_name = name.replace(' ', '_')
