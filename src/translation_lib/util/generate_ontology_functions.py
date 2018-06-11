@@ -304,4 +304,5 @@ def build_ontology_functions(ontology_source,
 
 # build_ontology_functions('simple-dental-ontology.owl', "simple_dental_ontology_ttl.py", print_output=True)
 build_ontology_functions('../ontology/data-source-ontology.owl', print_output=True)
+build_ontology_functions('../ontology/simple-dental-ontology.owl', print_output=True)
 # print generate_common_ontology_functions()
