@@ -17,9 +17,11 @@ def translate_raw_values(raw_data, eav_metadata):
         if row['element_enum'] == '(null)':
             continue
 
+        project_id = str(row['project_id'])
         field_name = str(row['field_name'])
         codes = str(row['element_enum']).replace(' \\n ', '|')
         code_split = codes.split('|')
+
         codes_out = {}
         for item in code_split:
             couplet = item.split(',')
@@ -28,7 +30,10 @@ def translate_raw_values(raw_data, eav_metadata):
             # typically throws this error for calculated fields and non code lists
             except IndexError:
                 continue
-        dicts[field_name] = codes_out
+        # allows handling of multiple project's data and terms
+        if project_id not in dicts:
+            dicts[project_id] = {}
+        dicts[project_id][field_name] = codes_out
 
     # do lookups of multiple choice columns to get human readable label
     value_desc = []
@@ -36,18 +41,33 @@ def translate_raw_values(raw_data, eav_metadata):
         row = row.__dict__
         # codes always cast as floats
         value = str(row['value']).replace('.0', '')
+        project_id = str(row['project_id'])
         try:
-            value_desc.append(dicts[str(row['field_name'])][value])
+            value_desc.append(dicts[project_id][str(row['field_name'])][value])
         except:
             value_desc.append('n/a')
 
     df['value_desc'] = value_desc
     return df
 
-def translate_eav(data_file, meta_data_file):
+def translate_eav(data_file, meta_data_file, field_semantic_codes_file=""):
     # metadata in this case is only used to get literal value lined up with coded raw value
     raw_data = pds.read_csv(data_file, sep='\t')
     meta_data = pds.read_csv(meta_data_file, sep='\t')
+
+    # pass in a file with project_id, field_name, ncit in order to relate across DBs
+    field_semantic_types = {}
+    if field_semantic_codes_file != "":
+        semantic_codes_df = pds.read_csv(field_semantic_codes_file, sep='\t')
+        for row in semantic_codes_df.itertuples():
+            row = row.__dict__
+            project_id = str(row['project_id'])
+            field_name = str(row['field_name'])
+
+            if project_id not in field_semantic_types:
+                field_semantic_types[project_id] = {}
+            if field_name not in field_semantic_types[project_id]:
+                field_semantic_types[project_id][field_name] = str(row['semantic_field_type'])
 
     df = translate_raw_values(raw_data, meta_data)
 
@@ -85,12 +105,12 @@ def translate_eav(data_file, meta_data_file):
 
     df_transform = pds.DataFrame.from_dict(records, orient='index')
 
-    g = make_data_graph_df(df_transform, "http://purl.example.translation/", "http://foo-bar.com")
+    g = make_data_graph_df(df_transform, "http://purl.example.translation/", "http://foo-bar.com", field_semantic_types=field_semantic_types)
     print g.serialize(format="turtle")
 
     return g
 
-def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri=""):
+def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_uri="", field_semantic_types={}):
     # namespaces for data being translated
     data = Namespace(parse_base_uri(data_namespace_uri))  # base uri
     fv = Namespace(data + "data_property/field_value/")  # field values (shortcut)
@@ -123,6 +143,12 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
     # declare fields in field map
     for field_uri in field_map.values():
         gof.declare_individual(graph, field_uri, gof.data_field_uri)
+
+    # assign semantic types to fields
+    if field_semantic_types:
+        for project, fields in field_semantic_types.items():
+            for field, code in fields.items():
+                gof.semantic_type(graph, field_map[field], uri2='http://purl.obolibrary.org/obo/%s' % code)
 
     # declare field value data and field data item properties (shortcut properties)
     # these properties help make querying easier
@@ -180,5 +206,6 @@ def make_data_graph_df(df, data_namespace_uri, data_source="", data_source_base_
 if __name__ == "__main__":
     translate_eav(
         data_file=r'test_data/EAV_sample_raw_data.txt',
-        meta_data_file=r'test_data/EAV_sample_meta_data.txt'
+        meta_data_file=r'test_data/EAV_sample_meta_data.txt',
+        field_semantic_codes_file=r'test_data/EAV_sample_field_semantic_data.txt'
     )

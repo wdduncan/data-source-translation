@@ -1,0 +1,7 @@
+project_id	field_name	element_label	form_name	semantic_field_type
+123	age_at_diagnosis	Age at Diagnosis 	diagnosis	NCIT_C69217
+50	age_dx	Age at Diagnosis	background_data	NCIT_C69217
+50	histology_grade	Histology	diagnosis_and_radiation_information	NCIT_C124805
+123	histo_grade	Type 	diagnosis	NCIT_C124805
+123	mrn	Medical Record No.	background_data	NCIT_C81262
+50	pt_id	MRN	patient_information	NCIT_C81262
