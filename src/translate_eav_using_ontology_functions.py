@@ -17,7 +17,7 @@ def translate_raw_values(raw_data, eav_metadata):
         if row['element_enum'] == '(null)':
             continue
 
-        project_id = str(row['project_id'])
+        project_id = str(row['project_id']).replace('.0', '')
         field_name = str(row['field_name'])
         codes = str(row['element_enum']).replace(' \\n ', '|')
         code_split = codes.split('|')
@@ -41,7 +41,7 @@ def translate_raw_values(raw_data, eav_metadata):
         row = row.__dict__
         # codes always cast as floats
         value = str(row['value']).replace('.0', '')
-        project_id = str(row['project_id'])
+        project_id = str(row['project_id']).replace('.0', '')
         try:
             value_desc.append(dicts[project_id][str(row['field_name'])][value])
         except:
