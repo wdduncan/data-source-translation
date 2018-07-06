@@ -11,7 +11,6 @@ cp ../imports/*import.owl .
 # you can perform merge by simple executing robot merge
 
 # merge owl files
-# you can also call robot merge ...; but I have placed the jar file in the directory
 java -jar ./robot.jar merge \
   --inputs "*.owl" \
   --include-annotations true \
