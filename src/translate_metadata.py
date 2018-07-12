@@ -6,6 +6,12 @@ from rdflib import Graph, RDF, RDFS, OWL, Namespace, BNode, URIRef, Literal, XSD
 from rdflib.namespace import NamespaceManager
 from translate_data_source import make_data_graph_df, translate_excel
 
+## syntax to import modules in python 3
+from src.translation_lib.util.uri_util import *
+from src.translation_lib.rdf.translation_operations import *
+from src.translate_data_source import make_data_graph_df, translate_excel
+
+
 def translate_metadata_excel(data_file, metadata_base_uri, target_namespace_uri):
     # load Excel file into dataframe
     df = pds.ExcelFile(data_file).parse()

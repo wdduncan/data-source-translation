@@ -4,6 +4,10 @@ from translation_lib.util.uri_util import *
 from translation_lib.rdf.translation_operations import *
 from rdflib import Graph, RDF, RDFS, OWL, Namespace, BNode, URIRef, Literal, XSD
 
+## syntax to import modules in python 3
+from src.translation_lib.util.uri_util import *
+from src.translation_lib.rdf.translation_operations import *
+
 def translate_excel(data_file, base):
     # load Excel file into dataframe
     df = pds.ExcelFile(data_file).parse()

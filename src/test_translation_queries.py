@@ -19,10 +19,10 @@ def test_data_graph_query():
                       fv:patient_id ?value .}
             """)
 
-    print "num results: ", len(results)
-    print "type: ", type(results)
+    print("num results: ", len(results))
+    print("type: ", type(results))
 
-    for result in results: print tuple(result)
+    for result in results: print (tuple(result))
 
 
 def test_construct_query():
@@ -45,14 +45,14 @@ def test_construct_query():
             }
             """)
 
-    print "num results: ", len(results)
-    print "type: ", type(results)
+    print("num results: ", len(results))
+    print("type: ", type(results))
     temp_graph = Graph()
 
     for result in results:
         temp_graph.add(result)
         # print result
-    print temp_graph.serialize(format="turtle")
+    print(temp_graph.serialize(format="turtle"))
 
 def test_metadata_services_1_query():
     data_graph = \
@@ -98,9 +98,9 @@ def test_metadata_services_1_query():
         """
 
     results = graph.query(query_str)
-    print "num results: ", len(results)
+    print("num results: ", len(results))
     for result in results:
-        print result
+        print(result)
 
     with open("test_data/output_services_1_with_metadata.ttl", "w") as f:
         f.write(graph.serialize(format="turtle"))
@@ -166,9 +166,9 @@ def test_metadata_patients_query():
         """
 
     results = graph.query(query_str)
-    print "num results: ", len(results)
+    print("num results: ", len(results))
     for result in results:
-        print result
+        print(result)
 
     with open("test_data/output_patients_with_metadata.ttl", "w") as f:
         f.write(graph.serialize(format="turtle"))

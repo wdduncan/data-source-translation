@@ -1,3 +1,4 @@
+import pandas as pds
 from translate_data_source import translate_excel
 from translate_metadata import translate_metadata_excel, translate_data_to_graph_excel
 import translation_lib.util.simple_dental_ontology_generated_functions_rdflib as ont
@@ -5,6 +6,69 @@ import translation_lib.util.data_source_ontology_generated_functions_rdflib as d
 from translation_lib.util.uri_util import *
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef
 from textwrap import dedent
+
+## syntax to import modules in python 3
+from src.translation_lib.util import *
+from src.translate_metadata import translate_metadata_excel, translate_data_to_graph_excel
+from src.translation_lib.util import simple_dental_ontology_generated_functions_rdflib as ont
+from src.translation_lib.util import data_source_ontology_generated_functions_rdflib as dso
+from src.translation_lib.util.uri_util import *
+from uuid import uuid4
+
+
+def make_record_value_mapper(graph, field_uri_map):
+    def return_fn(record, strip_value=True):
+        unique_id = rdflib.URIRef("http://ex.com/uuid")  # uris for relations
+
+
+        r_bnode = rdflib.BNode() ## blank node for record
+        graph.add( (r_bnode,rdflib.RDF.type, rdflib.URIRef("http://ex.com/record")))
+        graph.add( (r_bnode, unique_id, rdflib.Literal(str(uuid4()))) ) ## uuid for record
+
+        for field_name in field_uri_map:
+            uri = rdflib.URIRef(field_uri_map[field_name])
+            if strip_value:
+                value = str(record[field_name]).strip()
+            graph.add( (r_bnode, uri, rdflib.Literal(value)) )
+        return graph
+
+    return return_fn
+
+
+def make_record_datum_mapper(graph, field_uri_map, field_uuid_map=[]):
+    has_member = rdflib.URIRef("http://ex.com/has_member") # uris for relations
+    literal_value = rdflib.URIRef("http://ex.com/literal_value")
+    unique_id = rdflib.URIRef("http://ex.com/uuid")
+
+    for field_name in field_uri_map:
+        uri = rdflib.URIRef(field_uri_map[field_name])
+        graph.add ( (uri, rdflib.RDF.type, rdflib.URIRef("http://ex.com/field") ) )
+        if len(field_uuid_map) < 1: ## uuid for field
+            graph.add( (uri, unique_id, rdflib.Literal(str(uuid4()))) )
+        else:
+            graph.add((uri, unique_id, rdflib.Literal(str(field_uuid_map[field_name]))))
+
+
+    def return_fn(record, strip_value=True):
+        # print("####### fmap: %s" % field_uri_map)
+        r_bnode = rdflib.BNode() ## blank node for record
+        graph.add( (r_bnode,rdflib.RDF.type, rdflib.URIRef("http://ex.com/record")))
+        graph.add( (r_bnode, unique_id, rdflib.Literal(str(uuid4()))) )  ## uuid for record
+
+        for field_name in field_uri_map:
+            d_bnode = rdflib.BNode()  ## blank node for datum
+            graph.add((d_bnode, rdflib.RDF.type, rdflib.URIRef("http://ex.com/datum")))
+            graph.add( (d_bnode, unique_id, rdflib.Literal(str(uuid4()))) )  ## uuid for datum
+
+            field_uri = rdflib.URIRef(field_uri_map[field_name])
+            if strip_value:
+                value = str(record[field_name]).strip()
+            graph.add( (r_bnode, has_member, d_bnode) )
+            graph.add( (field_uri, has_member, d_bnode) )
+            graph.add( (d_bnode, literal_value, rdflib.Literal(value)) )
+        return graph
+
+    return return_fn
 
 
 def query_prefixes():
@@ -138,7 +202,7 @@ def instantiate_entities():
             gender = str(result[2])
             uri = make_uri(str(data), "patient/%s" % id)
 
-            print result[1]
+            print(result[1])
             # if "Female" == gender or "F" == gender:
             #     dso.declare_individual(graph, uri, ont.female_patient_uri)
             # else:
@@ -156,5 +220,32 @@ def instantiate_entities():
 
     instantiate_patients()
 
-instantiate_entities()
+# instantiate_entities()
 
+## test record/value mapping (direct mapping)
+g = rdflib.Graph()
+df = pds.ExcelFile("test_data/patients_1.xlsx").parse()
+# df = df.head(3)
+df = df.head()
+fmap = {}
+for c in df.columns:
+    fmap[c] = "http:ex.com/" + str(c)
+
+rvm = make_record_value_mapper(g, fmap)
+
+# df.apply(rvm, axis = 1)
+# for stmt in g: print(stmt)
+
+
+## test record/datum mapping
+fmap = {}
+for c in df.columns:
+    fmap[c] = "http:ex.com/field/" + str(c)
+
+g = rdflib.Graph()
+rdm = make_record_datum_mapper(g, fmap)
+
+df.apply(rdm, axis = 1)
+for stmt in g: print(stmt)
+
+# print(df)
