@@ -13,6 +13,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:ontology="http://purl.roswellpark.org/ontology#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://purl.roswellpark.org/ontology/data_entity.owl">
         <owl:imports rdf:resource="http://purl.roswellpark.org/ontology_annotations_import.owl"/>
@@ -31,6 +32,18 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/IAO_0000115 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000600 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000600"/>
+    
+
+
     <!-- http://purl.org/dc/elements/1.1/creator -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
@@ -43,9 +56,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000015 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000015 -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000015">
+    <owl:AnnotationProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000015">
         <obo:IAO_0000115>An annotation property that specifies the data attribute that is being defined.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T23:00:30Z</dc:date>
@@ -54,9 +67,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000016 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000016 -->
 
-    <owl:AnnotationProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000016">
+    <owl:AnnotationProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000016">
         <obo:IAO_0000115>An annotation property that specifies the entity represented by the entity associated with the annotation.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T23:04:52Z</dc:date>
@@ -92,9 +105,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000005 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000005 -->
 
-    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000005">
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000005">
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:18:16Z</dc:date>
         <rdfs:label xml:lang="en">obsolete object property</rdfs:label>
@@ -102,9 +115,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000013 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000013 -->
 
-    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000013">
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000013">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:56:37Z</dc:date>
@@ -113,9 +126,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000014 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000014 -->
 
-    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000014">
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000014">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:57:17Z</dc:date>
@@ -145,10 +158,10 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000008 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000008 -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000008">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/DE_000000009"/>
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000008">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000009"/>
         <obo:IAO_0000115>A data property that relates a data entity to a literal value.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:24:52Z</dc:date>
@@ -157,9 +170,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000009 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000009 -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000009">
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000009">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
         <obo:IAO_0000115>A data property that relates an entity to a data value.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
@@ -169,9 +182,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000010 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000010 -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000010">
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000010">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
         <obo:IAO_0000600>A data property in which the data value is used to provide information about another entity or value.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
@@ -181,10 +194,10 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000011 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000011 -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000011">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/DE_000000010"/>
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000011">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
         <obo:IAO_0000600>A metadata property in which the literal value is to be interpreted as an IRI, and the entity related the literal has information that is about the meaning of the enity denoted by the IRI value.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:42:08Z</dc:date>
@@ -193,10 +206,10 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000012 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000012 -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology/DE_000000012">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/DE_000000010"/>
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000012">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
         <obo:IAO_0000600>A metadata property that specifies the data value that is being defined.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:53:13Z</dc:date>
@@ -248,18 +261,9 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology#entity -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000002 -->
 
-    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#entity">
-        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-28T14:19:23Z</dc:date>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.roswellpark.org/ontology/DE_000000002 -->
-
-    <owl:Class rdf:about="http://purl.roswellpark.org/ontology/DE_000000002">
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000002">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000000"/>
         <obo:IAO_0000115>A data entity that consists of (or is constituted by) one or more data values, field, or data items.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
@@ -269,15 +273,68 @@
     
 
 
-    <!-- http://purl.roswellpark.org/ontology/DE_000000003 -->
+    <!-- http://purl.roswellpark.org/ontology#DE_000000003 -->
 
-    <owl:Class rdf:about="http://purl.roswellpark.org/ontology/DE_000000003">
-        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology/DE_000000002"/>
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000003">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
         <obo:IAO_0000115>A data collection that consists of a set of unique attributes (or fields) and each attribute has as most one data value.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T21:57:44Z</dc:date>
         <rdfs:comment>The data values do not have to be of the same datatype. Often a data record represented as single row in a table, but not always.</rdfs:comment>
         <rdfs:label xml:lang="en">data record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000004 -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000004">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:18:58Z</dc:date>
+        <rdfs:label xml:lang="en">data row</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000006 -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000006">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:19:26Z</dc:date>
+        <rdfs:label xml:lang="en">data column</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000007 -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000007">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000017"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:20:17Z</dc:date>
+        <rdfs:label xml:lang="en">data field</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000017 -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000017">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000000"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:20:23Z</dc:date>
+        <rdfs:label xml:lang="en">datum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#entity -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#entity">
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-05-28T14:19:23Z</dc:date>
     </owl:Class>
     
 

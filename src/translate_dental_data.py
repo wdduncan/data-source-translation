@@ -18,7 +18,7 @@ from uuid import uuid4
 
 def make_record_value_mapper(graph, field_uri_map):
     def return_fn(record, strip_value=True):
-        unique_id = rdflib.URIRef("http://ex.com/uuid")  # uris for relations
+        unique_id = rdflib.URIRef("http://ex.com/uuid")  # uris for relations/properties
 
 
         r_bnode = rdflib.BNode() ## blank node for record
@@ -36,7 +36,7 @@ def make_record_value_mapper(graph, field_uri_map):
 
 
 def make_record_datum_mapper(graph, field_uri_map, field_uuid_map=[]):
-    has_member = rdflib.URIRef("http://ex.com/has_member") # uris for relations
+    has_member = rdflib.URIRef("http://ex.com/has_member") # uris for relations/properties
     literal_value = rdflib.URIRef("http://ex.com/literal_value")
     unique_id = rdflib.URIRef("http://ex.com/uuid")
 
@@ -70,6 +70,47 @@ def make_record_datum_mapper(graph, field_uri_map, field_uuid_map=[]):
 
     return return_fn
 
+
+def make_data_attribute_mapper(graph, attribute_uri_map, attribute_uuid_map=[]):
+    literal_value = rdflib.URIRef("http://ex.com/literal_value") # uris for relations/properties
+    uuid_uri = rdflib.URIRef("http://ex.com/uuid")
+
+    graph.add( (literal_value, rdflib.RDF.type,rdflib.OWL.DatatypeProperty) )
+    graph.add( (uuid_uri, rdflib.RDF.type,rdflib.OWL.AnnotationProperty) )
+
+    for attribute_name in attribute_uri_map:
+        uri = rdflib.URIRef(attribute_uri_map[attribute_name])
+        graph.add ( (uri, rdflib.RDF.type, rdflib.OWL.ObjectProperty ) )
+        graph.add( (uri, rdflib.RDFS.subPropertyOf, rdflib.URIRef("http://ex.com/data_attribute")))
+        # if len(attribute_uuid_map) < 1: ## uuid for attribute
+        #     graph.add( (uri, uuid_uri, rdflib.Literal(str(uuid4()))) )
+        # else:
+        #     graph.add((uri, uuid_uri, rdflib.Literal(str(attribute_uuid_map[attribute_name]))))
+
+
+    def data_attribute_mapper(record, strip_value=True):
+        # record_uri = rdflib.BNode() ## blank node for data record
+        # record_uri = rdflib.URIRef("http://ex.com/" + str(uuid4()))
+        record_uri = rdflib.URIRef("http://ex.com/record_" + str(record.name))
+        graph.add( (record_uri,rdflib.RDF.type, rdflib.URIRef("http://ex.com/data_record")))
+        # graph.add( (record_uri, uuid_uri, rdflib.Literal(str(uuid4()))) )  ## uuid for record
+
+        for attribute_name in attribute_uri_map:
+            # datum_uri = rdflib.BNode()  ## blank node for datum
+            # datum_uri = rdflib.URIRef("http://ex.com/" + str(uuid4()))
+            datum_uri = rdflib.URIRef("http://ex.com/" + str(attribute_name) + "_" + str(record.name))
+            graph.add((datum_uri, rdflib.RDF.type, rdflib.URIRef("http://ex.com/datum")))
+            # graph.add( (datum_uri, uuid_uri, rdflib.Literal(str(uuid4()))) )  ## uuid for datum
+
+            attribute_uri = rdflib.URIRef(attribute_uri_map[attribute_name])
+            value = str(record[attribute_name])
+            if strip_value:
+                value = str(record[attribute_name]).strip()
+            graph.add( (record_uri, attribute_uri, datum_uri) )
+            graph.add( (datum_uri, literal_value, rdflib.Literal(value)) )
+        return graph
+
+    return data_attribute_mapper
 
 def query_prefixes():
     return dedent(
@@ -220,32 +261,47 @@ def instantiate_entities():
 
     instantiate_patients()
 
+def make_uri_map(df):
+    uri_map = {}
+    for c in df.columns:
+        uri_map[c] = "http:ex.com/" + str(c)
+
+    return uri_map
+
 # instantiate_entities()
 
 ## test record/value mapping (direct mapping)
 g = rdflib.Graph()
 df = pds.ExcelFile("test_data/patients_1.xlsx").parse()
-# df = df.head(3)
-df = df.head()
-fmap = {}
-for c in df.columns:
-    fmap[c] = "http:ex.com/" + str(c)
 
-rvm = make_record_value_mapper(g, fmap)
-
+# mapper = make_record_value_mapper(g, make_uri_map(df))
 # df.apply(rvm, axis = 1)
 # for stmt in g: print(stmt)
 
 
-## test record/datum mapping
-fmap = {}
-for c in df.columns:
-    fmap[c] = "http:ex.com/field/" + str(c)
-
+## test record/attribute mapping
 g = rdflib.Graph()
-rdm = make_record_datum_mapper(g, fmap)
+g.add( (rdflib.URIRef("http://ex.com/data_record"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/datum"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/entity"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/person"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/person"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/entity")))
+g.add( (rdflib.URIRef("http://ex.com/person_gender"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/person_gender"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/entity")))
+g.add( (rdflib.URIRef("http://ex.com/male"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/male"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/person")))
+g.add( (rdflib.URIRef("http://ex.com/male_gender"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/male_gender"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/person_gender")))
+g.add( (rdflib.URIRef("http://ex.com/female"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/female"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/person")))
+g.add( (rdflib.URIRef("http://ex.com/female_gender"), rdflib.RDF.type, rdflib.OWL.Class))
+g.add( (rdflib.URIRef("http://ex.com/female_gender"), rdflib.RDFS.subClassOf, rdflib.URIRef("http://ex.com/person_gender")))
+g.add( (rdflib.URIRef("http://ex.com/is_about"), rdflib.RDF.type, rdflib.OWL.ObjectProperty))
+g.add( (rdflib.URIRef("http://ex.com/data_attribute"), rdflib.RDF.type, rdflib.OWL.ObjectProperty))
 
-df.apply(rdm, axis = 1)
+mapper = make_data_attribute_mapper(g, make_uri_map(df))
+
+df.apply(mapper, axis = 1)
 for stmt in g: print(stmt)
-
+g.serialize(destination='output.owl')
 # print(df)
