@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.roswellpark.org/ontology_annotations_import.owl/"
-     xml:base="http://purl.roswellpark.org/ontology_annotations_import.owl/"
+<rdf:RDF xmlns="http://purl.roswellpark.org/ontology_annotations_import.owl#"
+     xml:base="http://purl.roswellpark.org/ontology_annotations_import.owl"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
@@ -558,9 +558,9 @@ EquivalentTo: xsd:integer[&gt; 2151 , &lt;= 2300]
     
 
 
-    <!-- http://purl.roswellpark.org/document_content_ontology/entity -->
+    <!-- http://purl.roswellpark.org/ontology#entity -->
 
-    <owl:Class rdf:about="http://purl.roswellpark.org/document_content_ontology/entity"/>
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#entity"/>
     
 
 

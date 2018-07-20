@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://purl.data-source-translation.org/dev/data-source-translation.owl/"
-     xml:base="http://purl.data-source-translation.org/dev/data-source-translation.owl/"
+<rdf:RDF xmlns="http://purl.data-source-translation.org/dev/data-source-translation.owl#"
+     xml:base="http://purl.data-source-translation.org/dev/data-source-translation.owl"
      xmlns:annotation="http://purl.data-source-translation.org/annotation/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"

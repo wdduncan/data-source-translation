@@ -130,9 +130,67 @@
 
     <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000014">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
+        <owl:inverseOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000021"/>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:57:17Z</dc:date>
         <rdfs:label xml:lang="en">is about</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000019 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000019">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
+        <owl:inverseOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000020"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:06:45Z</dc:date>
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000020 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000020">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:07:02Z</dc:date>
+        <rdfs:label xml:lang="en">member of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000021 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000021">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:07:32Z</dc:date>
+        <rdfs:label xml:lang="en">inverse is about</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000022 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000022">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000019"/>
+        <owl:inverseOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000023"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:08:03Z</dc:date>
+        <rdfs:label xml:lang="en">has field</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000023 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000023">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000020"/>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:08:16Z</dc:date>
+        <rdfs:label xml:lang="en">field of</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -162,10 +220,10 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000008">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000009"/>
-        <obo:IAO_0000115>A data property that relates a data entity to a literal value.</obo:IAO_0000115>
+        <obo:IAO_0000115>A data property that relates a data entity to a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:24:52Z</dc:date>
-        <rdfs:label xml:lang="en">data attribute</rdfs:label>
+        <rdfs:label xml:lang="en">data entity value</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -174,7 +232,7 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000009">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
-        <obo:IAO_0000115>A data property that relates an entity to a data value.</obo:IAO_0000115>
+        <obo:IAO_0000115>A data property that relates an entity to a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:31:12Z</dc:date>
         <rdfs:label xml:lang="en">literal value</rdfs:label>
@@ -265,7 +323,7 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000002">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000000"/>
-        <obo:IAO_0000115>A data entity that consists of (or is constituted by) one or more data values, field, or data items.</obo:IAO_0000115>
+        <obo:IAO_0000115>A data entity that consists of (or has its members) one or more data entities.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T21:55:42Z</dc:date>
         <rdfs:label xml:lang="en">data collection</rdfs:label>
@@ -277,10 +335,10 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000003">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
-        <obo:IAO_0000115>A data collection that consists of a set of unique attributes (or fields) and each attribute has as most one data value.</obo:IAO_0000115>
+        <obo:IAO_0000115>A data collection that consists of and ordered list of related data fields.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T21:57:44Z</dc:date>
-        <rdfs:comment>The data values do not have to be of the same datatype. Often a data record represented as single row in a table, but not always.</rdfs:comment>
+        <rdfs:comment>The data values of the fields do not have to be of the same datatype. Often a data record represented as single row in a table, but not always.</rdfs:comment>
         <rdfs:label xml:lang="en">data record</rdfs:label>
     </owl:Class>
     
@@ -290,9 +348,10 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000004">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
+        <obo:IAO_0000115>A data collection that consists of an horizontally structured ordered list of related data fields within a data table in which each data field belongs to a different data column.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:18:58Z</dc:date>
-        <rdfs:label xml:lang="en">data row</rdfs:label>
+        <rdfs:label xml:lang="en">data table row</rdfs:label>
     </owl:Class>
     
 
@@ -301,9 +360,10 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000006">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
+        <obo:IAO_0000115>A data collection that consists of a vertically structured ordered list of data fields with each data field belonging to the same data column.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:19:26Z</dc:date>
-        <rdfs:label xml:lang="en">data column</rdfs:label>
+        <rdfs:label xml:lang="en">data table column</rdfs:label>
     </owl:Class>
     
 
@@ -312,6 +372,7 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000007">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000017"/>
+        <obo:IAO_0000115>A datum that is a member of some record.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:20:17Z</dc:date>
         <rdfs:label xml:lang="en">data field</rdfs:label>
@@ -323,9 +384,22 @@
 
     <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000017">
         <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000000"/>
+        <obo:IAO_0000600>An  atomic (or single) data entity.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T02:20:23Z</dc:date>
         <rdfs:label xml:lang="en">datum</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000018 -->
+
+    <owl:Class rdf:about="http://purl.roswellpark.org/ontology#DE_000000018">
+        <rdfs:subClassOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000002"/>
+        <obo:IAO_0000115>A data collection that consists of one or more data colums and zero or more data rows.</obo:IAO_0000115>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-20T04:01:52Z</dc:date>
+        <rdfs:label xml:lang="en">data table</rdfs:label>
     </owl:Class>
     
 
