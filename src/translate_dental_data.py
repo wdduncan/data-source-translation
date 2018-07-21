@@ -264,7 +264,7 @@ def instantiate_entities():
 def make_uri_map(df):
     uri_map = {}
     for c in df.columns:
-        uri_map[c] = "http:ex.com/" + str(c)
+        uri_map[c] = "http://ex.com/" + str(c)
 
     return uri_map
 

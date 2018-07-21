@@ -17,6 +17,10 @@
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://purl.roswellpark.org/ontology/data_entity.owl">
         <owl:imports rdf:resource="http://purl.roswellpark.org/ontology_annotations_import.owl"/>
+        <dc:creator>Phil Whalen</dc:creator>
+        <dc:creator>Jon Kiddy</dc:creator>
+        <dc:creator>Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:creator>Aditya Muralidharan</dc:creator>
     </owl:Ontology>
     
 
@@ -70,10 +74,10 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000016 -->
 
     <owl:AnnotationProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000016">
-        <obo:IAO_0000115>An annotation property that specifies the entity represented by the entity associated with the annotation.</obo:IAO_0000115>
+        <obo:IAO_0000600>An annotation property in which the value represents (or denotes) another entity.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T23:04:52Z</dc:date>
-        <rdfs:label xml:lang="en">represents</rdfs:label>
+        <rdfs:label xml:lang="en">represents (AP)</rdfs:label>
     </owl:AnnotationProperty>
     
 
@@ -119,9 +123,10 @@
 
     <owl:ObjectProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000013">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/object_property"/>
+        <obo:IAO_0000600>An object property that holds between an data entity and another entity that is represented by the data entity.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:56:37Z</dc:date>
-        <rdfs:label xml:lang="en">representation of</rdfs:label>
+        <rdfs:label xml:lang="en">represents (OP)</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -216,6 +221,18 @@
     
 
 
+    <!-- http://purl.roswellpark.org/ontology#DE_000000001 -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000001">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
+        <obo:IAO_0000600>A data property in which the literal value represents (or denotes) another entity.</obo:IAO_0000600>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:15:08Z</dc:date>
+        <rdfs:label xml:lang="en">represents (DP)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://purl.roswellpark.org/ontology#DE_000000008 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000008">
@@ -256,10 +273,10 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000011">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
-        <obo:IAO_0000600>A metadata property in which the literal value is to be interpreted as an IRI, and the entity related the literal has information that is about the meaning of the enity denoted by the IRI value.</obo:IAO_0000600>
+        <obo:IAO_0000600>A metadata property in which the literal value denotes an entity that provides meaning about the entity related to the metadata property.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:42:08Z</dc:date>
-        <rdfs:label xml:lang="en">defines IRI</rdfs:label>
+        <rdfs:label xml:lang="en">sematic type (DP)</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -268,10 +285,46 @@
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000012">
         <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
-        <obo:IAO_0000600>A metadata property that specifies the data value that is being defined.</obo:IAO_0000600>
+        <obo:IAO_0000600>A metadata property that specifies the literal value that represents the semantic type, or, in other words, the literal value that denotes some entity.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:53:13Z</dc:date>
-        <rdfs:label xml:lang="en">defines value</rdfs:label>
+        <rdfs:label xml:lang="en">specified value (DP)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000024 -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000024">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000010"/>
+        <obo:IAO_0000600>A data property in which the literal value specifies the entity type -- such as owl:Class, owl:ObjectProperty, etc. -- of the semantic type.</obo:IAO_0000600>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:16:22Z</dc:date>
+        <rdfs:label xml:lang="en">semantic datatype (DP)</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000025 -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000025">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000008"/>
+        <obo:IAO_0000115>A data entity value that holds between a data record and a literal.</obo:IAO_0000115>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:34:51Z</dc:date>
+        <rdfs:label xml:lang="en">record value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.roswellpark.org/ontology#DE_000000026 -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000026">
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000008"/>
+        <obo:IAO_0000115>A data entity value that holds between a data field and a literal.</obo:IAO_0000115>
+        <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
+        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:35:55Z</dc:date>
+        <rdfs:label xml:lang="en">field value</rdfs:label>
     </owl:DatatypeProperty>
     
 
