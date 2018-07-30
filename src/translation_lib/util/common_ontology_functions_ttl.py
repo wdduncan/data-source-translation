@@ -44,7 +44,7 @@ def declare_object_property(prop_uri, label="", parent_uri=""):
 
 
 def declare_data_property(prop_uri, label="", parent_uri=""):
-    ttl = """{0} rdf:type owl:DataProperty .\n""".format(prop_uri)
+    ttl = """{0} rdf:type owl:DatatypeProperty .\n""".format(prop_uri)
 
     if len(parent_uri.strip()) > 0:
         ttl += """{0} rdfs:subPropertyOf {1} .\n""".format(prop_uri, parent_uri)

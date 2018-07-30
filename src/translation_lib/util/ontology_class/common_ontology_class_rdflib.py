@@ -72,7 +72,7 @@ class CommonOntology(object):
         prop_uri = URIRef(prop_uri)
 
         # Declaring an data property
-        graph.add((prop_uri, RDF.type, OWL.DataProperty))
+        graph.add((prop_uri, RDF.type, OWL.DatatypeProperty))
 
         if len(parent_uri.strip()) > 0:
             graph.add((prop_uri, RDFS.subPropertyOf, parent_uri))
