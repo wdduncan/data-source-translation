@@ -222,14 +222,9 @@ class {0}(CommonOntology):
 
 def generate_setter_function(attributes):
     function_string = """
-    def initialize_attributes(self):
-        """
-    for idx, attribute in enumerate(attributes):
-        if idx == 0:
-            function_string += "{0}\n".format(attribute)
-        else:
-            function_string += "\t\t{0}\n".format(attribute)
-
+    def initialize_attributes(self):\n"""
+    for attribute in attributes:
+        function_string += "\t\t{0}\n".format(attribute)
     return function_string
 
 def build_ontology_functions(ontology_source,
