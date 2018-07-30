@@ -19,7 +19,7 @@ class CommonOntology(object):
         graph.add((uri, RDF.type, class_uri))
 
         if len(label.strip()) > 0:
-            graph.add((uri, RDFS.label, label))
+            graph.add((uri, RDFS.label, Literal(label)))
 
         return graph
 
