@@ -46,7 +46,7 @@ class CommonOntology(object):
         graph.add((class_uri, RDFS.subClassOf, parent_uri))
 
         if len(label.strip()) > 0:
-            graph.add((class_uri, RDFS.label, label))
+            graph.add((class_uri, RDFS.label, Literal(label)))
 
 
         return graph
@@ -63,7 +63,7 @@ class CommonOntology(object):
             graph.add((prop_uri, RDFS.subPropertyOf, parent_uri))
 
         if len(label.strip()) > 0:
-            graph.add((prop_uri, RDFS.label, label))
+            graph.add((prop_uri, RDFS.label, Literal(label)))
 
         return graph
 
@@ -78,6 +78,6 @@ class CommonOntology(object):
             graph.add((prop_uri, RDFS.subPropertyOf, parent_uri))
 
         if len(label.strip()) > 0:
-            graph.add((prop_uri, RDFS.label, label))
+            graph.add((prop_uri, RDFS.label, Literal(label)))
 
         return graph

@@ -17,7 +17,7 @@ def declare_individual(graph, uri, class_uri,label=""):
     graph.add((uri, RDF.type, class_uri))
 
     if len(label.strip()) > 0:
-        graph.add((uri, RDFS.label, label))
+        graph.add((uri, RDFS.label, Literal(label)))
 
     return graph
 
@@ -45,7 +45,7 @@ def declare_class(graph, class_uri,parent_uri,label=""):
     graph.add((class_uri, RDFS.subClassOf, parent_uri))
 
     if len(label.strip()) > 0:
-        graph.add((class_uri, RDFS.label, label))
+        graph.add((class_uri, RDFS.label, Literal(label)))
 
 
     return graph
@@ -63,7 +63,7 @@ def declare_object_property(graph, prop_uri,parent_uri,label=""):
         graph.add((prop_uri, RDFS.subPropertyOf, parent_uri))
 
     if len(label.strip()) > 0:
-        graph.add((prop_uri, RDFS.label, label))
+        graph.add((prop_uri, RDFS.label, Literal(label)))
 
     return graph
 
@@ -79,7 +79,7 @@ def declare_data_property(graph, prop_uri,parent_uri,label=""):
         graph.add((prop_uri, RDFS.subPropertyOf, parent_uri))
 
     if len(label.strip()) > 0:
-        graph.add((prop_uri, RDFS.label, label))
+        graph.add((prop_uri, RDFS.label, Literal(label)))
 
     return graph
 

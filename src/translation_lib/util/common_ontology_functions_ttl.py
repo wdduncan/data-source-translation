@@ -22,7 +22,7 @@ def declare_class(class_uri, label="", parent_uri=""):
     ttl = """{0} rdf:type owl:Class .\n""".format(class_uri)
 
     if len(parent_uri.strip()) > 0:
-        ttl += """{0} rdfs:subCalssOf {1} .\n""".format(class_uri, parent_uri)
+        ttl += """{0} rdfs:subClassOf {1} .\n""".format(class_uri, parent_uri)
 
     if len(label.strip()) > 0:
         ttl += """{0} rdfs:label "{1}" .\n""".format(class_uri, label)
