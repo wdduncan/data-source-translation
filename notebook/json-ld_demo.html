@@ -11773,7 +11773,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">######################################################################</span>
@@ -11793,7 +11793,9 @@ div#notebook {
 <span class="c1"># import libraries, not sure the serializer and plugin libs is needed</span>
 <span class="kn">from</span> <span class="nn">rdflib</span> <span class="k">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">ConjunctiveGraph</span><span class="p">,</span> <span class="n">plugin</span>
 <span class="kn">from</span> <span class="nn">rdflib.serializer</span> <span class="k">import</span> <span class="n">Serializer</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">dedent</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pds</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># create a simple json doc with a json-ld context</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
@@ -11844,7 +11846,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[72]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># load doc into rdflib and process</span>
@@ -11877,10 +11879,10 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;http://example.com/places#BrewEats&gt; &lt;http://foo.com/name&gt; &#34;Brew Eats&#34; .
+<pre>&lt;http://example.com/places#BrewEats&gt; &lt;http://foo.com/name&gt; &#34;foo&#34; .
 &lt;http://example.com/places#BrewEats&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://foo.com/Restaurant&gt; .
+&lt;http://example.com/places#BrewEats&gt; &lt;http://foo.com/name&gt; &#34;Brew Eats&#34; .
 &lt;http://example.com/places#BrewEats&gt; &lt;http://foo.com/databaseId&gt; &#34;23987520&#34; .
-&lt;http://example.com/places#BrewEats&gt; &lt;http://foo.com/name&gt; &#34;foo&#34; .
 
 
 </pre>
@@ -11893,7 +11895,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[73]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># output in turtle</span>
@@ -11938,7 +11940,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[74]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here is a more complex example with multiple records</span>
@@ -12033,7 +12035,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[75]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># because you are using the graph syntax rdflib requires you a *ConjunctiveGraph*</span>
@@ -12061,15 +12063,15 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;http://example.org/library/the-republic&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://example.org/vocab#Book&gt; .
-&lt;http://example.org/library/the-republic#introduction&gt; &lt;http://purl.org/dc/elements/1.1/title&gt; &#34;The Introduction&#34; .
-&lt;http://example.org/library/the-republic&gt; &lt;http://purl.org/dc/elements/1.1/creator&gt; &#34;Plato&#34; .
-&lt;http://example.org/library/the-republic&gt; &lt;http://purl.org/dc/elements/1.1/title&gt; &#34;The Republic&#34; .
-&lt;http://example.org/library&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://example.org/vocab#Library&gt; .
+<pre>&lt;http://example.org/library&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://example.org/vocab#Library&gt; .
 &lt;http://example.org/library/the-republic#introduction&gt; &lt;http://purl.org/dc/elements/1.1/description&gt; &#34;An introductory chapter on The Republic.&#34; .
-&lt;http://example.org/library/the-republic&gt; &lt;http://example.org/vocab#contains&gt; &lt;http://example.org/library/the-republic#introduction&gt; .
+&lt;http://example.org/library/the-republic#introduction&gt; &lt;http://purl.org/dc/elements/1.1/title&gt; &#34;The Introduction&#34; .
+&lt;http://example.org/library/the-republic&gt; &lt;http://purl.org/dc/elements/1.1/title&gt; &#34;The Republic&#34; .
 &lt;http://example.org/library&gt; &lt;http://example.org/vocab#contains&gt; &lt;http://example.org/library/the-republic&gt; .
+&lt;http://example.org/library/the-republic&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://example.org/vocab#Book&gt; .
 &lt;http://example.org/library/the-republic#introduction&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://example.org/vocab#Chapter&gt; .
+&lt;http://example.org/library/the-republic&gt; &lt;http://purl.org/dc/elements/1.1/creator&gt; &#34;Plato&#34; .
+&lt;http://example.org/library/the-republic&gt; &lt;http://example.org/vocab#contains&gt; &lt;http://example.org/library/the-republic#introduction&gt; .
 
 
 </pre>
@@ -12082,10 +12084,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># out in turtle</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># output in turtle</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 </pre></div>
 
@@ -12121,6 +12123,870 @@ div#notebook {
 &lt;http://example.org/library/the-republic#introduction&gt; a ex:Chapter ;
     dc:description &#34;An introductory chapter on The Republic.&#34; ;
     dc:title &#34;The Introduction&#34; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### now try converting pandas dataframe to rdf using json-ld</span>
+
+<span class="c1"># load patients dataset</span>
+<span class="c1"># for readability I only work with the first 3 patients</span>
+<span class="n">patients</span> <span class="o">=</span> <span class="n">pds</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;patients_1.xlsx&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+<span class="n">patients</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">patients</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[77]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>patient_id</th>
+      <th>gender</th>
+      <th>birth_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10001</td>
+      <td>M</td>
+      <td>1950-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10002</td>
+      <td>F</td>
+      <td>1960-01-02</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10003</td>
+      <td>M</td>
+      <td>1970-01-03</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print dataframe as json</span>
+<span class="c1"># &#39;dumps&#39; stands for &#39;dump string&#39; and is used for encoding as json; I&#39;m not sure if it is needed ...</span>
+<span class="c1"># https://docs.python.org/3/library/json.html</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">patients</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&#34;[{\&#34;patient_id\&#34;:10001,\&#34;gender\&#34;:\&#34;M\&#34;,\&#34;birth_date\&#34;:\&#34;1950-01-01\&#34;},{\&#34;patient_id\&#34;:10002,\&#34;gender\&#34;:\&#34;F\&#34;,\&#34;birth_date\&#34;:\&#34;1960-01-02\&#34;},{\&#34;patient_id\&#34;:10003,\&#34;gender\&#34;:\&#34;M\&#34;,\&#34;birth_date\&#34;:\&#34;1970-01-03\&#34;}]&#34;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># let&#39;s create a context</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  &quot;@context&quot;:</span>
+<span class="s2">  {</span>
+<span class="s2">     &quot;@vocab&quot;: &quot;http://foo.com/&quot;</span>
+<span class="s2">  }</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># load dataframe as json string</span>
+<span class="c1"># data = json.dumps(patients.to_json(orient=&#39;records&#39;))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+    
+<span class="c1"># build context + data json-ld doc</span>
+<span class="c1"># see books json above for example</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">{</span>
+<span class="s2">  </span><span class="si">%s</span><span class="s2">,</span>
+<span class="s2">  &quot;@graph&quot;:</span>
+<span class="s2">  </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+{
+  
+  &#34;@context&#34;:
+  {
+     &#34;@vocab&#34;: &#34;http://foo.com/&#34;
+  }
+,
+  &#34;@graph&#34;:
+  [{&#34;patient_id&#34;:10001,&#34;gender&#34;:&#34;M&#34;,&#34;birth_date&#34;:&#34;1950-01-01&#34;},{&#34;patient_id&#34;:10002,&#34;gender&#34;:&#34;F&#34;,&#34;birth_date&#34;:&#34;1960-01-02&#34;},{&#34;patient_id&#34;:10003,&#34;gender&#34;:&#34;M&#34;,&#34;birth_date&#34;:&#34;1970-01-03&#34;}]
+}
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># parse graph</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">ConjunctiveGraph</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json-ld&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[80]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Graph identifier=N82b6e93964c24df6b3758e1fc795d33b (&lt;class &#39;rdflib.graph.Graph&#39;&gt;)&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print rdf</span>
+<span class="c1"># note that b/c URIs weren&#39;t defined for individuals blank nodes are created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;nt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_:N318214c21b5b499aa2c73a32ba551aa2 &lt;http://foo.com/gender&gt; &#34;F&#34; .
+_:N0e5b299e570940c680afa570b530a141 &lt;http://foo.com/gender&gt; &#34;M&#34; .
+_:N0e5b299e570940c680afa570b530a141 &lt;http://foo.com/birth_date&gt; &#34;1970-01-03&#34; .
+_:N3daac528da2845358a62be9d5f20991b &lt;http://foo.com/birth_date&gt; &#34;1950-01-01&#34; .
+_:N3daac528da2845358a62be9d5f20991b &lt;http://foo.com/patient_id&gt; &#34;10001&#34;^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+_:N318214c21b5b499aa2c73a32ba551aa2 &lt;http://foo.com/patient_id&gt; &#34;10002&#34;^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+_:N3daac528da2845358a62be9d5f20991b &lt;http://foo.com/gender&gt; &#34;M&#34; .
+_:N318214c21b5b499aa2c73a32ba551aa2 &lt;http://foo.com/birth_date&gt; &#34;1960-01-02&#34; .
+_:N0e5b299e570940c680afa570b530a141 &lt;http://foo.com/patient_id&gt; &#34;10003&#34;^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># output in turtle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>@prefix : &lt;http://foo.com/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+[] :birth_date &#34;1970-01-03&#34; ;
+    :gender &#34;M&#34; ;
+    :patient_id 10003 .
+
+[] :birth_date &#34;1960-01-02&#34; ;
+    :gender &#34;F&#34; ;
+    :patient_id 10002 .
+
+[] :birth_date &#34;1950-01-01&#34; ;
+    :gender &#34;M&#34; ;
+    :patient_id 10001 .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now lets say we have a big dataset ... lets iterate over the records to create rdf</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  &quot;@context&quot;:</span>
+<span class="s2">  {</span>
+<span class="s2">     &quot;@vocab&quot;: &quot;http://foo.com/&quot;</span>
+<span class="s2">  }&quot;&quot;&quot;</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">patients</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="c1"># convert row into a string of key:value pairs</span>
+    <span class="c1"># note all values have quotes around them ... might not work for all values?</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;, </span><span class="se">\n</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">{key}</span><span class="s1">&quot;:&quot;</span><span class="si">{value}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">)</span> 
+                                  <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+    <span class="c1"># use context from above, but since it is one row at time we don&#39;t need ConjunctiveGraph</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="si">%s</span><span class="s2">, </span><span class="se">\n</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="se">\n</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json-ld&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+  &#34;@context&#34;:
+  {
+     &#34;@vocab&#34;: &#34;http://foo.com/&#34;
+  }, 
+ &#34;Index&#34;:&#34;0&#34;, 
+ &#34;patient_id&#34;:&#34;10001&#34;, 
+ &#34;gender&#34;:&#34;M&#34;, 
+ &#34;birth_date&#34;:&#34;1950-01-01&#34; 
+}
+
+{
+  &#34;@context&#34;:
+  {
+     &#34;@vocab&#34;: &#34;http://foo.com/&#34;
+  }, 
+ &#34;Index&#34;:&#34;1&#34;, 
+ &#34;patient_id&#34;:&#34;10002&#34;, 
+ &#34;gender&#34;:&#34;F&#34;, 
+ &#34;birth_date&#34;:&#34;1960-01-02&#34; 
+}
+
+{
+  &#34;@context&#34;:
+  {
+     &#34;@vocab&#34;: &#34;http://foo.com/&#34;
+  }, 
+ &#34;Index&#34;:&#34;2&#34;, 
+ &#34;patient_id&#34;:&#34;10003&#34;, 
+ &#34;gender&#34;:&#34;M&#34;, 
+ &#34;birth_date&#34;:&#34;1970-01-03&#34; 
+}
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print rdf</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;nt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_:Nb36aff57dd3e47a78c63d3659eb4718d &lt;http://foo.com/birth_date&gt; &#34;1950-01-01&#34; .
+_:Nf5b2f594f17843719739e2245967b46b &lt;http://foo.com/birth_date&gt; &#34;1960-01-02&#34; .
+_:Nf5b2f594f17843719739e2245967b46b &lt;http://foo.com/Index&gt; &#34;1&#34; .
+_:Nd8c43963c5a9488fb4dbc29669c993f8 &lt;http://foo.com/patient_id&gt; &#34;10003&#34; .
+_:Nd8c43963c5a9488fb4dbc29669c993f8 &lt;http://foo.com/birth_date&gt; &#34;1970-01-03&#34; .
+_:Nb36aff57dd3e47a78c63d3659eb4718d &lt;http://foo.com/Index&gt; &#34;0&#34; .
+_:Nb36aff57dd3e47a78c63d3659eb4718d &lt;http://foo.com/patient_id&gt; &#34;10001&#34; .
+_:Nb36aff57dd3e47a78c63d3659eb4718d &lt;http://foo.com/gender&gt; &#34;M&#34; .
+_:Nf5b2f594f17843719739e2245967b46b &lt;http://foo.com/patient_id&gt; &#34;10002&#34; .
+_:Nf5b2f594f17843719739e2245967b46b &lt;http://foo.com/gender&gt; &#34;F&#34; .
+_:Nd8c43963c5a9488fb4dbc29669c993f8 &lt;http://foo.com/Index&gt; &#34;2&#34; .
+_:Nd8c43963c5a9488fb4dbc29669c993f8 &lt;http://foo.com/gender&gt; &#34;M&#34; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[111]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># output in turtle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>@prefix : &lt;http://foo.com/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+[] :Index &#34;0&#34; ;
+    :birth_date &#34;1950-01-01&#34; ;
+    :gender &#34;M&#34; ;
+    :patient_id &#34;10001&#34; .
+
+[] :Index &#34;2&#34; ;
+    :birth_date &#34;1970-01-03&#34; ;
+    :gender &#34;M&#34; ;
+    :patient_id &#34;10003&#34; .
+
+[] :Index &#34;1&#34; ;
+    :birth_date &#34;1960-01-02&#34; ;
+    :gender &#34;F&#34; ;
+    :patient_id &#34;10002&#34; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## simple example of how to implement fields as instances instead of data properties</span>
+<span class="c1">## ?record -[has_field]-&gt; ?field .</span>
+<span class="c1">## ?field -[field_value]-&gt; ?value</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">{</span>
+<span class="s2">  &quot;@context&quot;:</span>
+<span class="s2">  {</span>
+<span class="s2">    &quot;@vocab&quot;: &quot;http://foo.com#&quot;,</span>
+<span class="s2">    &quot;rp&quot;: &quot;http://purl.roswellpark.org/ontology#&quot;,</span>
+<span class="s2">    &quot;ex&quot;: &quot;http://example.com#&quot;,</span>
+<span class="s2">    &quot;data_record&quot;: &quot;rp:DE_000000003&quot;,</span>
+<span class="s2">    &quot;data_field&quot;: &quot;rp:DE_000000007&amp;&quot;,</span>
+<span class="s2">    &quot;patient_id&quot;: &quot;data_field:patient_id&quot;,</span>
+<span class="s2">    &quot;gender&quot;: &quot;data_field:gender&quot;,</span>
+<span class="s2">    &quot;birth_date&quot;: &quot;data_field:birth_date&quot;,</span>
+<span class="s2">    &quot;fv&quot;: &quot;rp:DE_000000026&quot;,</span>
+<span class="s2">    &quot;has_field&quot;: &quot;rp:DE_000000022&quot;</span>
+<span class="s2">  }, </span>
+<span class="s2"> &quot;@id&quot;: &quot;ex:record_1&quot;,</span>
+<span class="s2"> &quot;@type&quot;: &quot;data_record&quot;,</span>
+<span class="s2">  &quot;has_field&quot;:</span>
+<span class="s2">  [</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;@id&quot;: &quot;ex:record_1/patient_id&quot;,</span>
+<span class="s2">      &quot;@type&quot;: &quot;patient_id&quot;,</span>
+<span class="s2">      &quot;fv&quot;: &quot;1001&quot;</span>
+<span class="s2">    },</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;@id&quot;: &quot;ex:record_1/gender&quot;,</span>
+<span class="s2">      &quot;@type&quot;: &quot;gender&quot;,</span>
+<span class="s2">      &quot;fv&quot;:&quot;M&quot;</span>
+<span class="s2">    }, </span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;@id&quot;: &quot;ex:record_1/birth_date&quot;,</span>
+<span class="s2">      &quot;@type&quot;: &quot;birth_date&quot;,</span>
+<span class="s2">      &quot;fv&quot;: &quot;1950-01-01&quot; </span>
+<span class="s2">    }</span>
+<span class="s2">  ]</span>
+<span class="s2">}&quot;&quot;&quot;</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json-ld&#39;</span><span class="p">)</span>
+<span class="c1">#print(g.serialize(format=&quot;nt&quot;).decode(&#39;utf-8&#39;))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>  
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>@prefix : &lt;http://foo.com#&gt; .
+@prefix ex: &lt;http://example.com#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rp: &lt;http://purl.roswellpark.org/ontology#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://example.com/.#record_1&gt; a rp:DE_000000003 ;
+    rp:DE_000000022 &lt;http://example.com/.#record_1/birth_date&gt;,
+        &lt;http://example.com/.#record_1/gender&gt;,
+        &lt;http://example.com/.#record_1/patient_id&gt; .
+
+&lt;http://example.com/.#record_1/birth_date&gt; a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; ;
+    rp:DE_000000026 &#34;1950-01-01&#34; .
+
+&lt;http://example.com/.#record_1/gender&gt; a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; ;
+    rp:DE_000000026 &#34;M&#34; .
+
+&lt;http://example.com/.#record_1/patient_id&gt; a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; ;
+    rp:DE_000000026 &#34;1001&#34; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[151]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## now let&#39;s iteratere over the data frame and create instances of fields</span>
+
+<span class="c1"># define a context</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">      &quot;@context&quot;:</span>
+<span class="s2">      {</span>
+<span class="s2">        &quot;@vocab&quot;: &quot;http://foo.com#&quot;,</span>
+<span class="s2">        &quot;rp&quot;: &quot;http://purl.roswellpark.org/ontology#&quot;,</span>
+<span class="s2">        &quot;ex&quot;: &quot;http://example.com#&quot;,</span>
+<span class="s2">        &quot;data_record&quot;: &quot;rp:DE_000000003&quot;,</span>
+<span class="s2">        &quot;data_field&quot;: &quot;rp:DE_000000007&amp;&quot;,</span>
+<span class="s2">        &quot;Index&quot;: &quot;data_field:Index&quot;,</span>
+<span class="s2">        &quot;patient_id&quot;: &quot;data_field:patient_id&quot;,</span>
+<span class="s2">        &quot;gender&quot;: &quot;data_field:gender&quot;,</span>
+<span class="s2">        &quot;birth_date&quot;: &quot;data_field:birth_date&quot;,</span>
+<span class="s2">        &quot;fv&quot;: &quot;rp:DE_000000026&quot;,</span>
+<span class="s2">        &quot;has_field&quot;: &quot;rp:DE_000000022&quot;</span>
+<span class="s2">      }&quot;&quot;&quot;</span>
+    
+<span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">patients</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+    <span class="c1"># convert row into a string of key:value pairs</span>
+    <span class="c1"># note all values have quotes around them ... might not work for all values?</span>
+    <span class="n">data_field</span> <span class="o">=</span> <span class="s1">&#39;, </span><span class="se">\n</span><span class="s1">   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;{&quot;@type&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;, &quot;fv&quot;:&quot;</span><span class="si">%s</span><span class="s1">&quot;}&#39;&#39;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> 
+                          <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+    
+    <span class="c1"># use context from above, but since it is one row at time we don&#39;t need ConjunctiveGraph</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;{</span>
+<span class="s2">        </span><span class="si">%s</span><span class="s2">,</span>
+<span class="s2">        &quot;@type&quot;: &quot;data_record&quot;,</span>
+<span class="s2">        &quot;has_field&quot;:[ </span><span class="se">\n</span><span class="s2">   </span><span class="si">%s</span><span class="s2"> ]</span>
+<span class="s2">      }&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">data_field</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json-ld&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">doc</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> -------------------- </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{
+        
+      &#34;@context&#34;:
+      {
+        &#34;@vocab&#34;: &#34;http://foo.com#&#34;,
+        &#34;rp&#34;: &#34;http://purl.roswellpark.org/ontology#&#34;,
+        &#34;ex&#34;: &#34;http://example.com#&#34;,
+        &#34;data_record&#34;: &#34;rp:DE_000000003&#34;,
+        &#34;data_field&#34;: &#34;rp:DE_000000007&amp;&#34;,
+        &#34;Index&#34;: &#34;data_field:Index&#34;,
+        &#34;patient_id&#34;: &#34;data_field:patient_id&#34;,
+        &#34;gender&#34;: &#34;data_field:gender&#34;,
+        &#34;birth_date&#34;: &#34;data_field:birth_date&#34;,
+        &#34;fv&#34;: &#34;rp:DE_000000026&#34;,
+        &#34;has_field&#34;: &#34;rp:DE_000000022&#34;
+      },
+        &#34;@type&#34;: &#34;data_record&#34;,
+        &#34;has_field&#34;:[ 
+   {&#34;@type&#34;:&#34;Index&#34;, &#34;fv&#34;:&#34;0&#34;}, 
+   {&#34;@type&#34;:&#34;patient_id&#34;, &#34;fv&#34;:&#34;10001&#34;}, 
+   {&#34;@type&#34;:&#34;gender&#34;, &#34;fv&#34;:&#34;M&#34;}, 
+   {&#34;@type&#34;:&#34;birth_date&#34;, &#34;fv&#34;:&#34;1950-01-01&#34;} ]
+      }
+ -------------------- 
+
+{
+        
+      &#34;@context&#34;:
+      {
+        &#34;@vocab&#34;: &#34;http://foo.com#&#34;,
+        &#34;rp&#34;: &#34;http://purl.roswellpark.org/ontology#&#34;,
+        &#34;ex&#34;: &#34;http://example.com#&#34;,
+        &#34;data_record&#34;: &#34;rp:DE_000000003&#34;,
+        &#34;data_field&#34;: &#34;rp:DE_000000007&amp;&#34;,
+        &#34;Index&#34;: &#34;data_field:Index&#34;,
+        &#34;patient_id&#34;: &#34;data_field:patient_id&#34;,
+        &#34;gender&#34;: &#34;data_field:gender&#34;,
+        &#34;birth_date&#34;: &#34;data_field:birth_date&#34;,
+        &#34;fv&#34;: &#34;rp:DE_000000026&#34;,
+        &#34;has_field&#34;: &#34;rp:DE_000000022&#34;
+      },
+        &#34;@type&#34;: &#34;data_record&#34;,
+        &#34;has_field&#34;:[ 
+   {&#34;@type&#34;:&#34;Index&#34;, &#34;fv&#34;:&#34;1&#34;}, 
+   {&#34;@type&#34;:&#34;patient_id&#34;, &#34;fv&#34;:&#34;10002&#34;}, 
+   {&#34;@type&#34;:&#34;gender&#34;, &#34;fv&#34;:&#34;F&#34;}, 
+   {&#34;@type&#34;:&#34;birth_date&#34;, &#34;fv&#34;:&#34;1960-01-02&#34;} ]
+      }
+ -------------------- 
+
+{
+        
+      &#34;@context&#34;:
+      {
+        &#34;@vocab&#34;: &#34;http://foo.com#&#34;,
+        &#34;rp&#34;: &#34;http://purl.roswellpark.org/ontology#&#34;,
+        &#34;ex&#34;: &#34;http://example.com#&#34;,
+        &#34;data_record&#34;: &#34;rp:DE_000000003&#34;,
+        &#34;data_field&#34;: &#34;rp:DE_000000007&amp;&#34;,
+        &#34;Index&#34;: &#34;data_field:Index&#34;,
+        &#34;patient_id&#34;: &#34;data_field:patient_id&#34;,
+        &#34;gender&#34;: &#34;data_field:gender&#34;,
+        &#34;birth_date&#34;: &#34;data_field:birth_date&#34;,
+        &#34;fv&#34;: &#34;rp:DE_000000026&#34;,
+        &#34;has_field&#34;: &#34;rp:DE_000000022&#34;
+      },
+        &#34;@type&#34;: &#34;data_record&#34;,
+        &#34;has_field&#34;:[ 
+   {&#34;@type&#34;:&#34;Index&#34;, &#34;fv&#34;:&#34;2&#34;}, 
+   {&#34;@type&#34;:&#34;patient_id&#34;, &#34;fv&#34;:&#34;10003&#34;}, 
+   {&#34;@type&#34;:&#34;gender&#34;, &#34;fv&#34;:&#34;M&#34;}, 
+   {&#34;@type&#34;:&#34;birth_date&#34;, &#34;fv&#34;:&#34;1970-01-03&#34;} ]
+      }
+ -------------------- 
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[152]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print rdf</span>
+<span class="c1"># note that since the &quot;@id&quot; key was not used blank notes have not been created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;nt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_:Nfbd56b8877e6463fafea530fd2834387 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; .
+_:Nfbd56b8877e6463fafea530fd2834387 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;1950-01-01&#34; .
+_:N71540a15e0c14befab6fc82f7b048b07 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; .
+_:N22c95ea02d034733ad13c5408d90bbec &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;10002&#34; .
+_:N9c468e0b9a504c3bb4a82596fab29216 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;M&#34; .
+_:Ndc6fad4d03f947ccb4f4014225b8f9ef &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:Nfbd56b8877e6463fafea530fd2834387 .
+_:Na92a2483e5594ac2bda7de92b85592f2 &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N8cad957e401644d289cbe705c86163ed .
+_:N4c819f8c71844b8187dfd454316c023c &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;10001&#34; .
+_:N8cad957e401644d289cbe705c86163ed &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; .
+_:Nacb4d04592a0422eb82ffdc66c3a6c99 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;F&#34; .
+_:N1cfb1bb5748e4179a1f50139b51b153f &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N22c95ea02d034733ad13c5408d90bbec .
+_:N9c468e0b9a504c3bb4a82596fab29216 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; .
+_:N489b08a9f4304d6f89fdfe419d356c39 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;1970-01-03&#34; .
+_:N1238278a0c5a44ae8f83cea58eab6395 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; .
+_:Ndc6fad4d03f947ccb4f4014225b8f9ef &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N4c819f8c71844b8187dfd454316c023c .
+_:Na92a2483e5594ac2bda7de92b85592f2 &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:Ndceadd2f46414dadb22393abdbe7d651 .
+_:N2058f0050b334d6497d2361766ab623c &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; .
+_:N1cfb1bb5748e4179a1f50139b51b153f &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N1238278a0c5a44ae8f83cea58eab6395 .
+_:N22c95ea02d034733ad13c5408d90bbec &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; .
+_:Nfab7c2ab629a40258778a05c4549a60b &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;2&#34; .
+_:N71540a15e0c14befab6fc82f7b048b07 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;1&#34; .
+_:Nacb4d04592a0422eb82ffdc66c3a6c99 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; .
+_:N1cfb1bb5748e4179a1f50139b51b153f &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000003&gt; .
+_:N2058f0050b334d6497d2361766ab623c &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;0&#34; .
+_:N8cad957e401644d289cbe705c86163ed &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;10003&#34; .
+_:N489b08a9f4304d6f89fdfe419d356c39 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; .
+_:Ndceadd2f46414dadb22393abdbe7d651 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; .
+_:Na92a2483e5594ac2bda7de92b85592f2 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000003&gt; .
+_:Na92a2483e5594ac2bda7de92b85592f2 &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N489b08a9f4304d6f89fdfe419d356c39 .
+_:Ndc6fad4d03f947ccb4f4014225b8f9ef &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000003&gt; .
+_:Ndc6fad4d03f947ccb4f4014225b8f9ef &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N9c468e0b9a504c3bb4a82596fab29216 .
+_:N1cfb1bb5748e4179a1f50139b51b153f &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N71540a15e0c14befab6fc82f7b048b07 .
+_:Na92a2483e5594ac2bda7de92b85592f2 &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:Nfab7c2ab629a40258778a05c4549a60b .
+_:Ndceadd2f46414dadb22393abdbe7d651 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;M&#34; .
+_:Nfab7c2ab629a40258778a05c4549a60b &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; .
+_:N4c819f8c71844b8187dfd454316c023c &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; .
+_:N1cfb1bb5748e4179a1f50139b51b153f &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:Nacb4d04592a0422eb82ffdc66c3a6c99 .
+_:Ndc6fad4d03f947ccb4f4014225b8f9ef &lt;http://purl.roswellpark.org/ontology#DE_000000022&gt; _:N2058f0050b334d6497d2361766ab623c .
+_:N1238278a0c5a44ae8f83cea58eab6395 &lt;http://purl.roswellpark.org/ontology#DE_000000026&gt; &#34;1960-01-02&#34; .
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[153]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># output in turtle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>@prefix : &lt;http://foo.com#&gt; .
+@prefix ex: &lt;http://example.com#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rp: &lt;http://purl.roswellpark.org/ontology#&gt; .
+@prefix xml: &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+[] a rp:DE_000000003 ;
+    rp:DE_000000022 [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; ;
+            rp:DE_000000026 &#34;1960-01-02&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; ;
+            rp:DE_000000026 &#34;10002&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; ;
+            rp:DE_000000026 &#34;1&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; ;
+            rp:DE_000000026 &#34;F&#34; ] .
+
+[] a rp:DE_000000003 ;
+    rp:DE_000000022 [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; ;
+            rp:DE_000000026 &#34;1970-01-03&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; ;
+            rp:DE_000000026 &#34;10003&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; ;
+            rp:DE_000000026 &#34;M&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; ;
+            rp:DE_000000026 &#34;2&#34; ] .
+
+[] a rp:DE_000000003 ;
+    rp:DE_000000022 [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;Index&gt; ;
+            rp:DE_000000026 &#34;0&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;patient_id&gt; ;
+            rp:DE_000000026 &#34;10001&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;gender&gt; ;
+            rp:DE_000000026 &#34;M&#34; ],
+        [ a &lt;http://purl.roswellpark.org/ontology#DE_000000007&amp;birth_date&gt; ;
+            rp:DE_000000026 &#34;1950-01-01&#34; ] .
 
 
 </pre>
