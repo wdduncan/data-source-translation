@@ -236,7 +236,7 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000008 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000008">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000009"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
         <obo:IAO_0000115>A data property that relates a data entity to a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:24:52Z</dc:date>
@@ -248,7 +248,7 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000009 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000009">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/obsolete_data_property"/>
         <obo:IAO_0000115>A data property that relates an entity to a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:31:12Z</dc:date>
@@ -260,7 +260,7 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000010 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000010">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/obsolete_data_property"/>
         <obo:IAO_0000600>A data property in which the data value is used to provide information about another entity or value.</obo:IAO_0000600>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-19T22:35:34Z</dc:date>
@@ -308,7 +308,7 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000025 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000025">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000008"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/obsolete_data_property"/>
         <obo:IAO_0000115>A data entity value that holds between a data record and a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:34:51Z</dc:date>
@@ -320,7 +320,7 @@
     <!-- http://purl.roswellpark.org/ontology#DE_000000026 -->
 
     <owl:DatatypeProperty rdf:about="http://purl.roswellpark.org/ontology#DE_000000026">
-        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology#DE_000000008"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.roswellpark.org/ontology/obsolete_data_property"/>
         <obo:IAO_0000115>A data entity value that holds between a data field and a literal.</obo:IAO_0000115>
         <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bill Duncan &lt;http://orcid.org/0000-0001-9625-1899&gt;</dc:creator>
         <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-07-21T05:35:55Z</dc:date>
