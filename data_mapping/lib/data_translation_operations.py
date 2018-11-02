@@ -1,8 +1,8 @@
 # coding=utf-8
 import pandas as pds
-from uri_functions import *
+from data_mapping.lib.uri_functions import *
 from textwrap import dedent
-from data_operations import *
+from data_mapping.lib.data_operations import *
 
 
 # @print_function_output()

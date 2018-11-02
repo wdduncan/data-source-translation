@@ -1,9 +1,9 @@
 import pandas as pds
-from translate_data_source import translate_excel
-from translate_metadata import translate_metadata_excel, translate_data_to_graph_excel
-import translation_lib.util.simple_dental_ontology_generated_functions_rdflib as ont
-import translation_lib.util.data_source_ontology_generated_functions_rdflib as dso
-from translation_lib.util.uri_util import *
+from data_mapping.translate_data_source import translate_excel_to_ttl
+from .translate_metadata import translate_metadata_excel, translate_data_to_graph_excel
+import data_mapping.translation_lib.util.simple_dental_ontology_generated_functions_rdflib as ont
+import data_mapping.translation_lib.util.data_source_ontology_generated_functions_rdflib as dso
+from data_mapping.translation_lib.util.uri_util import *
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef
 from textwrap import dedent
 
@@ -199,9 +199,9 @@ def test_query(graph):
 def make_data_graph():
     # translate patient data
     pt1_graph = \
-        translate_excel("test_data/patients_1.xlsx", "http://purl.example.translation/")
+        translate_excel_to_ttl("test_data/patients_1.xlsx", "http://purl.example.translation/")
     pt2_graph = \
-        translate_excel("test_data/patients_2.xlsx", "http://purl.example.translation/")
+        translate_excel_to_ttl("test_data/patients_2.xlsx", "http://purl.example.translation/")
 
     # translate patient metadata
     pt1_metadata_graph = \
@@ -213,9 +213,9 @@ def make_data_graph():
 
     # translate services performed data
     srv1_graph = \
-        translate_excel("test_data/services_1.xlsx", "http://purl.example.translation/")
+        translate_excel_to_ttl("test_data/services_1.xlsx", "http://purl.example.translation/")
     srv2_graph = \
-        translate_excel("test_data/services_2.xlsx", "http://purl.example.translation/")
+        translate_excel_to_ttl("test_data/services_2.xlsx", "http://purl.example.translation/")
 
     # translate services metadata
     srv1_metadata_graph = \
