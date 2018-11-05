@@ -28,12 +28,29 @@ if __name__ == "__main__":
     g = Graph()
     for r in df.itertuples():
         # print(r.record)
-        if "record_1" == str(r.record):
-            b = BNode()        # create record as blank node
-            g.add((b, miri('record'), Literal(r.record)))
-            g.add((b, miri('field'), Literal(r.field)))
-            g.add((b, miri('value'), Literal(r.value)))
+        # if "record_1" == str(r.record):
+        b = BNode()        # create record as blank node
+        g.add((b, miri('record'), Literal(r.record)))
+        g.add((b, miri('field'), Literal(r.field)))
+        g.add((b, miri('value'), Literal(r.value)))
 
-    pprint(g.serialize(format='turtle'))
+    # pprint(str(g.serialize(format='turtle')))
 
+    qry = """
+        construct {
+            ?record a <http://example.com/data_record>;
+                    ?field ?v .
+        } where {
+           ?b <http://ex.com/dp_record> ?r;
+              <http://ex.com/dp_field> ?f;
+              <http://ex.com/dp_value> ?v .
+            
+            bind(iri(concat("http://example.com/record#", ?r)) as ?record)
+            bind(iri(concat("http://example.com/field#", ?f)) as ?field)
+        }
+    """
 
+    results = g.query(qry)
+    for r in results:
+        print(r)
+    # create instance of record
