@@ -34,23 +34,45 @@ if __name__ == "__main__":
         g.add((b, miri('field'), Literal(r.field)))
         g.add((b, miri('value'), Literal(r.value)))
 
+    for (s, _, record) in g.triples((None, miri('record'), None)):
+        doc = """
+            {
+              "@context":
+              {
+                 "@vocab": "http://foo.com/"
+                 "rp": "http://purl.roswellpark.org/ontology#"
+                 "data_record": "rp:DE_000000003"
+                 "data_field": "rp:DE_000000007"
+                 "dp": "rp:DE_000000007#db_"
+                 "data_record_i":  "rp:DE_000000003#"
+              },
+              "@id": "data_record_i:%s"
+              "@type": "data_record"
+            }""" % record
+
+        # for (s, _, field) in g.triples((s, miri('field'), None)):
+        for field in g[s:miri('field')]:
+            print(field)
+
+        # print(doc)
+
     # pprint(str(g.serialize(format='turtle')))
 
-    qry = """
-        construct {
-            ?record a <http://example.com/data_record>;
-                    ?field ?v .
-        } where {
-           ?b <http://ex.com/dp_record> ?r;
-              <http://ex.com/dp_field> ?f;
-              <http://ex.com/dp_value> ?v .
-            
-            bind(iri(concat("http://example.com/record#", ?r)) as ?record)
-            bind(iri(concat("http://example.com/field#", ?f)) as ?field)
-        }
-    """
-
-    results = g.query(qry)
-    for r in results:
-        print(r)
-    # create instance of record
+    # qry = """
+    #     construct {
+    #         ?record a <http://example.com/data_record>;
+    #                 ?field ?v .
+    #     } where {
+    #        ?b <http://ex.com/dp_record> ?r;
+    #           <http://ex.com/dp_field> ?f;
+    #           <http://ex.com/dp_value> ?v .
+    #
+    #         bind(iri(concat("http://example.com/record#", ?r)) as ?record)
+    #         bind(iri(concat("http://example.com/field#", ?f)) as ?field)
+    #     }
+    # """
+    #
+    # results = g.query(qry)
+    # for r in results:
+    #     print(r)
+    # # create instance of record
