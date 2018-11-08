@@ -4,75 +4,59 @@ from rdflib.namespace import NamespaceManager
 from pprint import pprint
 
 
-def make_iri_map_fn(iri_map):
-    def fn(key):
-        if key in iri_map:
-            return URIRef(iri_map[key])
-        else:
-            return None
-    return fn
-
 if __name__ == "__main__":
-    iri_map =\
-        {
-            'base': 'http://ex.com/',
-            'entity_base': 'http://ex.com/entity/',
-            'record': 'http://ex.com/dp_record',
-            'field': 'http://ex.com/dp_field',
-            'value': 'http://ex.com/dp_value'
-         }
-    miri = make_iri_map_fn(iri_map)
-    # print(miri('record'))
-    df = pds.read_excel('patients_1_eav.xlsx')
-
     g = Graph()
-    for r in df.itertuples():
-        # print(r.record)
-        # if "record_1" == str(r.record):
-        b = BNode()        # create record as blank node
-        g.add((b, miri('record'), Literal(r.record)))
-        g.add((b, miri('field'), Literal(r.field)))
-        g.add((b, miri('value'), Literal(r.value)))
-
-    for (s, _, record) in g.triples((None, miri('record'), None)):
-        doc = """
+    df = pds.read_excel('patients_1_eav.xlsx')
+    for row in df.itertuples():
+        ## make triple as it appears in EAV table
+        ## note: using blank nodes for each row in df
+        eav = \
+            """
             {
               "@context":
               {
-                 "@vocab": "http://foo.com/"
-                 "rp": "http://purl.roswellpark.org/ontology#"
-                 "data_record": "rp:DE_000000003"
-                 "data_field": "rp:DE_000000007"
-                 "dp": "rp:DE_000000007#db_"
-                 "data_record_i":  "rp:DE_000000003#"
+                "ex": "http://example.com/",
+                "rp": "http://purl.roswellpark.org/ontology#",
+                "record": "rp:dp_record",
+                "field": "rp:dp_field",
+                "value": "rp:dp_value",
+                "data_record": "rp:DE_000000003"
               },
-              "@id": "data_record_i:%s"
-              "@type": "data_record"
-            }""" % record
+              "@type": "data_record",
+              "record": "%s",
+              "field": "%s",
+              "value": "%s"
+            }
+            """ % (row.record, row.field, row.value)
+        g.parse(data=eav, format='json-ld')
 
-        # for (s, _, field) in g.triples((s, miri('field'), None)):
-        for field in g[s:miri('field')]:
-            print(field)
+    ## define context for records
+    context = \
+        """
+          "@context":
+          {
+            "ex": "http://example.com/",
+            "rp": "http://purl.roswellpark.org/ontology#",
+            "record": "rp:dp_record",
+            "data_record": "rp:DE_000000003",
+            "data_record_i": "rp:DE_000000003#",
+            "field": "rp:dp_field",
+            "field_p": "rp:dp_field#",
+            "value": "pr:dp_value",
+            "patient_id": "field_p:patient_id",
+            "gender": "field_p:gender",
+            "birth_date": "field_p:birth_date"
+          }
+        """
 
-        # print(doc)
-
-    # pprint(str(g.serialize(format='turtle')))
-
-    # qry = """
-    #     construct {
-    #         ?record a <http://example.com/data_record>;
-    #                 ?field ?v .
-    #     } where {
-    #        ?b <http://ex.com/dp_record> ?r;
-    #           <http://ex.com/dp_field> ?f;
-    #           <http://ex.com/dp_value> ?v .
-    #
-    #         bind(iri(concat("http://example.com/record#", ?r)) as ?record)
-    #         bind(iri(concat("http://example.com/field#", ?f)) as ?field)
-    #     }
-    # """
-    #
-    # results = g.query(qry)
-    # for r in results:
-    #     print(r)
-    # # create instance of record
+    for row in df.itertuples():
+        ## group rows in EAV into 'records' documents
+        data = \
+          """
+            "@id": "data_record_i:%s",
+            "@type": "data_record",
+            "%s": "%s" 
+          """ % (row.record, row.field, row.value)
+        doc = """{%s, \n %s \n}""" % (context, data)
+        print(doc, "\n")
+        g.parse(data=doc, format='json-ld')
