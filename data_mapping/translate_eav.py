@@ -30,6 +30,8 @@ if __name__ == "__main__":
             """ % (row.record, row.field, row.value)
         g.parse(data=eav, format='json-ld')
 
+    # print(g.serialize(format='turtle'))
+
     ## define context for records
     context = \
         """
@@ -49,14 +51,20 @@ if __name__ == "__main__":
           }
         """
 
-    for row in df.itertuples():
-        ## group rows in EAV into 'records' documents
-        data = \
-          """
-            "@id": "data_record_i:%s",
-            "@type": "data_record",
-            "%s": "%s" 
-          """ % (row.record, row.field, row.value)
-        doc = """{%s, \n %s \n}""" % (context, data)
-        print(doc, "\n")
-        g.parse(data=doc, format='json-ld')
+    # for row in df.itertuples():
+    #     ## group rows in EAV into 'records' documents
+    #     data = \
+    #       """
+    #         "@id": "data_record_i:%s",
+    #         "@type": "data_record",
+    #         "%s": "%s"
+    #       """ % (row.record, row.field, row.value)
+    #     doc = """{%s, \n %s \n}""" % (context, data)
+    #     # print(doc, "\n")
+    #     g.parse(data=doc, format='json-ld')
+
+    # for s, p, o in g.triples((None, RDF.type, URIRef("http://purl.roswellpark.org/ontology#DE_000000003"))):
+    for r in g.subjects(RDF.type, URIRef("http://purl.roswellpark.org/ontology#DE_000000003")):
+        for f in g.objects(r, URIRef("http://purl.roswellpark.org/ontology#dp_field")):
+            print(f)
+
