@@ -102,7 +102,6 @@ class jsonld_document:
               }  
               """ % (self.context, self.data))
 
-
         if print_context_data: print(context_data_string)
         return context_data_string
 
@@ -299,11 +298,60 @@ def translate_eav_3(df, graph=""):
     return graph
 
 
+def translate_eav_4(df, graph=""):
+    # if type("") == type(graph): graph = Graph()
+    if type("") == type(graph): graph = ConjunctiveGraph() # must use ConjunctiveGraph with "@graph" keyword
+    eav_template = \
+        """
+        {
+          "@context":
+          {
+            "ex": "http://example.com/",
+            "rp": "http://purl.roswellpark.org/ontology#",
+            "project": "rp:dp_project",
+            "record": "rp:dp_record",
+            "field": "rp:dp_field",
+            "value": "rp:dp_value",
+            "data_record": "rp:DE_000000003"
+          },
+          "@graph": [
+          {
+            "@id": "_:b%s",
+            "@type": "data_record",
+            "project": "%s",
+            "record": "%s",
+            "field": "%s",
+            "value": "%s"
+          }]
+        }
+        """
+
+    eav_doc = jsonld_document(document_template=eav_template)
+    # print(repr(('record_1', 'patient_id', 10001)))
+
+    for idx, row in enumerate(df.itertuples()):
+        ## put values into tuple
+        blank = f"_:b{idx}"
+        values = (blank, row.project, row.record, row.field, row.value)
+
+        ## create json-ld document using values tuple
+        ## note: using blank nodes for each row in df
+        ##       the idx variable is needed to create new blank node ids, in the future, I may experiment with UUIDs
+        data = eav_doc.set_document(values)
+        # data = eav_doc.set_document(values, print_document=True)
+
+        ## parse data into graphs
+        # g.parse(data=eav_doc.data_string, format='json-ld')
+        graph.parse(data=data, format='json-ld')
+
+    return graph
+
 if __name__ == "__main__":
     df = pds.read_excel('patients_1_eav.xlsx')
 
     # g = translate_eav_1(df)
     # g = translate_eav_2(df)
-    g = translate_eav_3(df)
+    # g = translate_eav_3(df)
+    g = translate_eav_4(df)
     print(str(g.serialize(format='turtle'), 'utf-8'))
     # print(g.serialize(format="turtle").decode('utf-8')) # this also works
