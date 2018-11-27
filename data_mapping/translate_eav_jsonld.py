@@ -301,6 +301,7 @@ def translate_eav_3(df, graph=""):
 def translate_eav_4(df, graph=""):
     # if type("") == type(graph): graph = Graph()
     if type("") == type(graph): graph = ConjunctiveGraph() # must use ConjunctiveGraph with "@graph" keyword
+
     eav_template = \
         """
         {
@@ -316,7 +317,7 @@ def translate_eav_4(df, graph=""):
           },
           "@graph": [
           {
-            "@id": "_:b%s",
+            "@id": "%s",
             "@type": "data_record",
             "project": "%s",
             "record": "%s",
@@ -330,19 +331,101 @@ def translate_eav_4(df, graph=""):
     # print(repr(('record_1', 'patient_id', 10001)))
 
     for idx, row in enumerate(df.itertuples()):
+        construct_graph = ConjunctiveGraph()
+
         ## put values into tuple
         blank = f"_:b{idx}"
         values = (blank, row.project, row.record, row.field, row.value)
-
-        ## create json-ld document using values tuple
-        ## note: using blank nodes for each row in df
-        ##       the idx variable is needed to create new blank node ids, in the future, I may experiment with UUIDs
         data = eav_doc.set_document(values)
         # data = eav_doc.set_document(values, print_document=True)
 
         ## parse data into graphs
-        # g.parse(data=eav_doc.data_string, format='json-ld')
-        graph.parse(data=data, format='json-ld')
+        construct_graph.parse(data=data, format='json-ld')
+
+
+        data = \
+            f"""
+            {{
+              "@context":
+              {{
+                "rp": "http://purl.roswellpark.org/ontology#",
+                "data_record": "rp:DE_000000003",
+                "data_record_i": "rp:DE_000000003#"
+              }},
+              "@graph": [
+              {{
+                  "@id": "data_record_i:project_{row.project}_record_{row.record}",
+                  "@type": "data_record",
+                  "rp:originating_data": {{"@id": "{blank}"}}                  
+              }}]
+            }}
+            """
+        # construct_graph.parse(data=data, format='json-ld')
+
+        # print(cq)
+        # print(data)
+        # construct_graph.query(data)
+        # result_graph = graph.query(cq)
+        # graph.parse(data=result_graph.serialize())
+        cq = \
+            """
+            base <http://purl.roswellpark.org/ontology#>
+            prefix ex: <http://example.com/> 
+            prefix rp: <http://purl.roswellpark.org/ontology#>
+            prefix project: <dp_project>
+            prefix record: <dp_record>
+            prefix field: <dp_field>
+            prefix field_p: <dp_field#>
+            prefix value: <rp:dp_value>
+            prefix data_record: <DE_000000003>
+            prefix data_record_i: <DE_000000003#>
+            
+            insert
+            {
+              data_record_i:record_%s_%s 
+                a data_record:;
+                
+                 
+            } where {
+            
+            }
+            """
+
+        graph = graph + construct_graph
+
+    ## records
+    cq = \
+        """
+        base <http://purl.roswellpark.org/ontology#>
+        prefix project: <dp_project>
+        prefix record: <dp_record>
+        prefix data_record: <DE_000000003>
+        prefix data_record_i: <DE_000000003#>
+
+        construct
+        {
+          ?record_iri
+            a data_record:;
+            <originating_data> ?r .
+        }
+        where 
+        {
+          ?r a data_record:;
+             project: ?project;
+             record: ?record .
+             
+          filter(isblank(?r))
+          bind(concat("project_", str(?project)) as ?project_affix)
+          bind(concat("record_", str(?record)) as ?record_affix)
+          bind(concat(concat(?project_affix, "_"), ?record_affix) as ?iri_affix)
+          #bind(iri(concat(str(data_record_i:), ?iri_affix)) as ?record_iri)
+          bind(iri(concat("http://purl.roswellpark.org/ontology/DE_000000003#", ?iri_affix)) as ?record_iri)
+        }
+        """
+    print(cq)
+    result_graph = graph.query(cq)
+    print(str(result_graph.serialize(format='turtle'), 'utf-8'))
+    graph.parse(data=result_graph.serialize())
 
     return graph
 
@@ -353,5 +436,44 @@ if __name__ == "__main__":
     # g = translate_eav_2(df)
     # g = translate_eav_3(df)
     g = translate_eav_4(df)
-    print(str(g.serialize(format='turtle'), 'utf-8'))
+    # print(str(g.serialize(format='turtle'), 'utf-8'))
+    # print(str(g.serialize(format='nt'), 'utf-8'))
     # print(g.serialize(format="turtle").decode('utf-8')) # this also works
+
+    q = \
+    """
+    base <http://purl.roswellpark.org/ontology#>
+    prefix rp: <http://purl.roswellpark.org/ontology#>
+    prefix project: <dp_project>
+    prefix record: <dp_record>
+    prefix data_record: <DE_000000003>
+    prefix data_record_i: <DE_000000003#>
+        
+    select * where {
+      ?r a rp:DE_000000003;
+         project: ?project;
+         record: ?record .
+       
+      #filter(isblank(?r))
+    }
+    """
+
+    q = \
+        """
+        base <http://purl.roswellpark.org/ontology#>
+        prefix rp: <http://purl.roswellpark.org/ontology#>
+        prefix project: <dp_project>
+        prefix record: <dp_record>
+        prefix data_record: <DE_000000003>
+        prefix data_record_i: <DE_000000003#>
+
+        select * where {
+            ?s ?p ?o
+        }
+        """
+
+    print(q)
+    results = g.query(q)
+    print(len(results))
+    # for r in results:
+    #     print(r)
